@@ -1,6 +1,5 @@
-[gd_scene load_steps=62 format=3 uid="uid://scmvwqnfs8pa"]
+[gd_scene load_steps=61 format=3 uid="uid://scmvwqnfs8pa"]
 
-[ext_resource type="Script" path="res://playerscene.gd" id="1_ahgqo"]
 [ext_resource type="Texture2D" uid="uid://fuyrc4at53ht" path="res://101livesbasechar.png" id="1_bfcmr"]
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_mf3vi"]
 [ext_resource type="Texture2D" uid="uid://cb2yn7w1ouwqw" path="res://Animation Frames/jump/jump0000.png" id="3_qhwch"]
@@ -310,24 +309,27 @@ animations = [{
 "speed": 24.0
 }]
 
-[node name="Player" type="Node2D"]
-scale = Vector2(5, 5)
-script = ExtResource("1_ahgqo")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_mf3vi")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(1.165, 1.165)
 polygon = PackedVector2Array(0, -50, 3, -49, 6, -47, 8, -44, 8, -40, 6, -36, 3, -34, 3, -32, 10, -32, 12, -31, 14, -30, 16, -28, 18, -26, 19, -23, 19, -13, 19, 4, 18, 6, 16, 7, 14, 7, 12, 5, 12, 2, 12, -3, 10, -3, 10, 17, 10, 45, 9, 47, 6, 48, 4, 48, -7, 48, -9, 47, -10, 45, -10, 5, -10, -3, -12, -3, -12, 4, -13, 6, -14, 7, -17, 7, -18, 6, -19, 4, -19, -12, -19, -24, -17, -27, -15, -30, -12, -31, -9, -32, -3, -32, -3, -34, -6, -36, -7, -38, -8, -41, -8, -44, -7, -46, -5, -48, -3, -49)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5.96046e-08, 2.98023e-08)
 scale = Vector2(0.233, 0.233)
 sprite_frames = SubResource("SpriteFrames_mr0gl")
 animation = &"impact fall"
 
-[connection signal="animation_changed" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_changed"]
-[connection signal="animation_finished" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="animation_looped" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_animation_looped"]
-[connection signal="frame_changed" from="CharacterBody2D/AnimatedSprite2D" to="CharacterBody2D" method="_on_animated_sprite_2d_frame_changed"]
+[node name="DebugLabel" type="Label" parent="."]
+offset_left = 17.2
+offset_top = -42.6
+offset_right = 57.2
+offset_bottom = -19.6
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

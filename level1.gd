@@ -11,6 +11,6 @@ func _process(delta):
 	if Input.is_action_just_pressed("Die"):
 		var ragdoll:PackedScene = load("res://ragdoll.tscn")
 		var instance = ragdoll.instantiate()
-		#print("hello")
-		instance.position = Vector2(300,0)
+		instance.position =  Vector2(300,200)
+		#$Player.position =
 		add_child(instance)

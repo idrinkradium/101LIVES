@@ -16,6 +16,7 @@ func _physics_process(delta):
 	var is_falling = velocity.y > 0 and not is_on_floor()
 	var is_running = not is_zero_approx(velocity.x) and is_on_floor()
 	var is_idling = not is_running and not is_falling
+
 	var prev_velocity = Vector2(velocity) # make a copy
 	
 	# Add the gravity.
@@ -34,28 +35,26 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
+			
+	if is_idling:
+		if sprite.animation == "running" or sprite.animation == "run start":
+			sprite.play("run stop")
+			print("run stop -> play")
 	
 	if is_running:
 		if sprite.animation == "idle":
 			sprite.play("run start")
 			print("run start -> play")
-		elif sprite.animation == "run start":
-			sprite.play("running")
-			print("running -> play")
-			
-	if is_idling:
-		if sprite.animation == "running":
-			sprite.play("run stop")
-			print("run stop -> play")
+
 	
 	if is_jumping:
 		sprite.play("Jump")
 	
-		
+
 	if not previously_on_floor and is_on_floor():
 		sprite.play("impact fall")
 		
-		
+	
 	previously_on_floor = is_on_floor()
 
 
@@ -68,6 +67,11 @@ func _on_animated_sprite_2d_animation_finished():
 	if sprite.animation == "run stop":
 		sprite.play("idle")
 		print('run stop -> idle')
+		return
+		
+	if sprite.animation == "run start":
+		sprite.play("running")
+		print("running -> play")
 		return
 
 
@@ -85,7 +89,7 @@ func _on_animated_sprite_2d_animation_looped():
 
 
 func _on_animated_sprite_2d_animation_changed():
-	flip_direction()
+	flip_sprite_direction()
 	
 	if sprite.animation == "Jump" or sprite.animation == "impact fall":
 		sprite.offset.y =-100
@@ -106,9 +110,9 @@ func _on_animated_sprite_2d_animation_changed():
 
 
 func _on_animated_sprite_2d_frame_changed():
-	flip_direction()
+	flip_sprite_direction()
 		
-func flip_direction():
+func flip_sprite_direction():
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction < 0:
 		sprite.flip_h = true
