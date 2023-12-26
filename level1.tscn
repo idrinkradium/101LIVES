@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=9 format=3 uid="uid://jiy6adpvuo7a"]
 
 [ext_resource type="Script" path="res://level1.gd" id="1_5e4bs"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="1_33gg6"]
 [ext_resource type="Texture2D" uid="uid://buq4aoder4ic1" path="res://tiles/tileset.png" id="2_vwr53"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="4_0behw"]
 
 [sub_resource type="Gradient" id="Gradient_rtw4n"]
 interpolation_mode = 2
@@ -3139,3 +3140,4 @@ layer_0/tile_data = PackedInt32Array(589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 328)
+script = ExtResource("4_0behw")
