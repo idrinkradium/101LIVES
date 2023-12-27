@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dse5o84rnxnyy"]
+[gd_scene load_steps=6 format=3 uid="uid://47m2w8ec7q6i"]
 
 [ext_resource type="Script" path="res://piston.gd" id="1_711en"]
 [ext_resource type="Texture2D" uid="uid://d0mlaa83q3ehi" path="res://objects/spring.png" id="1_e4u08"]
@@ -24,9 +24,9 @@ position = Vector2(0, -20)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_nb36i")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Piston"]
+[node name="RigidBody2D" type="StaticBody2D" parent="Piston"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/RigidBody2D"]
 position = Vector2(-9.53674e-06, 37.5)
 shape = SubResource("RectangleShape2D_d2wyn")
 
