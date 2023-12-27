@@ -310,6 +310,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+floor_constant_speed = true
 script = ExtResource("1_mf3vi")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

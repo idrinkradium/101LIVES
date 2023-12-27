@@ -14,7 +14,7 @@ var previously_on_floor = false
 func _physics_process(delta):
 	var is_jumping = Input.is_action_just_pressed("ui_accept") and is_on_floor()
 	var is_falling = velocity.y > 0 and not is_on_floor()
-	var is_running = not is_zero_approx(velocity.x) and is_on_floor()
+	var is_running = not is_zero_approx(velocity.x)
 	var is_idling = not is_running and not is_falling
 
 	var prev_velocity = Vector2(velocity) # make a copy
