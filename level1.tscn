@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="1_33gg6"]
 [ext_resource type="Texture2D" uid="uid://buq4aoder4ic1" path="res://tiles/tileset.png" id="2_vwr53"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="4_0behw"]
-[ext_resource type="PackedScene" uid="uid://47m2w8ec7q6i" path="res://piston.tscn" id="5_xtwes"]
+[ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="5_xtwes"]
 
 [sub_resource type="Gradient" id="Gradient_rtw4n"]
 interpolation_mode = 2

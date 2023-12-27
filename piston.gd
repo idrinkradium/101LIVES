@@ -20,7 +20,7 @@ func _process(delta):
 	if animating:
 		var y = 1.75 * delta
 		$Spring.scale.y -= y
-		$Piston.position.y -= 19
+		$Piston.position.y -= 1260*delta
 		
 		if $Spring.scale.y <= -0.22:
 			animating = false
