@@ -18,7 +18,7 @@ func _physics_process(delta):
 	var is_idling = not is_running and not is_falling
 
 	var prev_velocity = Vector2(velocity) # make a copy
-	
+
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -37,14 +37,21 @@ func _physics_process(delta):
 	move_and_slide()
 			
 	if is_idling:
+		$Footsteps.stop()
+		
 		if sprite.animation == "running" or sprite.animation == "run start":
 			sprite.play("run stop")
 			print("run stop -> play")
 	
 	if is_running:
+		if not $Footsteps.playing and is_on_floor():
+			$Footsteps.play()
+			print("a11")
+			
 		if sprite.animation == "idle":
 			sprite.play("run start")
 			print("run start -> play")
+	
 
 	
 	if is_jumping:

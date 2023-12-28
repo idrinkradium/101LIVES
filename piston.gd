@@ -38,7 +38,7 @@ func _physics_process(delta):
 			for child in launch_body.get_parent().get_children():
 				if child is RigidBody2D:
 					child.apply_impulse(Vector2(0, -2500))
-					child.apply_force(Vector2(0, -2500))
+					#child.apply_force(Vector2(0, -2500))
 			
 		bruh = false
 

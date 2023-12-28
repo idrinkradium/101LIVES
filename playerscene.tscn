@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://scmvwqnfs8pa"]
+[gd_scene load_steps=62 format=3 uid="uid://scmvwqnfs8pa"]
 
 [ext_resource type="Texture2D" uid="uid://fuyrc4at53ht" path="res://101livesbasechar.png" id="1_bfcmr"]
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_mf3vi"]
@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://dau0yoknv6mnh" path="res://Animation Frames/runanim/run0031.png" id="57_i8hq5"]
 [ext_resource type="Texture2D" uid="uid://coqaymopk68i0" path="res://Animation Frames/runanim/run0032.png" id="58_er1r2"]
 [ext_resource type="Texture2D" uid="uid://bjchl20gavhax" path="res://Animation Frames/runanim/run0033.png" id="59_q5yyu"]
+[ext_resource type="AudioStream" uid="uid://cdea0pxs4vsiu" path="res://sounds/footstepn.mp3" id="60_iseu8"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mr0gl"]
 animations = [{
@@ -329,6 +330,10 @@ offset_top = -42.6
 offset_right = 57.2
 offset_bottom = -19.6
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("60_iseu8")
+volume_db = -15.0
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
