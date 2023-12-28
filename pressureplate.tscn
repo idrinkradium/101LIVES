@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5ei3hrsmqlai"]
+
+[ext_resource type="Texture2D" uid="uid://cl48xjjq54yy6" path="res://objects/pressure plate.png" id="1_4mjyw"]
+[ext_resource type="AudioStream" uid="uid://bapgdvqlnxa5f" path="res://sounds/pistonin.mp3" id="2_rdy1s"]
+[ext_resource type="AudioStream" uid="uid://jit1djxkwiys" path="res://sounds/pistonout.mp3" id="3_i4u6v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qotdr"]
+size = Vector2(400, 125)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -20)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_4mjyw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(-1.52588e-05, 37.5)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_qotdr")
+
+[node name="PistonIn" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rdy1s")
+
+[node name="PistonOut" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_i4u6v")
