@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="101LIVES"
-run/main_scene="res://level1.tscn"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[gui]
+
+common/custom_font=""
 
 [input]
 

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfb43ggdwactk"]
+
+[ext_resource type="TileSet" uid="uid://bxalumk13aqel" path="res://tiles/tileset.tres" id="1_lbh3r"]
+
+[node name="Level2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_lbh3r")
+format = 2
+layer_0/tile_data = PackedInt32Array(393216, 393216, 2, 393217, 393216, 2, 393218, 393216, 2, 393219, 393216, 2, 393220, 393216, 2, 393221, 393216, 2, 393222, 393216, 2, 393223, 393216, 2, 393224, 393216, 2, 393225, 393216, 2, 393226, 393216, 2, 393227, 393216, 2, 393228, 393216, 2, 393229, 393216, 2, 393230, 393216, 2, 393231, 393216, 2)
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(780, 257)
