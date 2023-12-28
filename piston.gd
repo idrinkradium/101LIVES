@@ -41,7 +41,17 @@ func _physics_process(delta):
 		#$Piston.position.y = -20
 	
 
+@onready var tween = get_tree().create_tween()
+
+func _ready():
+	tween.stop()
+
 func _on_power_changed(new_power):
+	if tween.is_running():
+		return
+		
+	tween.play()
+	
 	power = new_power
 	animating = true
 	bruh = true
@@ -49,11 +59,11 @@ func _on_power_changed(new_power):
 		$PistonOut.play()
 	else:
 		$PistonIn.play()
-		
-	var tween = get_tree().create_tween()
 	
 	var new_y = $Piston.position.y - height if power else $Piston.position.y + height
-	tween.tween_property($Piston, "position", Vector2($Piston.position.x, new_y), animation_duration)
+	tween.parallel().tween_property($Piston, "position", Vector2($Piston.position.x, new_y), animation_duration)
 	
-	new_y = -.22 / height if power else 0
-	tween.tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
+	new_y = -.0014 * height if power else 0
+	tween.parallel().tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
+	
+	tween.stop()
