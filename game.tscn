@@ -14,7 +14,8 @@
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="12_v5606"]
 
 [sub_resource type="Gradient" id="Gradient_yev2q"]
-colors = PackedColorArray(1, 1, 1, 1, 0.903598, 0.903598, 0.903598, 1)
+offsets = PackedFloat32Array(0, 0.266234, 0.974026, 1)
+colors = PackedColorArray(0.859311, 0.871942, 0.874453, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.82606, 0.82606, 0.82606, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_r2qlk"]
 gradient = SubResource("Gradient_yev2q")

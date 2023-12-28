@@ -16,7 +16,7 @@ height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvohg"]
 radius = 11.0
-height = 46.0
+height = 48.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kfpr"]
 radius = 5.0
@@ -99,7 +99,7 @@ scale = Vector2(0.271, 0.271)
 texture = ExtResource("5_uc0td")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="torso"]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_uvohg")
 
 [node name="bottomrightarm" type="RigidBody2D" parent="."]
