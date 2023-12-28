@@ -1,11 +1,14 @@
 extends Node2D
 
-@export var height = 100
+@export var height = 150
+@export var animation_duration = 0.1
 
 var animating = false
 var bruh = false
 
-signal power_changed(power: bool)
+var power = false
+
+signal power_changed(new_power: bool)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_down"):
@@ -38,7 +41,8 @@ func _physics_process(delta):
 		#$Piston.position.y = -20
 	
 
-func _on_power_changed(power):
+func _on_power_changed(new_power):
+	power = new_power
 	animating = true
 	bruh = true
 	if power:
@@ -47,10 +51,9 @@ func _on_power_changed(power):
 		$PistonIn.play()
 		
 	var tween = get_tree().create_tween()
-	var duration = 0.1
 	
 	var new_y = $Piston.position.y - height if power else $Piston.position.y + height
-	tween.tween_property($Piston, "position", Vector2($Piston.position.x, new_y), duration)
+	tween.tween_property($Piston, "position", Vector2($Piston.position.x, new_y), animation_duration)
 	
 	new_y = -.22 / height if power else 0
-	tween.tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), duration)
+	tween.tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
