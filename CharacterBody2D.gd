@@ -36,6 +36,11 @@ func _physics_process(delta):
 	
 	move_and_slide()
 			
+			
+	if not is_on_floor():
+		$Footsteps.stop()
+		
+	
 	if is_idling:
 		$Footsteps.stop()
 		
@@ -46,13 +51,10 @@ func _physics_process(delta):
 	if is_running:
 		if not $Footsteps.playing and is_on_floor():
 			$Footsteps.play()
-			print("a11")
 			
 		if sprite.animation == "idle":
 			sprite.play("run start")
 			print("run start -> play")
-	
-
 	
 	if is_jumping:
 		sprite.play("Jump")
