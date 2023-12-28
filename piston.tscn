@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dse5o84rnxnyy"]
+[gd_scene load_steps=6 format=3 uid="uid://dse5o84rnxnyy"]
 
 [ext_resource type="Script" path="res://piston.gd" id="1_711en"]
 [ext_resource type="Texture2D" uid="uid://d0mlaa83q3ehi" path="res://objects/spring.png" id="1_e4u08"]
 [ext_resource type="Texture2D" uid="uid://dcyj251ybguul" path="res://objects/piston.png" id="2_nb36i"]
-[ext_resource type="AudioStream" uid="uid://c42qsaoxrxpxd" path="res://sounds/piston.mp3" id="4_g4oy7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wyn"]
 size = Vector2(400, 125)
@@ -36,10 +35,6 @@ shape = SubResource("RectangleShape2D_d2wyn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/Area2D"]
 position = Vector2(-6.10948e-06, -27.5)
 shape = SubResource("RectangleShape2D_v1oea")
-
-[node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_g4oy7")
-volume_db = -20.0
 
 [connection signal="body_entered" from="Piston/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Piston/Area2D" to="." method="_on_area_2d_body_exited"]
