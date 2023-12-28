@@ -99,6 +99,7 @@ scale = Vector2(0.271, 0.271)
 texture = ExtResource("5_uc0td")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="torso"]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_uvohg")
 
 [node name="bottomrightarm" type="RigidBody2D" parent="."]

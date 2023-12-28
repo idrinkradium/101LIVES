@@ -23,5 +23,5 @@ func _process(delta):
 		var ragdoll = load("res://ragdoll.tscn")
 		var instance = ragdoll.instantiate()
 		# spawn ragdoll at death action position
-		instance.position = prev_player_pos
+		instance.position = Vector2(300,200)
 		add_child(instance)
