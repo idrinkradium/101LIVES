@@ -14,6 +14,10 @@ layer_0/tile_data = PackedInt32Array(589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 5
 
 [node name="Node2D" parent="." instance=ExtResource("5_xtwes")]
 position = Vector2(562, 512)
+height = 1000
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(245, 396)
+
+[node name="Piston" parent="." instance=ExtResource("5_xtwes")]
+position = Vector2(441, 511)

@@ -14,7 +14,6 @@ size = Vector2(380, 5)
 
 [node name="Piston" type="Node2D"]
 script = ExtResource("1_711en")
-height = 100
 
 [node name="Spring" type="Sprite2D" parent="."]
 position = Vector2(-32, 0)
