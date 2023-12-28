@@ -38,4 +38,4 @@ func _process(delta):
 		var instance = ragdoll.instantiate()
 		# spawn ragdoll at death action position
 		instance.position = prev_player_pos
-		add_child(instance)
+		level.add_child(instance)
