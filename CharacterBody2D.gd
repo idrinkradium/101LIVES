@@ -62,6 +62,7 @@ func _physics_process(delta):
 
 	if not previously_on_floor and is_on_floor():
 		sprite.play("impact fall")
+		$Thud.play()
 		
 	
 	previously_on_floor = is_on_floor()
