@@ -16,6 +16,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_down"):
 		animating = true
 		bruh = true
+		$SoundEffect.play()
+		
 	if bruh and launch_body != null:
 		print(launch_body)
 		if launch_body is CharacterBody2D:
