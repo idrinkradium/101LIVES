@@ -26,9 +26,9 @@ position = Vector2(0, -20)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_nb36i")
 
-[node name="RigidBody2D" type="StaticBody2D" parent="Piston"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Piston"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/StaticBody2D"]
 position = Vector2(-9.53674e-06, 37.5)
 shape = SubResource("RectangleShape2D_d2wyn")
 
@@ -46,5 +46,9 @@ volume_db = -5.0
 stream = ExtResource("5_xf3mb")
 volume_db = -5.0
 
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="power_changed" from="." to="." method="_on_power_changed"]
 [connection signal="body_entered" from="Piston/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Piston/Area2D" to="." method="_on_area_2d_body_exited"]
