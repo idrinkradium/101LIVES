@@ -27,7 +27,7 @@ func _on_power_changed(new_power):
 	else:
 		$PistonIn.play()
 
-	$Piston/CollisionShape2D.disabled=true
+	$Piston/CollisionPolygon2D.disabled=true
 	
 	if powered:
 		for collision in $Piston/ShapeCast2D.collision_result:
@@ -56,5 +56,5 @@ func _on_power_changed(new_power):
 
 func _on_safezone_timer_timeout():
 	if $Piston/ShapeCast2D.collision_result.is_empty():
-		$Piston/CollisionShape2D.disabled=false
+		$Piston/CollisionPolygon2D.disabled=false
 		$SafezoneTimer.stop()

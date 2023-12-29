@@ -1,13 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dse5o84rnxnyy"]
+[gd_scene load_steps=7 format=3 uid="uid://dse5o84rnxnyy"]
 
 [ext_resource type="Script" path="res://piston.gd" id="1_711en"]
 [ext_resource type="Texture2D" uid="uid://d0mlaa83q3ehi" path="res://objects/spring.png" id="1_e4u08"]
 [ext_resource type="Texture2D" uid="uid://dcyj251ybguul" path="res://objects/piston.png" id="2_nb36i"]
 [ext_resource type="AudioStream" uid="uid://jit1djxkwiys" path="res://sounds/pistonout.mp3" id="4_i7arn"]
 [ext_resource type="AudioStream" uid="uid://bapgdvqlnxa5f" path="res://sounds/pistonin.mp3" id="5_xf3mb"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wyn"]
-size = Vector2(80, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6io66"]
 size = Vector2(400, 20)
@@ -29,15 +26,15 @@ position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_nb36i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston"]
-position = Vector2(7.62939e-06, -12.5)
-shape = SubResource("RectangleShape2D_d2wyn")
-
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Piston"]
 position = Vector2(0, -40)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_6io66")
 target_position = Vector2(0, 180)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piston"]
+position = Vector2(-20, -44)
+polygon = PackedVector2Array(-25, 44, -19, 20, 60, 20, 65, 44)
 
 [node name="PistonOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_i7arn")
