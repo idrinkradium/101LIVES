@@ -27,18 +27,7 @@ func _on_power_changed(new_power):
 	else:
 		$PistonIn.play()
 		
-	#$Piston/AnimatableBody2D/CollisionShape2D.disabled = true
-				
-			## launch ragdoll
-			#if collision.collider is RigidBody2D:
-				#for child in collision.collider.get_parent().get_children():
-					#if not child is RigidBody2D:
-						#continue
-					#
-					#child.apply_impulse(Vector2(0, -ragdoll_force))
-					#child.apply_force(Vector2(0, -ragdoll_force))
 
-	
 	var tween = get_tree().create_tween()
 	var new_y = $Piston.position.y - height if powered else $Piston.position.y + height
 	tween.parallel().tween_property($Piston, "position", Vector2($Piston.position.x, new_y), animation_duration)
@@ -49,10 +38,16 @@ func _on_power_changed(new_power):
 	var finished = func test():
 		if powered:
 			for collision in $Piston/ShapeCast2D.collision_result:
-				# launch player
 				if collision.collider is CharacterBody2D:
-					#collision.collider.velocity.y += -25
-					continue
+					collision.collider.velocity.y = -player_velocity
+				else:
+					for child in collision.collider.get_parent().get_children():
+						if not child is RigidBody2D:
+							continue
+							
+						#child.linear_velocity /= 2
+						#child.apply_impulse(Vector2(0, -ragdoll_force))
+						#child.apply_force(Vector2(0, -ragdoll_force))
 
 	tween.finished.connect(finished)
 	

@@ -27,7 +27,7 @@ height = 24.0
 [node name="head" type="RigidBody2D" parent="."]
 position = Vector2(0, -32)
 mass = 0.5
-center_of_mass_mode = 1
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="head"]
 scale = Vector2(0.33, 0.33)
@@ -44,6 +44,7 @@ shape = SubResource("CircleShape2D_f2aq3")
 
 [node name="leftairpod" type="RigidBody2D" parent="."]
 position = Vector2(-15, -7)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="leftairpod"]
 scale = Vector2(0.212, 0.212)
@@ -60,6 +61,7 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomleftarm" type="RigidBody2D" parent="."]
 position = Vector2(-18, 0)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomleftarm"]
 position = Vector2(0, 14)
@@ -77,6 +79,7 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="rightairpod" type="RigidBody2D" parent="."]
 position = Vector2(15, -7)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="rightairpod"]
 scale = Vector2(0.215, 0.215)
@@ -92,6 +95,7 @@ position = Vector2(3, -1)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="torso" type="RigidBody2D" parent="."]
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="torso"]
 position = Vector2(0, 4)
@@ -104,6 +108,7 @@ shape = SubResource("CapsuleShape2D_uvohg")
 
 [node name="bottomrightarm" type="RigidBody2D" parent="."]
 position = Vector2(18, -1)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightarm"]
 position = Vector2(5.96046e-08, 14)
@@ -121,6 +126,7 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomrightleg" type="RigidBody2D" parent="."]
 position = Vector2(5, 57)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightleg"]
 position = Vector2(1, 0)
@@ -138,6 +144,7 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="bottomleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-8, 57)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomleftleg"]
 position = Vector2(1, 0)
@@ -155,6 +162,7 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="toprightleg" type="RigidBody2D" parent="."]
 position = Vector2(6, 25)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="toprightleg"]
 position = Vector2(0, 9)
@@ -172,6 +180,7 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="topleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-7, 25)
+continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="topleftleg"]
 position = Vector2(0, 9)

@@ -23,7 +23,6 @@ centered = false
 
 [node name="Piston" type="AnimatableBody2D" parent="."]
 position = Vector2(0, -1.90735e-06)
-scale = Vector2(1, 1)
 
 [node name="Sprite" type="Sprite2D" parent="Piston"]
 position = Vector2(0, -12)
@@ -32,7 +31,6 @@ texture = ExtResource("2_nb36i")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Piston"]
 position = Vector2(7.62939e-06, -12.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_d2wyn")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Piston"]
