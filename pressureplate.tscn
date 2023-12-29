@@ -27,8 +27,8 @@ polygon = PackedVector2Array(-215, 100, -200, -25, 200, -25, 215, 100)
 position = Vector2(0, -120)
 shape = SubResource("RectangleShape2D_nnrxo")
 
-[node name="PistonIn" type="AudioStreamPlayer2D" parent="."]
+[node name="PressurePlateIn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kpakp")
 
-[node name="PistonOut" type="AudioStreamPlayer2D" parent="."]
+[node name="PressurePlateOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pcwky")
