@@ -18,4 +18,4 @@ position = Vector2(780, 257)
 position = Vector2(243, 384)
 
 [node name="Piston" parent="." instance=ExtResource("3_joud2")]
-position = Vector2(533, 385)
+position = Vector2(515, 384)

@@ -7,13 +7,14 @@
 [node name="PressurePlate" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_4mjyw")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D"]
+position = Vector2(0, -35)
 polygon = PackedVector2Array(-215, 100, -200, -25, 200, -25, 215, 100)
 
 [node name="PistonIn" type="AudioStreamPlayer2D" parent="."]

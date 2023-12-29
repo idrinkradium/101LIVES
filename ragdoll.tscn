@@ -12,15 +12,15 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ajwe"]
 radius = 4.0
-height = 24.0
+height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvohg"]
 radius = 11.0
-height = 48.0
+height = 44.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kfpr"]
 radius = 5.0
-height = 28.0
+height = 24.0
 
 [node name="Ragdoll" type="Node2D"]
 
@@ -55,7 +55,7 @@ node_a = NodePath("../../torso")
 node_b = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="leftairpod"]
-position = Vector2(-3, 2)
+position = Vector2(-3, -1)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomleftarm" type="RigidBody2D" parent="."]
@@ -72,7 +72,7 @@ node_a = NodePath("../../leftairpod")
 node_b = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottomleftarm"]
-position = Vector2(0, 14)
+position = Vector2(0, 15)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="rightairpod" type="RigidBody2D" parent="."]
@@ -88,7 +88,7 @@ node_a = NodePath("../../torso")
 node_b = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rightairpod"]
-position = Vector2(3, 2)
+position = Vector2(3, -1)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="torso" type="RigidBody2D" parent="."]
@@ -116,7 +116,7 @@ node_a = NodePath("../../rightairpod")
 node_b = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottomrightarm"]
-position = Vector2(0, 14)
+position = Vector2(0, 15)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomrightleg" type="RigidBody2D" parent="."]
@@ -133,7 +133,7 @@ node_a = NodePath("../../toprightleg")
 node_b = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottomrightleg"]
-position = Vector2(1, 1)
+position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="bottomleftleg" type="RigidBody2D" parent="."]
@@ -150,7 +150,7 @@ node_a = NodePath("../../topleftleg")
 node_b = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bottomleftleg"]
-position = Vector2(1, 1)
+position = Vector2(1, 3)
 shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="toprightleg" type="RigidBody2D" parent="."]
