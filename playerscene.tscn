@@ -60,7 +60,7 @@
 [ext_resource type="Texture2D" uid="uid://coqaymopk68i0" path="res://Animation Frames/runanim/run0032.png" id="58_er1r2"]
 [ext_resource type="Texture2D" uid="uid://bjchl20gavhax" path="res://Animation Frames/runanim/run0033.png" id="59_q5yyu"]
 [ext_resource type="AudioStream" uid="uid://cdea0pxs4vsiu" path="res://sounds/footstepn.mp3" id="60_iseu8"]
-[ext_resource type="AudioStream" uid="uid://bv0dyqe6w77kg" path="res://sounds/thud.mp3" id="61_pul4a"]
+[ext_resource type="AudioStream" uid="uid://bj2jvsftsuleq" path="res://sounds/thud.mp3" id="61_pul4a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mr0gl"]
 animations = [{
