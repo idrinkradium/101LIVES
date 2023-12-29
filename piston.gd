@@ -1,13 +1,12 @@
-extends Node2D
+extends Powerable
 
 @export var height = 150
 @export var animation_duration = 0.1
 @export var player_velocity = 1000
 @export var ragdoll_force = 300
 
-var powered = false
-
-signal power_changed(new_power: bool)
+var tween:Tween
+var busy = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
@@ -17,7 +16,7 @@ func _process(delta):
 		
 
 func _on_power_changed(new_power):
-	if powered == new_power:
+	if powered == new_power or busy:
 		return
 	
 	powered = new_power
@@ -28,6 +27,7 @@ func _on_power_changed(new_power):
 		$PistonIn.play()
 
 	$Piston/CollisionPolygon2D.disabled=true
+	busy = true
 	
 	if powered:
 		for collision in $Piston/ShapeCast2D.collision_result:
@@ -40,8 +40,11 @@ func _on_power_changed(new_power):
 						
 					child.apply_impulse(Vector2(0, -ragdoll_force))
 	
-
-	var tween = get_tree().create_tween()
+	if tween:
+		tween.kill() # Abort the previous animation.
+	
+	tween = create_tween()
+	
 	var new_y = $Piston.position.y - height if powered else $Piston.position.y + height
 	tween.parallel().tween_property($Piston, "position", Vector2($Piston.position.x, new_y), animation_duration)
 	
@@ -50,6 +53,7 @@ func _on_power_changed(new_power):
 	
 	var finished = func():
 		$SafezoneTimer.start()
+		busy = false
 
 	tween.finished.connect(finished)
 	

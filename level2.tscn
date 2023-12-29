@@ -14,8 +14,9 @@ layer_0/tile_data = PackedInt32Array(393216, 393216, 2, 393217, 393216, 2, 39321
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(780, 257)
 
-[node name="PressurePlate" parent="." instance=ExtResource("2_ypf6p")]
+[node name="PressurePlate" parent="." node_paths=PackedStringArray("powerables") instance=ExtResource("2_ypf6p")]
 position = Vector2(243, 384)
+powerables = [NodePath("../Piston")]
 
 [node name="Piston" parent="." instance=ExtResource("3_joud2")]
 position = Vector2(515, 384)

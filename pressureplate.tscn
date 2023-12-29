@@ -1,21 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwitq4m302w3o"]
+[gd_scene load_steps=6 format=3 uid="uid://cwitq4m302w3o"]
 
 [ext_resource type="Texture2D" uid="uid://cl48xjjq54yy6" path="res://objects/pressure plate.png" id="1_4mjyw"]
+[ext_resource type="Script" path="res://pressureplate.gd" id="1_w3vfs"]
 [ext_resource type="AudioStream" uid="uid://ceyn5vu5t47g4" path="res://sounds/pressureplatein.mp3" id="2_kpakp"]
 [ext_resource type="AudioStream" uid="uid://b5cgn02pa7ytt" path="res://sounds/pressureplateout.mp3" id="3_pcwky"]
 
-[node name="PressurePlate" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnrxo"]
+size = Vector2(400, 20)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="PressurePlate" type="Node2D"]
+script = ExtResource("1_w3vfs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(1, 1)
 texture = ExtResource("1_4mjyw")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, -35)
 polygon = PackedVector2Array(-215, 100, -200, -25, 200, -25, 215, 100)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="StaticBody2D"]
+position = Vector2(0, -120)
+shape = SubResource("RectangleShape2D_nnrxo")
 
 [node name="PistonIn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kpakp")
