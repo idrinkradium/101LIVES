@@ -2,7 +2,8 @@ extends Node2D
 
 @export var height = 150
 @export var animation_duration = 0.1
-@export var velocity = 1000
+@export var player_velocity = 1000
+@export var ragdoll_force = 100
 
 var power = false
 
@@ -36,9 +37,9 @@ func _on_power_changed(new_power):
 	if power:
 		for collision in $Piston/ShapeCast2D.collision_result:
 			if collision.collider is CharacterBody2D:
-				collision.collider.velocity.y = -velocity
+				collision.collider.velocity.y = -player_velocity
 			elif collision.collider is RigidBody2D:
 				for child in collision.collider.get_parent().get_children():
 					if child is RigidBody2D:
-						child.apply_impulse(Vector2(0, -velocity))
-						child.apply_force(Vector2(0, -velocity))
+						child.apply_impulse(Vector2(0, -ragdoll_force))
+						child.apply_force(Vector2(0, -ragdoll_force))

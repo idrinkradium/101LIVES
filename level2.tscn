@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfb43ggdwactk"]
+[gd_scene load_steps=4 format=3 uid="uid://dfb43ggdwactk"]
 
 [ext_resource type="TileSet" uid="uid://bxalumk13aqel" path="res://tiles/tileset.tres" id="1_lbh3r"]
+[ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="2_ypf6p"]
+[ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="3_joud2"]
 
 [node name="Level2" type="Node2D"]
 
@@ -11,3 +13,9 @@ layer_0/tile_data = PackedInt32Array(393216, 393216, 2, 393217, 393216, 2, 39321
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(780, 257)
+
+[node name="PressurePlate" parent="." instance=ExtResource("2_ypf6p")]
+position = Vector2(243, 384)
+
+[node name="Piston" parent="." instance=ExtResource("3_joud2")]
+position = Vector2(533, 385)
