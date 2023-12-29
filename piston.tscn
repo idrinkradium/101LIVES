@@ -10,7 +10,7 @@
 size = Vector2(80, 23)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6io66"]
-size = Vector2(350, 20)
+size = Vector2(400, 20)
 
 [node name="Piston" type="Node2D"]
 script = ExtResource("1_711en")
@@ -34,9 +34,10 @@ position = Vector2(7.62939e-06, -12.5)
 shape = SubResource("RectangleShape2D_d2wyn")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Piston"]
-position = Vector2(0, -38)
+position = Vector2(0, -40)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_6io66")
+target_position = Vector2(0, 180)
 
 [node name="PistonOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_i7arn")
@@ -46,4 +47,8 @@ volume_db = -5.0
 stream = ExtResource("5_xf3mb")
 volume_db = -5.0
 
+[node name="SafezoneTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="power_changed" from="." to="." method="_on_power_changed"]
+[connection signal="timeout" from="SafezoneTimer" to="." method="_on_safezone_timer_timeout"]

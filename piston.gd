@@ -19,14 +19,28 @@ func _process(delta):
 func _on_power_changed(new_power):
 	if powered == new_power:
 		return
-		
+	
 	powered = new_power
 	
 	if powered:
 		$PistonOut.play()
 	else:
 		$PistonIn.play()
-		
+
+	$Piston/CollisionShape2D.disabled=true
+	
+	for collision in $Piston/ShapeCast2D.collision_result:
+		if collision.collider is CharacterBody2D:
+			collision.collider.velocity.y = -player_velocity
+		else:
+			for child in collision.collider.get_parent().get_children():
+				if not child is RigidBody2D:
+					continue
+					
+				#child.linear_velocity /= 2
+				child.apply_impulse(Vector2(0, -ragdoll_force))
+				child.apply_force(Vector2(0, -ragdoll_force))
+	
 
 	var tween = get_tree().create_tween()
 	var new_y = $Piston.position.y - height if powered else $Piston.position.y + height
@@ -35,20 +49,25 @@ func _on_power_changed(new_power):
 	new_y = -.0014 * height if powered else 0
 	tween.parallel().tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
 	
-	var finished = func test():
-		if powered:
-			for collision in $Piston/ShapeCast2D.collision_result:
-				if collision.collider is CharacterBody2D:
-					collision.collider.velocity.y = -player_velocity
-				else:
-					for child in collision.collider.get_parent().get_children():
-						if not child is RigidBody2D:
-							continue
-							
-						#child.linear_velocity /= 2
-						#child.apply_impulse(Vector2(0, -ragdoll_force))
-						#child.apply_force(Vector2(0, -ragdoll_force))
+	var finished = func():
+		$SafezoneTimer.start()
+		#if powered:
+			#for collision in $Piston/ShapeCast2D.collision_result:
+				#if collision.collider is CharacterBody2D:
+					#collision.collider.velocity.y = -player_velocity
+				#else:
+					#for child in collision.collider.get_parent().get_children():
+						#if not child is RigidBody2D:
+							#continue
+							#
+						##child.linear_velocity /= 2
+						#child.apply_impulse(Vector2(330, -ragdoll_force))
+						#child.apply_force(Vector2(330, -ragdoll_force))
 
 	tween.finished.connect(finished)
 	
 
+func _on_safezone_timer_timeout():
+	if $Piston/ShapeCast2D.collision_result.is_empty():
+		$Piston/CollisionShape2D.disabled=false
+		$SafezoneTimer.stop()
