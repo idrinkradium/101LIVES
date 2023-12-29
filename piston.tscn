@@ -24,7 +24,6 @@ centered = false
 [node name="Piston" type="AnimatableBody2D" parent="."]
 position = Vector2(0, -1.90735e-06)
 scale = Vector2(1, 1)
-constant_linear_velocity = Vector2(0, -99)
 
 [node name="Sprite" type="Sprite2D" parent="Piston"]
 position = Vector2(0, -12)
