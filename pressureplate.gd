@@ -7,7 +7,7 @@ var previously_powered = false
 
 func _physics_process(delta): 
 	previously_powered = powered
-	powered = !$ShapeCast2D.collision_result.is_empty()
+	powered = !$StaticBody2D/ShapeCast2D.collision_result.is_empty()
 	
 	if previously_powered != powered:
 		var tween = create_tween()

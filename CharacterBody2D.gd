@@ -61,7 +61,7 @@ func _physics_process(delta):
 		$Jump.play()
 	
 
-	if not previously_on_floor and is_on_floor():
+	if not previously_on_floor and is_on_floor() and prev_velocity.y > 300:
 		sprite.play("impact fall")
 		$Thud.play()
 		
