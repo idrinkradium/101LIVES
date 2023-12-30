@@ -21,7 +21,6 @@ position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(1, 1)
 texture = ExtResource("1_4mjyw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]

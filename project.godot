@@ -44,4 +44,4 @@ Die={
 
 [physics]
 
-2d/default_gravity=1000.0
+2d/default_gravity=990.0
