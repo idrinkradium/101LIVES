@@ -16,6 +16,8 @@ func _physics_process(delta):
 	
 	if previously_powered != powered:
 		
+		busy = true
+		
 		if tween:
 			tween.kill()
 		tween = create_tween()
