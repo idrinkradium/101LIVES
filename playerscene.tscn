@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://scmvwqnfs8pa"]
+[gd_scene load_steps=65 format=3 uid="uid://scmvwqnfs8pa"]
 
 [ext_resource type="Texture2D" uid="uid://fuyrc4at53ht" path="res://101livesbasechar.png" id="1_bfcmr"]
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_mf3vi"]
@@ -312,6 +312,9 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yor4d"]
+radius = 20.0
+
 [node name="Player" type="CharacterBody2D"]
 floor_constant_speed = true
 floor_max_angle = 1.53589
@@ -340,6 +343,15 @@ volume_db = -0.5
 stream = ExtResource("62_2t430")
 volume_db = -2.7
 pitch_scale = 0.96
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2(200, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 26)
+shape = SubResource("CircleShape2D_yor4d")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

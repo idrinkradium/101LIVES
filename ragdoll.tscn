@@ -26,6 +26,8 @@ height = 24.0
 
 [node name="head" type="RigidBody2D" parent="."]
 position = Vector2(0, -32)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="head"]
@@ -43,6 +45,8 @@ shape = SubResource("CircleShape2D_f2aq3")
 
 [node name="leftairpod" type="RigidBody2D" parent="."]
 position = Vector2(-15, -7)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="leftairpod"]
@@ -60,6 +64,8 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomleftarm" type="RigidBody2D" parent="."]
 position = Vector2(-18, 0)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomleftarm"]
@@ -78,6 +84,8 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="rightairpod" type="RigidBody2D" parent="."]
 position = Vector2(15, -7)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="rightairpod"]
@@ -94,6 +102,8 @@ position = Vector2(3, -1)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="torso" type="RigidBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="torso"]
@@ -107,6 +117,8 @@ shape = SubResource("CapsuleShape2D_uvohg")
 
 [node name="bottomrightarm" type="RigidBody2D" parent="."]
 position = Vector2(18, -1)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightarm"]
@@ -125,6 +137,8 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomrightleg" type="RigidBody2D" parent="."]
 position = Vector2(5, 57)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightleg"]
@@ -143,6 +157,8 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="bottomleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-8, 57)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomleftleg"]
@@ -161,6 +177,8 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="toprightleg" type="RigidBody2D" parent="."]
 position = Vector2(6, 25)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="toprightleg"]
@@ -179,6 +197,8 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="topleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-7, 25)
+collision_layer = 3
+collision_mask = 3
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="topleftleg"]
