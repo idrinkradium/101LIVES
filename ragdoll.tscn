@@ -26,7 +26,6 @@ height = 24.0
 
 [node name="head" type="RigidBody2D" parent="."]
 position = Vector2(0, -32)
-mass = 0.5
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="head"]
