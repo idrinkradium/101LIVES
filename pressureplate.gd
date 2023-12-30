@@ -15,6 +15,6 @@ func _physics_process(delta):
 		else:
 			$PressurePlateOut.play()
 		
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.12).timeout
 		for powerable in powerables:
 			powerable.power_changed.emit(powered)
