@@ -32,5 +32,3 @@ stream = ExtResource("2_kpakp")
 
 [node name="PressurePlateOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pcwky")
-
-[node name="Node2D" type="Node2D" parent="."]
