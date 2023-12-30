@@ -27,10 +27,10 @@ func _process(delta):
 		# copy of where the player was at the death action
 		var prev_player_pos = Vector2($Player.position)
 		# offset for how far up we want to put the ragdoll, so feet dont get stuck in the ground
-		prev_player_pos.y -= 20
+		prev_player_pos.y -= 25
 		
 		# respawn player at new location (level decides this)
-		$Player.position = Vector2(300,200)
+		$Player.position = Vector2(level.get_node("PlayerSpawn").position)
 		
 		# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
 		await get_tree().create_timer(0.1).timeout
