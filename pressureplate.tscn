@@ -11,6 +11,11 @@ size = Vector2(400, 20)
 [node name="PressurePlate" type="Node2D"]
 script = ExtResource("1_w3vfs")
 
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(0, -36)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_nnrxo")
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
@@ -22,10 +27,6 @@ texture = ExtResource("1_4mjyw")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, -35)
 polygon = PackedVector2Array(-215, 100, -200, -25, 200, -25, 215, 100)
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="StaticBody2D"]
-position = Vector2(0, -120)
-shape = SubResource("RectangleShape2D_nnrxo")
 
 [node name="PressurePlateIn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kpakp")
