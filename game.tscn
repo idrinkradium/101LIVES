@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=17 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://cwqrdfei2tcco" path="res://Muzak/Muzak6.mp3" id="10_rrefb"]
 [ext_resource type="AudioStream" uid="uid://dbf8ndvlk1k5k" path="res://Muzak/Muzak7.mp3" id="11_g4ikt"]
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="12_v5606"]
+[ext_resource type="AudioStream" uid="uid://tl5ybac1gdq7" path="res://sounds/death.mp3" id="13_aj5lm"]
 
 [sub_resource type="Gradient" id="Gradient_yev2q"]
 offsets = PackedFloat32Array(0, 0.266234, 0.974026, 1)
@@ -75,5 +76,10 @@ texture = SubResource("GradientTexture2D_r2qlk")
 stream = SubResource("AudioStreamRandomizer_mb62d")
 volume_db = -15.0
 script = ExtResource("12_v5606")
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_aj5lm")
+volume_db = -9.0
+pitch_scale = 0.95
 
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]

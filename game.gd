@@ -22,6 +22,7 @@ func _process(delta):
 	
 	
 	if Input.is_action_just_pressed("Die"):
+		$Death.play()
 	
 		# copy of where the player was at the death action
 		var prev_player_pos = Vector2($Player.position)
