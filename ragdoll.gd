@@ -8,8 +8,7 @@ var p:Vector2
 
 func _physics_process(delta):
 	
-	if position.y >= 2000:
-		print(1)
+	if $torso.position.y >= 2000:
 		queue_free()
 	
 	
