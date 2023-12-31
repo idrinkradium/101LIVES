@@ -24,7 +24,8 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_4mjyw")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(0, -35)
+position = Vector2(0, -35.7813)
+scale = Vector2(1, 0.9875)
 polygon = PackedVector2Array(-215, 100, -200, -25, 200, -25, 215, 100)
 
 [node name="PressurePlateIn" type="AudioStreamPlayer2D" parent="."]

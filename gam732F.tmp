@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=18 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -23,8 +23,6 @@ colors = PackedColorArray(0.859311, 0.871942, 0.874453, 1, 1, 1, 1, 1, 1, 1, 1, 
 gradient = SubResource("Gradient_yev2q")
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hn8bd"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mb62d"]
 streams_count = 7
@@ -77,13 +75,18 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_r2qlk")
 
 [node name="Graffiti" type="TextureRect" parent="BackgroundCanvasLayer"]
-material = SubResource("ShaderMaterial_hn8bd")
-offset_left = -2920.0
-offset_top = -1560.0
-offset_right = 4168.0
-offset_bottom = 2252.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3997.5
+offset_top = -2165.0
+offset_right = 3997.5
+offset_bottom = 2165.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_b423r")
-expand_mode = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mb62d")
