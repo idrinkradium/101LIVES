@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://jkwa8ekaubm" path="res://tiles/que.png" id="14_jetsq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
+radius = 3.0
 
 [sub_resource type="Gradient" id="Gradient_yev2q"]
 offsets = PackedFloat32Array(0, 0.266234, 0.974026, 1)

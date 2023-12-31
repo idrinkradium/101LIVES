@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="101LIVES"
-run/main_scene="res://game.tscn"
+run/main_scene="res://mainmenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [gui]
 
