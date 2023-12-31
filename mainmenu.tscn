@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnj4jx004byma"]
+[gd_scene load_steps=8 format=3 uid="uid://dnj4jx004byma"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_1ra5l"]
+[ext_resource type="Texture2D" uid="uid://b6tk65u5eo2y0" path="res://ui/101lives logo.png" id="2_ot5ck"]
+[ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/Play1.png" id="2_q0lq7"]
 
 [sub_resource type="Gradient" id="Gradient_6of1j"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -8,14 +10,11 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_xbw5n"]
 gradient = SubResource("Gradient_6of1j")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_546mk"]
-size = Vector2(172.213, 24.3381)
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_jlhxc"]
 radius = 2.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n71s1"]
-size = Vector2(1179, 42)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_546mk"]
+size = Vector2(172.213, 24.3381)
 
 [node name="Main Menu" type="Node"]
 script = ExtResource("1_1ra5l")
@@ -28,47 +27,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_xbw5n")
 
-[node name="PlayButton" type="Button" parent="."]
-visible = false
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 534.0
-offset_right = -515.0
-offset_bottom = 31.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Play"
-
-[node name="SplashLabel" type="Label" parent="."]
-offset_left = 694.0
-offset_top = 245.0
-offset_right = 848.0
-offset_bottom = 268.0
-rotation = -0.296313
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
-theme_override_constants/outline_size = 1
-text = "best game ever!!!!!!!!"
-
-[node name="StaticBody2D" type="StaticBody2D" parent="SplashLabel"]
-position = Vector2(-592.216, -436.968)
-rotation = 0.296313
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SplashLabel/StaticBody2D"]
-position = Vector2(773.984, 242.799)
-rotation = -0.262696
-scale = Vector2(0.859183, 1)
-shape = SubResource("RectangleShape2D_546mk")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="SplashLabel/StaticBody2D"]
-position = Vector2(773.984, 242.799)
-rotation = -0.262696
-scale = Vector2(0.859183, 1)
-shape = SubResource("RectangleShape2D_546mk")
-
 [node name="RagdollTimer" type="Timer" parent="."]
 autostart = true
 
@@ -76,13 +34,65 @@ autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
 shape = SubResource("CircleShape2D_jlhxc")
-disabled = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(578, 446)
-shape = SubResource("RectangleShape2D_n71s1")
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[connection signal="pressed" from="PlayButton" to="SplashLabel" method="_on_play_button_pressed"]
+[node name="oneoonelives" type="TextureRect" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -331.0
+offset_right = 331.0
+offset_bottom = 384.0
+grow_horizontal = 2
+texture = ExtResource("2_ot5ck")
+expand_mode = 1
+
+[node name="SplashLabel" type="Label" parent="oneoonelives"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.67
+anchor_top = 0.365
+anchor_right = 0.67
+anchor_bottom = 0.365
+offset_left = 67.46
+offset_top = 134.84
+offset_right = 221.46
+offset_bottom = 157.84
+rotation = -0.296313
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
+theme_override_constants/outline_size = 1
+text = "best game ever!!!!!!!!"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="oneoonelives/SplashLabel"]
+position = Vector2(-592.216, -436.968)
+rotation = 0.296313
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="oneoonelives/SplashLabel/StaticBody2D"]
+position = Vector2(773.984, 242.799)
+rotation = -0.275762
+scale = Vector2(0.859183, 1)
+shape = SubResource("RectangleShape2D_546mk")
+
+[node name="Play" type="TextureButton" parent="."]
+anchors_preset = -1
+anchor_left = 0.497
+anchor_top = 0.548
+anchor_right = 0.497
+anchor_bottom = 0.548
+offset_left = -135.544
+offset_top = -76.104
+offset_right = 135.456
+offset_bottom = 75.896
+texture_normal = ExtResource("2_q0lq7")
+ignore_texture_size = true
+stretch_mode = 0
+
 [connection signal="timeout" from="RagdollTimer" to="." method="_on_ragdoll_timer_timeout"]
+[connection signal="pressed" from="Play" to="." method="_on_play_button_pressed"]

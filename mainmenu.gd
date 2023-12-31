@@ -3,7 +3,7 @@ extends Node
 
 func _process(delta):
 	var newScale =  .3 * sin(2.5 * (Time.get_unix_time_from_system())) + 2
-	$SplashLabel.scale = Vector2(newScale, newScale)
+	$oneoonelives/SplashLabel.scale = Vector2(newScale, newScale)
 	
 	
 	
