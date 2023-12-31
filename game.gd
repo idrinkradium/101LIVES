@@ -40,3 +40,11 @@ func _process(delta):
 		# spawn ragdoll at death action position
 		instance.position = prev_player_pos
 		level.add_child(instance)
+
+func _input(event):
+	#print(event)
+	pass
+	
+func _physics_process(delta):
+	print(get_viewport().canvas_transform.affine_inverse())
+	$MouseBox.position = get_viewport().canvas_transform.affine_inverse() * get_viewport().get_mouse_position()

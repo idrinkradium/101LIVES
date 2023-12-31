@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=18 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://dbf8ndvlk1k5k" path="res://Muzak/Muzak7.mp3" id="11_g4ikt"]
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="12_v5606"]
 [ext_resource type="AudioStream" uid="uid://tl5ybac1gdq7" path="res://sounds/death.mp3" id="13_aj5lm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 
 [sub_resource type="Gradient" id="Gradient_yev2q"]
 offsets = PackedFloat32Array(0, 0.266234, 0.974026, 1)
@@ -52,6 +54,13 @@ script = ExtResource("3_3wcw7")
 position = Vector2(173, 370)
 
 [node name="Level1" parent="." instance=ExtResource("4_ivtos")]
+
+[node name="MouseBox" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
+shape = SubResource("CircleShape2D_sd6va")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
