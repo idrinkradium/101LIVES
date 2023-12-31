@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=19 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://dbf8ndvlk1k5k" path="res://Muzak/Muzak7.mp3" id="11_g4ikt"]
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="12_v5606"]
 [ext_resource type="AudioStream" uid="uid://tl5ybac1gdq7" path="res://sounds/death.mp3" id="13_aj5lm"]
+[ext_resource type="Texture2D" uid="uid://jkwa8ekaubm" path="res://tiles/que.png" id="14_jetsq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 
@@ -52,6 +53,21 @@ script = ExtResource("3_3wcw7")
 
 [node name="Player" parent="." instance=ExtResource("2_xogjc")]
 position = Vector2(173, 370)
+
+[node name="PoofParticles" type="CPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 0.29
+randomness = 0.45
+texture = ExtResource("14_jetsq")
+spread = 180.0
+gravity = Vector2(0, -100)
+initial_velocity_max = 300.25
+tangential_accel_max = 55.03
+angle_min = -183.6
+angle_max = 87.0
+scale_amount_min = 0.05
+scale_amount_max = 0.05
 
 [node name="Level1" parent="." instance=ExtResource("4_ivtos")]
 

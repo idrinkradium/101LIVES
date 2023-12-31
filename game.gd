@@ -32,6 +32,9 @@ func _process(delta):
 		# respawn player at new location (level decides this)
 		$Player.position = Vector2(level.get_node("PlayerSpawn").position)
 		
+		$PoofParticles.position = prev_player_pos
+		$PoofParticles.emitting = true
+		
 		# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
 		await get_tree().create_timer(0.1).timeout
 		
@@ -39,6 +42,7 @@ func _process(delta):
 		var instance = ragdoll.instantiate()
 		# spawn ragdoll at death action position
 		instance.position = prev_player_pos
+		
 		level.add_child(instance)
 
 func _input(event):
