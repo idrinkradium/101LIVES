@@ -3,7 +3,7 @@ extends Powerable
 @export var height = 150
 @export var animation_duration = 0.1
 @export var player_velocity = 1000
-@export var ragdoll_force = 300
+@export var ragdoll_force = 750
 
 var tween:Tween
 var busy = false
@@ -19,6 +19,7 @@ func _on_power_changed(new_power):
 	if powered == new_power or busy:
 		return
 	
+	busy = true
 	powered = new_power
 	
 	if powered:
@@ -27,7 +28,6 @@ func _on_power_changed(new_power):
 		$PistonIn.play()
 
 	$Piston/CollisionPolygon2D.disabled=true
-	busy = true
 	
 	if powered:
 		for collision in $Piston/ShapeCast2D.collision_result:
@@ -37,7 +37,8 @@ func _on_power_changed(new_power):
 				for child in collision.collider.get_parent().get_children():
 					if not child is RigidBody2D:
 						continue
-						
+					
+					child.linear_velocity = Vector2.ZERO
 					child.apply_impulse(Vector2(0, -ragdoll_force))
 	
 	if tween:
