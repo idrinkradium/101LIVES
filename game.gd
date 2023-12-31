@@ -2,10 +2,12 @@ extends Node
 
 @export var level:Node
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+@export var lives = 101:
+	get:
+		return lives
+	set(value):
+		lives = value
+		$HUD/Lives.text = "Lives: {lives}".format({"lives": lives})
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -25,6 +27,8 @@ func _process(delta):
 		kill_player(true)
 
 func kill_player(spawn_ragdoll:bool):
+	lives -= 1
+	
 	$Death.play()
 	
 	# copy of where the player was at the death action

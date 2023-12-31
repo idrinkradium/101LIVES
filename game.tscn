@@ -78,9 +78,9 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
 shape = SubResource("CircleShape2D_sd6va")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Lives" type="Label" parent="HUD"]
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
