@@ -22,22 +22,26 @@ func _process(delta):
 	
 	
 	if Input.is_action_just_pressed("Die"):
-		$Death.play()
+		kill_player(true)
+
+func kill_player(spawn_ragdoll:bool):
+	$Death.play()
 	
-		# copy of where the player was at the death action
-		var prev_player_pos = Vector2($Player.position)
-		# offset for how far up we want to put the ragdoll, so feet dont get stuck in the ground
-		prev_player_pos.y -= 25
-		
-		# respawn player at new location (level decides this)
-		$Player.position = Vector2(level.get_node("PlayerSpawn").position)
-		
-		$PoofParticles.position = prev_player_pos
-		$PoofParticles.emitting = true
-		
-		# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
-		await get_tree().create_timer(0.1).timeout
-		
+	# copy of where the player was at the death action
+	var prev_player_pos = Vector2($Player.position)
+	# offset for how far up we want to put the ragdoll, so feet dont get stuck in the ground
+	prev_player_pos.y -= 25
+	
+	# respawn player at new location (level decides this)
+	$Player.position = Vector2(level.get_node("PlayerSpawn").position)
+	
+	$PoofParticles.position = prev_player_pos
+	$PoofParticles.emitting = true
+	
+	# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
+	await get_tree().create_timer(0.1).timeout
+	
+	if spawn_ragdoll:
 		var ragdoll = load("res://ragdoll.tscn")
 		var instance = ragdoll.instantiate()
 		# spawn ragdoll at death action position
@@ -51,3 +55,6 @@ func _input(event):
 	
 func _physics_process(delta):
 	$MouseBox.position = get_viewport().canvas_transform.affine_inverse() * get_viewport().get_mouse_position()
+	
+	if $Player.position.y >= 2000:
+		kill_player(false)
