@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=17 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_3wcw7"]
 [ext_resource type="PackedScene" uid="uid://jiy6adpvuo7a" path="res://level1.tscn" id="4_ivtos"]
-[ext_resource type="Texture2D" uid="uid://ubk1egyb0ksw" path="res://objects/bgart.png" id="5_b423r"]
 [ext_resource type="AudioStream" uid="uid://b5h4ayeo8na53" path="res://Muzak/Muzak1.mp3" id="5_yu0lv"]
 [ext_resource type="AudioStream" uid="uid://ds6sboud8bj24" path="res://Muzak/Muzak2.mp3" id="6_m11ex"]
 [ext_resource type="AudioStream" uid="uid://d1k4ibrfax3ei" path="res://Muzak/Muzak3.mp3" id="7_6lh3q"]
@@ -23,8 +22,6 @@ colors = PackedColorArray(0.859311, 0.871942, 0.874453, 1, 1, 1, 1, 1, 1, 1, 1, 
 gradient = SubResource("Gradient_yev2q")
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hn8bd"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mb62d"]
 streams_count = 7
@@ -47,10 +44,9 @@ stream_6/weight = 1.0
 script = ExtResource("1_ldl6n")
 level = NodePath("Level1")
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("graffiti")]
+[node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 328)
 script = ExtResource("3_3wcw7")
-graffiti = NodePath("../BackgroundCanvasLayer/Graffiti")
 
 [node name="Player" parent="." instance=ExtResource("2_xogjc")]
 position = Vector2(173, 370)
@@ -68,22 +64,13 @@ text = "Lives: 101"
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="BackgroundCanvasLayer"]
+[node name="Background" type="TextureRect" parent="BackgroundCanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_r2qlk")
-
-[node name="Graffiti" type="TextureRect" parent="BackgroundCanvasLayer"]
-material = SubResource("ShaderMaterial_hn8bd")
-offset_left = -2920.0
-offset_top = -1560.0
-offset_right = 4168.0
-offset_bottom = 2252.0
-texture = ExtResource("5_b423r")
-expand_mode = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mb62d")
