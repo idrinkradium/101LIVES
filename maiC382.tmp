@@ -81,7 +81,7 @@ disabled = true
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(578, 446)
+position = Vector2(582, 624)
 shape = SubResource("RectangleShape2D_n71s1")
 
 [connection signal="pressed" from="PlayButton" to="SplashLabel" method="_on_play_button_pressed"]
