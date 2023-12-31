@@ -1,12 +1,15 @@
 extends Node2D
 
-
+@onready var draggydrag = get_tree().get_current_scene().name == "Main Menu" 
 var selected = false
 var velocity: Vector2
 var prev:Vector2
 var p:Vector2
 
 func _physics_process(delta):
+	if not draggydrag:
+		return
+		
 	prev = p
 	p = get_global_mouse_position()
 	if selected:
@@ -16,6 +19,9 @@ func _physics_process(delta):
 	
 
 func _on_torso_input_event(viewport, event, shape_idx):
+	if not draggydrag:
+		return
+	
 	if event is InputEventMouseButton:
 		if event.pressed:
 			selected=true
