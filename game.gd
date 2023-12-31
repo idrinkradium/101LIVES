@@ -46,5 +46,4 @@ func _input(event):
 	pass
 	
 func _physics_process(delta):
-	print(get_viewport().canvas_transform.affine_inverse())
 	$MouseBox.position = get_viewport().canvas_transform.affine_inverse() * get_viewport().get_mouse_position()
