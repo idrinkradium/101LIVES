@@ -4,8 +4,10 @@ extends Node
 func _process(delta):
 	var newScale =  .3 * sin(2.5 * (Time.get_unix_time_from_system())) + 2
 	$SplashLabel.scale = Vector2(newScale, newScale)
-	 
-
+	$MouseBox.position=get_viewport().get_mouse_position()
+func _physics_process(delta):
+	
+	pass
 
 
 func _on_play_button_pressed():

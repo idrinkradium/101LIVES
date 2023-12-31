@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnj4jx004byma"]
+[gd_scene load_steps=6 format=3 uid="uid://dnj4jx004byma"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_1ra5l"]
 
@@ -9,7 +9,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_6of1j")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_546mk"]
-size = Vector2(170.5, 38.5)
+size = Vector2(172.213, 24.3381)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jlhxc"]
+radius = 2.0
 
 [node name="Main Menu" type="Node"]
 script = ExtResource("1_1ra5l")
@@ -41,7 +44,7 @@ offset_top = 245.0
 offset_right = 848.0
 offset_bottom = 268.0
 rotation = -0.296313
-theme_override_colors/font_color = Color(0.992157, 0.92549, 0, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.0235294, 0.0235294, 0.0235294, 1)
 theme_override_constants/outline_size = 1
@@ -52,13 +55,25 @@ position = Vector2(-592.216, -436.968)
 rotation = 0.296313
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SplashLabel/StaticBody2D"]
-position = Vector2(772, 236)
+position = Vector2(773.984, 242.799)
+rotation = -0.262696
+scale = Vector2(0.859183, 1)
+shape = SubResource("RectangleShape2D_546mk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SplashLabel/StaticBody2D"]
+position = Vector2(773.984, 242.799)
 rotation = -0.262696
 scale = Vector2(0.859183, 1)
 shape = SubResource("RectangleShape2D_546mk")
 
 [node name="RagdollTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="MouseBox" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
+shape = SubResource("CircleShape2D_jlhxc")
+disabled = true
 
 [connection signal="pressed" from="PlayButton" to="SplashLabel" method="_on_play_button_pressed"]
 [connection signal="timeout" from="RagdollTimer" to="." method="_on_ragdoll_timer_timeout"]

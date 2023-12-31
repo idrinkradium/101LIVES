@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://lli605rl70ib"]
+[gd_scene load_steps=13 format=3 uid="uid://lli605rl70ib"]
 
+[ext_resource type="Script" path="res://ragdoll.gd" id="1_cywo1"]
 [ext_resource type="Texture2D" uid="uid://dsgqhljj8icki" path="res://tiles/ragdoll/head.png" id="1_w04ov"]
 [ext_resource type="Texture2D" uid="uid://b2o8cxgi6wndb" path="res://tiles/ragdoll/leftairpod.png" id="2_iyppq"]
 [ext_resource type="Texture2D" uid="uid://conve0jb7uncx" path="res://tiles/ragdoll/bottomarm.png" id="3_puy5o"]
@@ -23,6 +24,7 @@ radius = 5.0
 height = 24.0
 
 [node name="Ragdoll" type="Node2D"]
+script = ExtResource("1_cywo1")
 
 [node name="head" type="RigidBody2D" parent="."]
 position = Vector2(0, -32)
@@ -104,6 +106,7 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 [node name="torso" type="RigidBody2D" parent="."]
 collision_layer = 3
 collision_mask = 3
+input_pickable = true
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="torso"]
@@ -214,3 +217,5 @@ node_b = NodePath("..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="topleftleg"]
 position = Vector2(0, 9)
 shape = SubResource("CapsuleShape2D_7kfpr")
+
+[connection signal="input_event" from="torso" to="." method="_on_torso_input_event"]
