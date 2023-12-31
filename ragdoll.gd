@@ -7,6 +7,12 @@ var prev:Vector2
 var p:Vector2
 
 func _physics_process(delta):
+	
+	if position.y >= 2000:
+		print(1)
+		queue_free()
+	
+	
 	if not draggydrag:
 		return
 		
@@ -16,6 +22,7 @@ func _physics_process(delta):
 		var v = (p-prev)*50
 		$torso.apply_force(v)
 		$torso.apply_impulse(v)
+	
 	
 
 func _on_torso_input_event(viewport, event, shape_idx):
