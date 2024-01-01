@@ -7,7 +7,7 @@ extends Node
 		return lives
 	set(value):
 		lives = value
-		$HUD/Lives.text = "Lives: {lives}".format({"lives": lives})
+		$HUD/Lives.text = "{lives}".format({"lives": lives})
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -20,8 +20,9 @@ func _process(delta):
 		add_child(instance)
 		level = instance
 		
-		$Player.position = Vector2(level.get_node("PlayerSpawn").position)
-	
+		$Player.position=Vector2(level.get_node("PlayerSpawn").position)
+		$Camera2D.offset = Vector2(level.get_node("CameraSpawn").position)
+		
 	
 	if Input.is_action_just_pressed("Die"):
 		kill_player(true)

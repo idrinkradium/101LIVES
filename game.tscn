@@ -1,13 +1,16 @@
-[gd_scene load_steps=19 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=22 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_3wcw7"]
 [ext_resource type="PackedScene" uid="uid://jiy6adpvuo7a" path="res://level1.tscn" id="4_ivtos"]
 [ext_resource type="AudioStream" uid="uid://b5h4ayeo8na53" path="res://Muzak/Muzak1.mp3" id="5_yu0lv"]
+[ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="6_kkr6p"]
 [ext_resource type="AudioStream" uid="uid://ds6sboud8bj24" path="res://Muzak/Muzak2.mp3" id="6_m11ex"]
 [ext_resource type="AudioStream" uid="uid://d1k4ibrfax3ei" path="res://Muzak/Muzak3.mp3" id="7_6lh3q"]
+[ext_resource type="Texture2D" uid="uid://denf0vbowjkr3" path="res://ui/skull.png" id="7_s2iwq"]
 [ext_resource type="AudioStream" uid="uid://bppv51nv4ucnd" path="res://Muzak/Muzak4.mp3" id="8_exxjx"]
+[ext_resource type="Texture2D" uid="uid://fhmgxmgommtt" path="res://ui/gradient.png" id="8_g7d6x"]
 [ext_resource type="AudioStream" uid="uid://crng5oys5wmfd" path="res://Muzak/Muzak5.mp3" id="9_ocqy5"]
 [ext_resource type="AudioStream" uid="uid://cwqrdfei2tcco" path="res://Muzak/Muzak6.mp3" id="10_rrefb"]
 [ext_resource type="AudioStream" uid="uid://dbf8ndvlk1k5k" path="res://Muzak/Muzak7.mp3" id="11_g4ikt"]
@@ -18,14 +21,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 radius = 3.0
 
-[sub_resource type="Gradient" id="Gradient_yev2q"]
-offsets = PackedFloat32Array(0, 0.266234, 0.974026, 1)
-colors = PackedColorArray(0.859311, 0.871942, 0.874453, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.82606, 0.82606, 0.82606, 1)
+[sub_resource type="Gradient" id="Gradient_i1flq"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_r2qlk"]
-gradient = SubResource("Gradient_yev2q")
-fill_from = Vector2(0.5, 0)
-fill_to = Vector2(0.5, 1)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8bspp"]
+gradient = SubResource("Gradient_i1flq")
+fill_to = Vector2(0, 0)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_mb62d"]
 streams_count = 7
@@ -81,11 +82,30 @@ shape = SubResource("CircleShape2D_sd6va")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="HUD"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1602.0
+offset_bottom = 984.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_g7d6x")
+
 [node name="Lives" type="Label" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 101.0
+offset_top = 6.0
+offset_right = 419.0
+offset_bottom = 102.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Lives: 101"
+theme_override_fonts/font = ExtResource("6_kkr6p")
+theme_override_font_sizes/font_size = 100
+text = "101"
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/Lives"]
+position = Vector2(-53.5, 39.5)
+scale = Vector2(0.0771484, 0.0771484)
+texture = ExtResource("7_s2iwq")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -96,7 +116,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("GradientTexture2D_r2qlk")
+texture = SubResource("GradientTexture2D_8bspp")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mb62d")

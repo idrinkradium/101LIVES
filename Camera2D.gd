@@ -2,7 +2,7 @@ extends Camera2D
 
 var mouse_delta = Vector2()
 var n=1
-var zoomfactor=0.0
+var zoomfactor=1
 
 func _process(delta):
 	if Input.is_action_just_released("Zoom In") and zoomfactor<3:
