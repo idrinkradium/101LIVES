@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=3 format=3 uid="uid://jiy6adpvuo7a"]
 
+[ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
 [ext_resource type="TileSet" uid="uid://bxalumk13aqel" path="res://tiles/tileset.tres" id="2_x4g5o"]
 
 [node name="Level1" type="Node2D"]
@@ -13,3 +14,9 @@ layer_0/tile_data = PackedInt32Array(589824, 196608, 0, 524288, 327680, 0, 52428
 position = Vector2(136, 451)
 
 [node name="CameraSpawn" type="Node2D" parent="."]
+
+[node name="Door" parent="." instance=ExtResource("2_sg41p")]
+position = Vector2(1458, 378)
+new_level_id = 2
+requires_power = false
+powered = true

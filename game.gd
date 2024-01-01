@@ -1,31 +1,75 @@
 extends Node
 
-@export var level:Node
+@export var level:Node2D
 
 @export var lives = 101:
 	get:
 		return lives
 	set(value):
 		lives = value
-		$HUD/Lives.text = "{lives}".format({"lives": lives})
+		$HUD/Lives.text = str(lives)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _ready():
+	connect_door()
+
 func _process(delta):
 	if Input.is_action_just_pressed("ui_end"):
-		
-		var newLevel:PackedScene = load("res://level2.tscn")
-		var instance = newLevel.instantiate()
-		
-		level.queue_free()
-		add_child(instance)
-		level = instance
-		
-		$Player.position=Vector2(level.get_node("PlayerSpawn").position)
-		$Camera2D.offset = Vector2(level.get_node("CameraSpawn").position)
-		
-	
+		change_level(level.get_node("Door").new_level_id)
+
 	if Input.is_action_just_pressed("Die"):
 		kill_player(true)
+		
+	if Input.is_action_just_pressed("ui_page_up"):
+		$Player.position = Vector2($MouseBox.position)
+	
+
+func change_level(id: int):
+	var new_level = load("res://level{id}.tscn".format({"id":id}))
+	var instance = new_level.instantiate()
+	
+	level.queue_free()
+	add_child(instance)
+	level = instance
+	
+	$Player.position = Vector2(level.get_node("PlayerSpawn").position)
+	$Camera2D.offset = Vector2(level.get_node("CameraSpawn").position)
+	
+	connect_door()
+	
+
+func connect_door():
+	var on_body_entered = func(body):
+		if not body is CharacterBody2D:
+			return
+		
+		var door = level.get_node("Door")
+		
+		if !door.requires_power:
+			$Player.visible = false
+			
+			door.get_node("OpenSfx").play()
+			door.get_node("dorclose").visible = false
+			
+			var tween = create_tween()
+			tween.tween_property($HUD/Darkness, "modulate", Color(0,0,0,1), .5)
+			
+			var finished = func():
+				change_level(door.new_level_id)
+				
+				$Player.visible = true
+				
+				tween = create_tween()
+				tween.tween_property($HUD/Darkness, "modulate", Color(0,0,0,0), .5)
+				
+			tween.finished.connect(finished)
+	
+			return
+			
+		if door.powered:
+			change_level(door.new_level_id)
+		
+	level.get_node("Door").get_node("Area2D").connect("body_entered", on_body_entered)
+
 
 func kill_player(spawn_ragdoll:bool):
 	lives -= 1

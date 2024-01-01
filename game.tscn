@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=23 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -20,6 +20,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 radius = 3.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5da5w"]
 
 [sub_resource type="Gradient" id="Gradient_i1flq"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -106,6 +108,15 @@ text = "101"
 position = Vector2(-53.5, 39.5)
 scale = Vector2(0.0771484, 0.0771484)
 texture = ExtResource("7_s2iwq")
+
+[node name="Darkness" type="TextureRect" parent="HUD"]
+modulate = Color(0, 0, 0, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_5da5w")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
