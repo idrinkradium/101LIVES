@@ -3,7 +3,7 @@ extends Powerable
 @export var height = 150
 @export var animation_duration = 0.1
 @export var player_velocity = 1000
-@export var ragdoll_force = 750
+@export var ragdoll_force = 500
 
 var tween:Tween
 var busy = false

@@ -1,19 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://dux1w8mi8brv"]
+[gd_scene load_steps=7 format=3 uid="uid://cv44a3f4f6rhh"]
 
+[ext_resource type="Script" path="res://door.gd" id="1_0csxk"]
 [ext_resource type="Texture2D" uid="uid://c7xh2vrbxaviw" path="res://objects/door.png" id="1_3hjtr"]
+[ext_resource type="Texture2D" uid="uid://t0du2183q46q" path="res://objects/dooropen.png" id="2_sachl"]
+[ext_resource type="AudioStream" uid="uid://dabltu15652l7" path="res://sounds/doorclose.mp3" id="4_8fqkx"]
+[ext_resource type="AudioStream" uid="uid://cf7edf2npwwpk" path="res://sounds/dooropen.mp3" id="5_qbppe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6dsf2"]
+size = Vector2(392.982, 791.579)
 
 [node name="Door" type="Node2D"]
+script = ExtResource("1_0csxk")
+
+[node name="doropen" type="Sprite2D" parent="."]
+scale = Vector2(0.178, 0.178)
+texture = ExtResource("2_sachl")
 
 [node name="dorclose" type="Sprite2D" parent="."]
 position = Vector2(-2.38419e-07, -4.76837e-07)
 scale = Vector2(0.178125, 0.178125)
 texture = ExtResource("1_3hjtr")
 
-[node name="Area2D" type="Area2D" parent="dorclose"]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(-2.38419e-07, -4.76837e-07)
+scale = Vector2(0.178125, 0.178125)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="dorclose/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.33849e-06, -2.80704)
 shape = SubResource("RectangleShape2D_6dsf2")
 
-[node name="doropen" type="Sprite2D" parent="."]
+[node name="CloseSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_8fqkx")
+
+[node name="OpenSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qbppe")
+
+[connection signal="power_changed" from="." to="." method="_on_power_changed"]
