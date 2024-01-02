@@ -11,13 +11,13 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f2aq3"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ajwe"]
-radius = 4.0
-height = 22.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uvohg"]
 radius = 11.0
 height = 44.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7ajwe"]
+radius = 4.0
+height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7kfpr"]
 radius = 5.0
@@ -28,8 +28,8 @@ script = ExtResource("1_cywo1")
 
 [node name="head" type="RigidBody2D" parent="."]
 position = Vector2(0, -32)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 6
+collision_mask = 6
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="head"]
@@ -45,49 +45,28 @@ disable_collision = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
 shape = SubResource("CircleShape2D_f2aq3")
 
-[node name="leftairpod" type="RigidBody2D" parent="."]
-position = Vector2(-15, -7)
-collision_layer = 3
-collision_mask = 3
+[node name="torso" type="RigidBody2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+input_pickable = true
+mass = 2.0
 continuous_cd = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="leftairpod"]
-scale = Vector2(0.212, 0.212)
-texture = ExtResource("2_iyppq")
-
-[node name="PinJoint2D2" type="PinJoint2D" parent="leftairpod"]
-position = Vector2(1, -6)
-node_a = NodePath("../../torso")
-node_b = NodePath("..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftairpod"]
-position = Vector2(-3, -1)
-shape = SubResource("CapsuleShape2D_7ajwe")
-
-[node name="bottomleftarm" type="RigidBody2D" parent="."]
-position = Vector2(-18, 0)
-collision_layer = 3
-collision_mask = 3
-continuous_cd = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="bottomleftarm"]
-position = Vector2(0, 14)
-scale = Vector2(0.187, 0.187)
-texture = ExtResource("3_puy5o")
-
-[node name="PinJoint2D3" type="PinJoint2D" parent="bottomleftarm"]
+[node name="Sprite2D" type="Sprite2D" parent="torso"]
+z_index = 1
 position = Vector2(0, 4)
-node_a = NodePath("../../leftairpod")
-node_b = NodePath("..")
+scale = Vector2(0.271, 0.271)
+texture = ExtResource("5_uc0td")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomleftarm"]
-position = Vector2(0, 15)
-shape = SubResource("CapsuleShape2D_7ajwe")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="torso"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_uvohg")
 
 [node name="rightairpod" type="RigidBody2D" parent="."]
 position = Vector2(15, -7)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 10
+collision_mask = 10
+mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="rightairpod"]
@@ -103,25 +82,29 @@ node_b = NodePath("..")
 position = Vector2(3, -1)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
-[node name="torso" type="RigidBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
-input_pickable = true
+[node name="leftairpod" type="RigidBody2D" parent="."]
+position = Vector2(-15, -7)
+collision_layer = 10
+collision_mask = 10
+mass = 0.75
 continuous_cd = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="torso"]
-position = Vector2(0, 4)
-scale = Vector2(0.271, 0.271)
-texture = ExtResource("5_uc0td")
+[node name="Sprite2D" type="Sprite2D" parent="leftairpod"]
+scale = Vector2(0.212, 0.212)
+texture = ExtResource("2_iyppq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="torso"]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_uvohg")
+[node name="PinJoint2D2" type="PinJoint2D" parent="leftairpod"]
+position = Vector2(1, -6)
+node_a = NodePath("../../torso")
+node_b = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftairpod"]
+position = Vector2(-3, -1)
+shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomrightarm" type="RigidBody2D" parent="."]
 position = Vector2(18, -1)
-collision_layer = 3
-collision_mask = 3
+mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightarm"]
@@ -138,10 +121,30 @@ node_b = NodePath("..")
 position = Vector2(0, 15)
 shape = SubResource("CapsuleShape2D_7ajwe")
 
+[node name="bottomleftarm" type="RigidBody2D" parent="."]
+position = Vector2(-18, 0)
+mass = 0.75
+continuous_cd = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="bottomleftarm"]
+position = Vector2(0, 14)
+scale = Vector2(0.187, 0.187)
+texture = ExtResource("3_puy5o")
+
+[node name="PinJoint2D3" type="PinJoint2D" parent="bottomleftarm"]
+position = Vector2(0, 4)
+node_a = NodePath("../../leftairpod")
+node_b = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottomleftarm"]
+position = Vector2(0, 15)
+shape = SubResource("CapsuleShape2D_7ajwe")
+
 [node name="bottomrightleg" type="RigidBody2D" parent="."]
 position = Vector2(5, 57)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 18
+collision_mask = 18
+mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightleg"]
@@ -160,8 +163,9 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="bottomleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-8, 57)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 18
+collision_mask = 18
+mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomleftleg"]
@@ -180,11 +184,13 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="toprightleg" type="RigidBody2D" parent="."]
 position = Vector2(6, 25)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 34
+collision_mask = 34
+mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="toprightleg"]
+z_index = 1
 position = Vector2(0, 9)
 scale = Vector2(0.233, 0.233)
 texture = ExtResource("7_2v4p6")
@@ -200,11 +206,13 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="topleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-7, 25)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 34
+collision_mask = 34
+mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="topleftleg"]
+z_index = 1
 position = Vector2(0, 9)
 scale = Vector2(0.233, 0.233)
 texture = ExtResource("7_2v4p6")
