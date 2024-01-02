@@ -33,13 +33,8 @@ func _on_power_changed(new_power):
 		for collision in $Piston/ShapeCast2D.collision_result:
 			if collision.collider is CharacterBody2D:
 				collision.collider.velocity.y = -player_velocity
-			else:
-				for child in collision.collider.get_parent().get_children():
-					if not child is RigidBody2D:
-						continue
-					
-					child.linear_velocity = Vector2.ZERO
-					child.apply_impulse(Vector2(0, -ragdoll_force))
+			elif collision.collider is RigidBody2D:
+				collision.collider.apply_impulse(Vector2(0, -ragdoll_force))
 	
 	if tween:
 		tween.kill() # Abort the previous animation.

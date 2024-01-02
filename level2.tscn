@@ -24,7 +24,7 @@ powerables = [NodePath("../Piston")]
 
 [node name="Piston" parent="." instance=ExtResource("3_joud2")]
 position = Vector2(548, 384)
-ragdoll_force = 1200
+ragdoll_force = 3030
 
 [node name="Door" parent="." instance=ExtResource("4_8mcau")]
 position = Vector2(859, 315)
