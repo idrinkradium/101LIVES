@@ -104,8 +104,6 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomrightarm" type="RigidBody2D" parent="."]
 position = Vector2(18, -1)
-collision_layer = 3
-collision_mask = 3
 mass = 0.75
 continuous_cd = 2
 
@@ -125,8 +123,6 @@ shape = SubResource("CapsuleShape2D_7ajwe")
 
 [node name="bottomleftarm" type="RigidBody2D" parent="."]
 position = Vector2(-18, 0)
-collision_layer = 3
-collision_mask = 3
 mass = 0.75
 continuous_cd = 2
 
@@ -167,8 +163,8 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="bottomleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-8, 57)
-collision_layer = 34
-collision_mask = 34
+collision_layer = 18
+collision_mask = 18
 mass = 0.75
 continuous_cd = 2
 
@@ -188,8 +184,8 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="toprightleg" type="RigidBody2D" parent="."]
 position = Vector2(6, 25)
-collision_layer = 66
-collision_mask = 66
+collision_layer = 34
+collision_mask = 34
 mass = 0.75
 continuous_cd = 2
 
@@ -210,8 +206,8 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 
 [node name="topleftleg" type="RigidBody2D" parent="."]
 position = Vector2(-7, 25)
-collision_layer = 130
-collision_mask = 130
+collision_layer = 34
+collision_mask = 34
 mass = 0.75
 continuous_cd = 2
 
