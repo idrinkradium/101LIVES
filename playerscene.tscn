@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://scmvwqnfs8pa"]
+[gd_scene load_steps=67 format=3 uid="uid://scmvwqnfs8pa"]
 
 [ext_resource type="Texture2D" uid="uid://fuyrc4at53ht" path="res://101livesbasechar.png" id="1_bfcmr"]
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_mf3vi"]
@@ -314,7 +314,12 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ychls"]
 radius = 17.0
-height = 58.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1rsy0"]
+height = 46.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_31prm"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 253
@@ -332,7 +337,9 @@ polygon = PackedVector2Array(0, -50, 3, -49, 6, -47, 8, -44, 8, -40, 6, -36, 3, 
 position = Vector2(-5.96046e-08, 2.98023e-08)
 scale = Vector2(0.233, 0.233)
 sprite_frames = SubResource("SpriteFrames_mr0gl")
-animation = &"impact fall"
+animation = &"Jump"
+frame = 23
+frame_progress = 1.0
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("60_iseu8")
@@ -348,13 +355,26 @@ volume_db = -2.7
 pitch_scale = 0.96
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(0, 24)
 collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 2)
+position = Vector2(0, -17)
 shape = SubResource("CapsuleShape2D_ychls")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-13, -37)
+shape = SubResource("CapsuleShape2D_1rsy0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(13, -37)
+shape = SubResource("CapsuleShape2D_1rsy0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -73)
+shape = SubResource("CircleShape2D_31prm")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
