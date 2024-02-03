@@ -2,7 +2,7 @@ extends Node
 
 @export var level:Node2D
 
-@export var lives = 1:
+@export var lives = 101:
 	get:
 		return lives
 	set(value):
