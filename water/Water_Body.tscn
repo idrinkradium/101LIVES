@@ -24,10 +24,9 @@ script = ExtResource("3")
 color = Color(1, 1, 1, 0.396078)
 
 [node name="Water_Body_Area" type="Area2D" parent="."]
-gravity_space_override = 1
 gravity = 400.0
-linear_damp_space_override = 1
-linear_damp = 11.75
+linear_damp_space_override = 3
+linear_damp = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water_Body_Area"]
 shape = SubResource("RectangleShape2D_7hqom")

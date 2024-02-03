@@ -68,9 +68,7 @@ func _ready():
 	#calculates the total lenght of the water body
 	var total_lenght = distance_between_springs * (spring_number - 1)
 	
-	#creates a new rectangle shape 2D
-	var rectangle = RectangleShape2D.new().duplicate()
-	
+
 	# area position stays right in the middle of the water body
 	# the extents of the rectangle are half of the size of the water body
 	var position = Vector2(total_lenght /2, depth/2 )
@@ -78,8 +76,7 @@ func _ready():
 	
 	#sets the position and the extents of the area and the collisionshape
 	water_body_area.position = position
-	rectangle.size =(rect_extents)
-	collisionShape.set_shape(rectangle)
+	collisionShape.shape.size = rect_extents
 
 func _physics_process(delta):
 	
