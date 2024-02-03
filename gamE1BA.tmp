@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=25 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -17,8 +17,6 @@
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="12_v5606"]
 [ext_resource type="AudioStream" uid="uid://tl5ybac1gdq7" path="res://sounds/death.mp3" id="13_aj5lm"]
 [ext_resource type="Texture2D" uid="uid://jkwa8ekaubm" path="res://tiles/que.png" id="14_jetsq"]
-[ext_resource type="AudioStream" uid="uid://57aq2p603q37" path="res://sounds/endgrunt.mp3" id="18_0uw3j"]
-[ext_resource type="AudioStream" uid="uid://dorroardwrxu" path="res://sounds/trumpetofdeath.mp3" id="19_63csq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 radius = 3.0
@@ -173,12 +171,6 @@ script = ExtResource("12_v5606")
 stream = ExtResource("13_aj5lm")
 volume_db = -9.0
 pitch_scale = 0.95
-
-[node name="Grunt" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("18_0uw3j")
-
-[node name="Trumpet" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("19_63csq")
 
 [connection signal="pressed" from="HUD/MuteMusic" to="." method="_on_mute_music_pressed"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]

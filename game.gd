@@ -2,16 +2,24 @@ extends Node
 
 @export var level:Node2D
 
-@export var lives = 101:
+@export var lives = 1:
 	get:
 		return lives
 	set(value):
 		lives = value
 		$HUD/Lives.text = str(lives)
-
+		if lives<1:
+			$Music.stop()
+			$Grunt.play()
+			$Trumpet.play()
+			var tween = create_tween()
+			tween.parallel().tween_property($HUD/Darkness, "modulate", Color(0,0,0,.5), 2)
+			tween.parallel().tween_property($"HUD/Game Over", "position", Vector2($"HUD/Game Over".position.x , 180),5  )
+			
 func _ready():
 	connect_door()
-
+	$"HUD/Game Over".position.y=-150
+	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_end"):
 		change_level(level.get_node("Door").new_level_id)
