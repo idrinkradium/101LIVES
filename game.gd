@@ -16,10 +16,13 @@ extends Node
 			tween.parallel().tween_property($HUD/Darkness, "modulate", Color(0,0,0,.5), 2)
 			tween.parallel().tween_property($"HUD/Game Over", "position", Vector2($"HUD/Game Over".position.x , 180),5  )
 			
+			var finished = func():
+				$HUD/HomeButton.position=Vector2($HUD/HomeButton.position.x, 420)
+
+			tween.finished.connect(finished)
 func _ready():
 	connect_door()
 	$"HUD/Game Over".position.y=-150
-	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_end"):
 		change_level(level.get_node("Door").new_level_id)
@@ -119,3 +122,17 @@ func _physics_process(delta):
 
 func _on_mute_music_pressed():
 	$Music.stream_paused = !$Music.stream_paused
+var home1= load("res://ui/home.png")
+var home2= load("res://ui/home2.png")
+var _texture_toggle=true
+func _on_anime_time_timeout():
+	_texture_toggle=!_texture_toggle
+	if _texture_toggle==true:
+		$HUD/HomeButton.texture_normal=home1
+	else:
+		$HUD/HomeButton.texture_normal=home2
+		
+
+
+func _on_home_button_pressed():
+	get_tree().change_scene_to_file("res://mainmenu.tscn")
