@@ -107,3 +107,7 @@ func _physics_process(delta):
 	
 	if $Player.position.y >= 2000:
 		kill_player(false)
+
+
+func _on_mute_music_pressed():
+	$Music.stream_paused = !$Music.stream_paused

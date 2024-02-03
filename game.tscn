@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=25 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -22,6 +22,11 @@
 radius = 3.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5da5w"]
+
+[sub_resource type="Gradient" id="Gradient_o67q6"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mhiko"]
+gradient = SubResource("Gradient_o67q6")
 
 [sub_resource type="Gradient" id="Gradient_i1flq"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -118,6 +123,16 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_5da5w")
 
+[node name="MuteMusic" type="TextureButton" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 64.0
+grow_horizontal = 0
+focus_mode = 0
+texture_normal = SubResource("GradientTexture2D_mhiko")
+
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -140,4 +155,5 @@ stream = ExtResource("13_aj5lm")
 volume_db = -9.0
 pitch_scale = 0.95
 
+[connection signal="pressed" from="HUD/MuteMusic" to="." method="_on_mute_music_pressed"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=4 format=3 uid="uid://jiy6adpvuo7a"]
 
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
 [ext_resource type="TileSet" uid="uid://bxalumk13aqel" path="res://tiles/tileset.tres" id="2_x4g5o"]
+[ext_resource type="PackedScene" uid="uid://cq0r10no7tq1w" path="res://water/Water_Body.tscn" id="3_ojiat"]
 
 [node name="Level1" type="Node2D"]
 
@@ -20,3 +21,9 @@ position = Vector2(1458, 378)
 new_level_id = 2
 requires_power = false
 powered = true
+
+[node name="Water_Body" parent="." instance=ExtResource("3_ojiat")]
+z_index = 20
+position = Vector2(448, 549)
+spring_number = 31
+depth = 305
