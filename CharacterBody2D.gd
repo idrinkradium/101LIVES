@@ -26,11 +26,14 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 			
 	if in_water and not previously_in_water:
-		velocity.y /= 1.1
+		velocity.y /= 1.18
 		
 
 	if is_jumping:
 		velocity.y = JUMP_VELOCITY
+		if in_water == true:
+			velocity.y = JUMP_VELOCITY*1.2
+		
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
