@@ -105,6 +105,7 @@ func kill_player(spawn_ragdoll:bool):
 		var instance = ragdoll.instantiate()
 		# spawn ragdoll at death action position
 		instance.position = prev_player_pos
+		instance.get_node("torso").apply_impulse($Player.velocity * 4)
 		
 		level.add_child(instance)
 
