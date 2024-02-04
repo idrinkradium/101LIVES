@@ -314,7 +314,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ychls"]
 radius = 17.0
-height = 100.0
+height = 102.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1rsy0"]
 height = 46.0
@@ -355,7 +355,6 @@ volume_db = -2.7
 pitch_scale = 0.96
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 position = Vector2(0, 24)
 collision_layer = 2
 collision_mask = 2

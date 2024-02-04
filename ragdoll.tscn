@@ -54,7 +54,6 @@ gravity_scale = 0.8
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="torso"]
-z_index = 1
 position = Vector2(0, 4)
 scale = Vector2(0.271, 0.271)
 texture = ExtResource("5_uc0td")
@@ -191,7 +190,6 @@ mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="toprightleg"]
-z_index = 1
 position = Vector2(0, 9)
 scale = Vector2(0.233, 0.233)
 texture = ExtResource("7_2v4p6")
@@ -213,7 +211,6 @@ mass = 0.75
 continuous_cd = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="topleftleg"]
-z_index = 1
 position = Vector2(0, 9)
 scale = Vector2(0.233, 0.233)
 texture = ExtResource("7_2v4p6")

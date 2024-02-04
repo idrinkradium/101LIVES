@@ -6,7 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="4"]
 shader = ExtResource("1")
-shader_parameter/tint = Color(0.439216, 0.894118, 1, 1)
+shader_parameter/tint = Color(0, 0.764706, 1, 1)
 
 [sub_resource type="Curve2D" id="1"]
 
@@ -14,7 +14,8 @@ shader_parameter/tint = Color(0.439216, 0.894118, 1, 1)
 
 [node name="Water_Body" type="Node2D"]
 script = ExtResource("2")
-d = 0.545
+k = 0.014
+d = 0.15
 
 [node name="Water_Polygon" type="Polygon2D" parent="."]
 material = SubResource("4")
@@ -25,13 +26,14 @@ script = ExtResource("3")
 color = Color(1, 1, 1, 0.396078)
 
 [node name="Water_Body_Area" type="Area2D" parent="."]
-collision_layer = 255
-collision_mask = 255
+collision_layer = 249
+collision_mask = 249
 gravity_space_override = 3
-gravity_point_center = Vector2(0, -0.5)
-gravity_direction = Vector2(0, -0.5)
-linear_damp_space_override = 3
-linear_damp = 15.0
+gravity_point_center = Vector2(0, -0.75)
+gravity_direction = Vector2(0, -0.75)
+gravity = 990.0
+linear_damp_space_override = 2
+linear_damp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water_Body_Area"]
 shape = SubResource("RectangleShape2D_7hqom")
