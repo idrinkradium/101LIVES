@@ -156,14 +156,6 @@ shape = SubResource("CircleShape2D_sd6va")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="skull" type="TextureButton" parent="HUD"]
-offset_left = 12.0
-offset_top = 3.0
-offset_right = 1036.0
-offset_bottom = 1027.0
-scale = Vector2(0.0771484, 0.0771484)
-texture_normal = ExtResource("7_s2iwq")
-
 [node name="TextureRect" type="TextureRect" parent="HUD"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,6 +175,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("6_kkr6p")
 theme_override_font_sizes/font_size = 100
 text = "101"
+
+[node name="skull" type="TextureButton" parent="HUD/Lives"]
+layout_mode = 0
+offset_left = -89.0
+offset_top = -3.0
+offset_right = 935.0
+offset_bottom = 1021.0
+scale = Vector2(0.0771484, 0.0771484)
+texture_normal = ExtResource("7_s2iwq")
 
 [node name="Darkness" type="TextureRect" parent="HUD"]
 modulate = Color(0, 0, 0, 0)
@@ -268,7 +269,7 @@ volume_db = -7.0
 wait_time = 0.3
 autostart = true
 
-[connection signal="pressed" from="HUD/skull" to="." method="_on_skull_pressed"]
+[connection signal="pressed" from="HUD/Lives/skull" to="." method="_on_skull_pressed"]
 [connection signal="pressed" from="HUD/MuteMusic" to="." method="_on_mute_music_pressed"]
 [connection signal="pressed" from="HUD/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]

@@ -31,8 +31,7 @@ func _process(delta):
 		kill_player(true)
 		
 	if Input.is_action_just_pressed("ui_page_up"):
-		$Player.position = Vector2($MouseBox.position)
-	
+		$Player.position = Vector2($MouseBox.position) 
 
 func change_level(id: int):
 	var new_level = load("res://level{id}.tscn".format({"id":id}))
@@ -136,3 +135,8 @@ func _on_anime_time_timeout():
 
 func _on_home_button_pressed():
 	get_tree().change_scene_to_file("res://mainmenu.tscn")
+
+var easteregg= load("res://ui/skulleasteregg.png")
+func _on_skull_pressed():
+	$HUD/skull.texture_normal=easteregg
+	print("hello")
