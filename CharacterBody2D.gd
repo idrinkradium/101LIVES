@@ -64,7 +64,8 @@ func _physics_process(delta):
 	
 	if is_jumping:
 		sprite.play("Jump")
-		$Jump.play()
+		if not in_water:
+			$Jump.play()
 	
 
 	if not previously_on_floor and is_on_floor() and prev_velocity.y > 300:
