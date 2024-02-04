@@ -349,7 +349,7 @@ volume_db = -9.0
 stream = ExtResource("61_pul4a")
 volume_db = -0.5
 
-[node name="Jump" type="AudioStreamPlayer" parent="."]
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("62_2t430")
 volume_db = -2.7
 pitch_scale = 0.96
