@@ -24,7 +24,7 @@ var water_lenght = distance_between_springs * spring_number
 @onready var water_spring = preload("Water_Spring.tscn")
 
 #the body of water depth
-@export var depth = 1000
+@export var depth = 200
 var target_height = global_position.y
 
 #the position of the bottom of our body of water
