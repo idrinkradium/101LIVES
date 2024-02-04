@@ -167,7 +167,9 @@ func splash(index, speed):
 	pass
 
 func _on_Water_Body_Area_body_entered(body):
-	#body.in_water()
+	if body is CharacterBody2D:
+		body.previously_in_water = body.in_water
+		body.in_water = true
 	
 	#creates a instace of the particle system
 	var s = splash_particle.instantiate()
@@ -179,3 +181,9 @@ func _on_Water_Body_Area_body_entered(body):
 	s.global_position = body.global_position
 	
 	pass # Replace with function body.
+
+
+func _on_water_body_area_body_exited(body):
+	if body is CharacterBody2D:
+		body.previously_in_water = body.in_water
+		body.in_water = false

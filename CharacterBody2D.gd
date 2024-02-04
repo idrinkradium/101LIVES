@@ -10,9 +10,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $AnimatedSprite2D
 
 var previously_on_floor = false
+var in_water = false
+var previously_in_water = false
 
 func _physics_process(delta):
-	var is_jumping = Input.is_action_just_pressed("ui_accept") and is_on_floor()
+	var is_jumping = Input.is_action_just_pressed("ui_accept") and (is_on_floor() or in_water)
 	var is_falling = velocity.y > 0 and not is_on_floor()
 	var is_running = not is_zero_approx(velocity.x)
 	var is_idling = not is_running and not is_falling
@@ -22,6 +24,10 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
+			
+	if in_water and not previously_in_water:
+		velocity.y /= 1.1
+		
 
 	if is_jumping:
 		velocity.y = JUMP_VELOCITY
