@@ -33,6 +33,7 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		if in_water == true:
 			velocity.y = JUMP_VELOCITY*1.2
+			
 		
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -69,6 +70,10 @@ func _physics_process(delta):
 		sprite.play("Jump")
 		if not in_water:
 			$Jump.play()
+		else: 
+			$Swim.play()
+			
+		
 	
 
 	if not previously_on_floor and is_on_floor() and prev_velocity.y > 300:
