@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=28 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://jkwa8ekaubm" path="res://tiles/que.png" id="14_jetsq"]
 [ext_resource type="AudioStream" uid="uid://57aq2p603q37" path="res://sounds/endgrunt.mp3" id="18_0uw3j"]
 [ext_resource type="AudioStream" uid="uid://dorroardwrxu" path="res://sounds/trumpetofdeath.mp3" id="19_63csq"]
+[ext_resource type="Texture2D" uid="uid://jink76thjnsx" path="res://ui/home.png" id="20_yswpp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 radius = 3.0
@@ -152,6 +153,20 @@ theme_override_fonts/font = ExtResource("6_kkr6p")
 theme_override_font_sizes/font_size = 150
 text = "GAME OVER :("
 
+[node name="HomeButton" type="TextureButton" parent="HUD"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = -0.081
+anchor_right = 0.5
+anchor_bottom = -0.081
+offset_left = -240.0
+offset_top = -122.52
+offset_right = 614.0
+offset_bottom = 422.48
+grow_horizontal = 2
+scale = Vector2(0.55, 0.55)
+texture_normal = ExtResource("20_yswpp")
+
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -176,9 +191,17 @@ pitch_scale = 0.95
 
 [node name="Grunt" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("18_0uw3j")
+volume_db = -2.0
 
-[node name="Trumpet" type="AudioStreamPlayer2D" parent="."]
+[node name="Trumpet" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_63csq")
+volume_db = -7.0
+
+[node name="AnimeTime" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
 
 [connection signal="pressed" from="HUD/MuteMusic" to="." method="_on_mute_music_pressed"]
+[connection signal="pressed" from="HUD/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]
+[connection signal="timeout" from="AnimeTime" to="." method="_on_anime_time_timeout"]
