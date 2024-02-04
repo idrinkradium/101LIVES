@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=36 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_3wcw7"]
+[ext_resource type="Texture2D" uid="uid://b4irab1i2nf0t" path="res://objects/poof.png" id="4_a5x07"]
 [ext_resource type="PackedScene" uid="uid://jiy6adpvuo7a" path="res://level1.tscn" id="4_ivtos"]
 [ext_resource type="AudioStream" uid="uid://b5h4ayeo8na53" path="res://Muzak/Muzak1.mp3" id="5_yu0lv"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="6_kkr6p"]
@@ -16,10 +17,49 @@
 [ext_resource type="AudioStream" uid="uid://dbf8ndvlk1k5k" path="res://Muzak/Muzak7.mp3" id="11_g4ikt"]
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="12_v5606"]
 [ext_resource type="AudioStream" uid="uid://tl5ybac1gdq7" path="res://sounds/death.mp3" id="13_aj5lm"]
-[ext_resource type="Texture2D" uid="uid://jkwa8ekaubm" path="res://tiles/que.png" id="14_jetsq"]
 [ext_resource type="AudioStream" uid="uid://57aq2p603q37" path="res://sounds/endgrunt.mp3" id="18_0uw3j"]
 [ext_resource type="AudioStream" uid="uid://dorroardwrxu" path="res://sounds/trumpetofdeath.mp3" id="19_63csq"]
 [ext_resource type="Texture2D" uid="uid://jink76thjnsx" path="res://ui/home.png" id="20_yswpp"]
+
+[sub_resource type="Curve" id="Curve_sdxtf"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_pcft5"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_x6i63"]
+min_value = -200.0
+max_value = 200.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_uniun"]
+max_value = 100.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_g6ug8"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 38.3665), 0.0, 0.0, 0, 0, Vector2(1, 15.0598), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_6i38v"]
+_data = [Vector2(0.0336788, 0.689243), 0.0, 0.0, 0, 0, Vector2(0.523316, 0.935259), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_0h2wl"]
+_data = [Vector2(0, 0.909363), 0.0, 0.0, 0, 0, Vector2(0.738342, 0.993526), 0.0, 0.0, 0, 0, Vector2(0.997409, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_njrg2"]
+colors = PackedColorArray(0.633757, 0.633757, 0.633757, 1, 1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 radius = 3.0
@@ -67,19 +107,42 @@ script = ExtResource("3_3wcw7")
 position = Vector2(173, 370)
 
 [node name="PoofParticles" type="CPUParticles2D" parent="."]
+position = Vector2(374, 296)
 emitting = false
+amount = 3
+lifetime = 2.0
 one_shot = true
-explosiveness = 0.29
-randomness = 0.45
-texture = ExtResource("14_jetsq")
-spread = 180.0
-gravity = Vector2(0, -100)
-initial_velocity_max = 300.25
-tangential_accel_max = 55.03
-angle_min = -183.6
-angle_max = 87.0
-scale_amount_min = 0.05
-scale_amount_max = 0.05
+speed_scale = 0.68
+explosiveness = 0.7
+randomness = 0.2
+lifetime_randomness = 0.54
+texture = ExtResource("4_a5x07")
+spread = 63.62
+gravity = Vector2(0, -700)
+initial_velocity_min = 50.0
+initial_velocity_max = 160.0
+linear_accel_min = -100.0
+linear_accel_max = 100.0
+linear_accel_curve = SubResource("Curve_sdxtf")
+radial_accel_min = -100.0
+radial_accel_max = 100.0
+radial_accel_curve = SubResource("Curve_pcft5")
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+tangential_accel_curve = SubResource("Curve_x6i63")
+damping_max = 100.0
+damping_curve = SubResource("Curve_uniun")
+angle_min = -45.0
+angle_max = 45.0
+angle_curve = SubResource("Curve_g6ug8")
+scale_amount_min = 0.06
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_6i38v")
+split_scale = true
+scale_curve_x = null
+scale_curve_y = SubResource("Curve_0h2wl")
+color = Color(1, 1, 1, 0.172549)
+color_ramp = SubResource("Gradient_njrg2")
 
 [node name="Level1" parent="." instance=ExtResource("4_ivtos")]
 
