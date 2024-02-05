@@ -168,7 +168,6 @@ func splash(index, speed):
 
 func _on_Water_Body_Area_body_entered(body):
 	if body is CharacterBody2D:
-		body.previously_in_water = body.in_water
 		body.in_water = true
 		$Splashing.volume_db=(body.velocity.y/150)-12
 		if $Splashing.volume_db>.5:
@@ -200,5 +199,5 @@ func _on_Water_Body_Area_body_entered(body):
 
 func _on_water_body_area_body_exited(body):
 	if body is CharacterBody2D:
-		body.previously_in_water = body.in_water
 		body.in_water = false
+		print("exit")
