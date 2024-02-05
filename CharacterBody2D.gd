@@ -10,12 +10,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $AnimatedSprite2D
 
 var previously_on_floor = false
+
 var in_water = false
-var previously_in_water = false
 var is_jumping = false
 var is_falling = false
 var is_running = false
 var is_idling =false
+var input_direction = 0
+var stoptime=0
 
 func _physics_process(delta):
 	var is_jumping = Input.is_action_just_pressed("ui_accept") and (is_on_floor() or in_water)
@@ -29,11 +31,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 			
-	if in_water and not previously_in_water:
+	if in_water:
 		velocity.y /= 1.18
-		sprite.play("Jump")
 		
-
 	if is_jumping:
 		velocity.y = JUMP_VELOCITY
 		if in_water == true:
@@ -43,9 +43,9 @@ func _physics_process(delta):
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+	input_direction = Input.get_axis("ui_left", "ui_right")
+	if input_direction:
+		velocity.x = input_direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
@@ -61,12 +61,18 @@ func _physics_process(delta):
 		
 		if sprite.animation == "running" or sprite.animation == "run start":
 			sprite.play("run stop")
+			#stoptime=Time.get_ticks_msec()
+			#print(stoptime)
+	
 	
 	if is_running:
 		if not $Footsteps.playing and is_on_floor():
 			$Footsteps.play()
+		
+		if sprite.animation == "idle" or sprite.animation == "run stop":
+			#print(Time.get_ticks_msec()-stoptime)
+			#if Time.get_ticks_msec()-stoptime < 500:
 			
-		if sprite.animation == "idle":
 			sprite.play("run start")
 	
 	if is_jumping:
@@ -80,7 +86,7 @@ func _physics_process(delta):
 	if not previously_on_floor and is_on_floor() and prev_velocity.y > 300:
 		sprite.play("impact fall")
 		$Thud.play()
-		
+
 	
 	previously_on_floor = is_on_floor()
 
