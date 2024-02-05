@@ -62,7 +62,7 @@ func _physics_process(delta):
 		if not $Footsteps.playing and is_on_floor():
 			$Footsteps.play()
 		
-		if sprite.animation == "idle" or sprite.animation == "run stop":
+		if sprite.animation == "idle" or sprite.animation == "run stop" or sprite.animation == "impact fall":
 			sprite.play("run start")
 	
 	if is_jumping:
