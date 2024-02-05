@@ -92,6 +92,8 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Play"]
+collision_layer = 255
+collision_mask = 255
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Play/StaticBody2D"]
 polygon = PackedVector2Array(58, 79, 100, 78, 147, 78, 185, 71, 250, 67, 332, 66, 413, 71, 437, 79, 436, 125, 416, 171, 373, 185, 273, 185, 59, 180, 41, 165)
@@ -111,6 +113,8 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Options"]
+collision_layer = 255
+collision_mask = 255
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Options/StaticBody2D"]
 polygon = PackedVector2Array(382, 63, 404, 69, 411, 90, 414, 153, 49, 172, 43, 128, 47, 79, 129, 63)
@@ -130,6 +134,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Levels"]
+collision_layer = 255
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/StaticBody2D"]
 polygon = PackedVector2Array(63, 80, 113, 70, 218, 68, 342, 62, 413, 70, 428, 135, 424, 167, 262, 181, 45, 182, 53, 122)

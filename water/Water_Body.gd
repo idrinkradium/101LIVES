@@ -170,7 +170,22 @@ func _on_Water_Body_Area_body_entered(body):
 	if body is CharacterBody2D:
 		body.previously_in_water = body.in_water
 		body.in_water = true
-	
+		$Splashing.volume_db=(body.velocity.y/150)-12
+		if $Splashing.volume_db>.5:
+			$Splashing.volume_db=.45
+		$Splashing.pitch_scale=(-.0005*body.velocity.y)+1.5
+		if $Splashing.pitch_scale<.7:
+			$Splashing.pitch_scale=.71
+		$Splashing.play()
+	elif body is RigidBody2D and body.name=="topleftleg" and body.linear_velocity.y>150:
+		$Splashing.volume_db=(body.linear_velocity.y/150)-12
+		if $Splashing.volume_db>.5:
+			$Splashing.volume_db=.45
+		$Splashing.pitch_scale=(-.0005*body.linear_velocity.y)+1.5
+		if $Splashing.pitch_scale<.7:
+			$Splashing.pitch_scale=.71
+		$Splashing.play()
+	#
 	#creates a instace of the particle system
 	var s = splash_particle.instantiate()
 	

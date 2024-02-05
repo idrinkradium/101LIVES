@@ -17,7 +17,7 @@ shader_parameter/tint = Color(0.113725, 0.858824, 1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7hqom"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xt6nh"]
-random_pitch = 1.05
+random_pitch = 1.2
 random_volume_offset_db = 0.5
 streams_count = 4
 stream_0/stream = ExtResource("4_md5e1")
