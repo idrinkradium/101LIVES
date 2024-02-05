@@ -12,6 +12,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var previously_on_floor = false
 var in_water = false
 var previously_in_water = false
+var is_jumping = false
+var is_falling = false
+var is_running = false
+var is_idling =false
 
 func _physics_process(delta):
 	var is_jumping = Input.is_action_just_pressed("ui_accept") and (is_on_floor() or in_water)
@@ -27,6 +31,7 @@ func _physics_process(delta):
 			
 	if in_water and not previously_in_water:
 		velocity.y /= 1.18
+		sprite.play("Jump")
 		
 
 	if is_jumping:
@@ -56,7 +61,6 @@ func _physics_process(delta):
 		
 		if sprite.animation == "running" or sprite.animation == "run start":
 			sprite.play("run stop")
-			print("run stop -> play")
 	
 	if is_running:
 		if not $Footsteps.playing and is_on_floor():
@@ -64,7 +68,6 @@ func _physics_process(delta):
 			
 		if sprite.animation == "idle":
 			sprite.play("run start")
-			print("run start -> play")
 	
 	if is_jumping:
 		sprite.play("Jump")
@@ -73,8 +76,6 @@ func _physics_process(delta):
 		else: 
 			$Swim.play()
 			
-		
-	
 
 	if not previously_on_floor and is_on_floor() and prev_velocity.y > 300:
 		sprite.play("impact fall")
@@ -85,33 +86,21 @@ func _physics_process(delta):
 
 
 func _on_animated_sprite_2d_animation_finished():
+	if sprite.animation == "Jump":
+		sprite.play("idle")
+		return
+	
 	if sprite.animation == "impact fall":
 		sprite.play("idle")
-		print('impact fall -> going idle')
 		return
 		
 	if sprite.animation == "run stop":
 		sprite.play("idle")
-		print('run stop -> idle')
 		return
 		
 	if sprite.animation == "run start":
 		sprite.play("running")
-		print("running -> play")
 		return
-
-
-func _on_animated_sprite_2d_animation_looped():
-	pass
-	#if sprite.animation == "run start":
-		#sprite.play("running")
-		#print('started running animation')
-	#elif sprite.animation == "run stop":
-		#sprite.play("idle")
-		#print('run stop -> idle')
-	#elif sprite.animation == "impact fall":
-		#sprite.play("idle")
-		#print('impact fall -> going idle')
 
 
 func _on_animated_sprite_2d_animation_changed():
@@ -120,19 +109,6 @@ func _on_animated_sprite_2d_animation_changed():
 	if sprite.animation == "Jump" or sprite.animation == "impact fall":
 		sprite.offset.y =-100
 	else: sprite.offset.y =0
-	
-	#if _animated_sprite.animation == "running" or _animated_sprite.animation == "run start":
-		#if Input.is_action_pressed("ui_left"):
-			#$CollisionPolygon2D.skew = 31
-			#$CollisionPolygon2D.position.x = -12
-		#else:
-			#$CollisionPolygon2D.skew = -31
-			#$CollisionPolygon2D.position.x = 12
-		#$CollisionPolygon2D.position.y = 7
-	#else:
-		#$CollisionPolygon2D.skew = 0
-		#$CollisionPolygon2D.position.x =  0
-		#$CollisionPolygon2D.position.y =  0
 
 
 func _on_animated_sprite_2d_frame_changed():

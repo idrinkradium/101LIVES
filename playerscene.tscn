@@ -352,9 +352,7 @@ polygon = PackedVector2Array(0, -50, 3, -49, 6, -47, 8, -44, 8, -40, 6, -36, 3, 
 position = Vector2(-5.96046e-08, 2.98023e-08)
 scale = Vector2(0.233, 0.233)
 sprite_frames = SubResource("SpriteFrames_mr0gl")
-animation = &"Jump"
-frame = 23
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("60_iseu8")
