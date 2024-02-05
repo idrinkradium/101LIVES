@@ -200,4 +200,3 @@ func _on_Water_Body_Area_body_entered(body):
 func _on_water_body_area_body_exited(body):
 	if body is CharacterBody2D:
 		body.in_water = false
-		print("exit")

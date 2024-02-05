@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://scmvwqnfs8pa"]
+[gd_scene load_steps=76 format=3 uid="uid://scmvwqnfs8pa"]
 
 [ext_resource type="Texture2D" uid="uid://fuyrc4at53ht" path="res://101livesbasechar.png" id="1_bfcmr"]
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_mf3vi"]
@@ -18,16 +18,22 @@
 [ext_resource type="Texture2D" uid="uid://dm5mlr6cjjq64" path="res://Animation Frames/jump/jump0021.png" id="24_mqm0e"]
 [ext_resource type="Texture2D" uid="uid://cs8t2f114glwh" path="res://Animation Frames/jump/jump0022.png" id="25_i2bif"]
 [ext_resource type="Texture2D" uid="uid://de4y71yq2b68f" path="res://Animation Frames/jump/jump0023.png" id="26_sogv2"]
+[ext_resource type="Texture2D" uid="uid://dbged068kad1v" path="res://Animation Frames/fallinganim/jump00260000.png" id="26_uvyxc"]
+[ext_resource type="Texture2D" uid="uid://dnn8os4c8p80j" path="res://Animation Frames/fallinganim/jump00260001.png" id="27_33gip"]
 [ext_resource type="Texture2D" uid="uid://dpin6nucey371" path="res://Animation Frames/jump/jump0024.png" id="27_mxbxh"]
 [ext_resource type="Texture2D" uid="uid://bulddcqcy104o" path="res://Animation Frames/runanim/run0001.png" id="27_pwqsa"]
 [ext_resource type="Texture2D" uid="uid://bjkney7u43qx5" path="res://Animation Frames/jump/jump0025.png" id="28_8bchk"]
 [ext_resource type="Texture2D" uid="uid://f8qgfis1sp7a" path="res://Animation Frames/runanim/run0002.png" id="28_ahmcf"]
+[ext_resource type="Texture2D" uid="uid://ceketatmgtc52" path="res://Animation Frames/fallinganim/jump00260002.png" id="28_lpenh"]
 [ext_resource type="Texture2D" uid="uid://pei480uacylf" path="res://Animation Frames/jump/jump0026.png" id="29_4jlw3"]
 [ext_resource type="Texture2D" uid="uid://bmn8mkp4x02be" path="res://Animation Frames/runanim/run0003.png" id="29_c7mj6"]
+[ext_resource type="Texture2D" uid="uid://bpqy8g6hufsdj" path="res://Animation Frames/fallinganim/jump00260003.png" id="29_uu375"]
 [ext_resource type="Texture2D" uid="uid://ckddy62tgbcfv" path="res://Animation Frames/runanim/run0004.png" id="30_lyesx"]
+[ext_resource type="Texture2D" uid="uid://wwitfufkt302" path="res://Animation Frames/fallinganim/jump00260004.png" id="30_nwrbt"]
 [ext_resource type="Texture2D" uid="uid://ba75tgvkeykob" path="res://Animation Frames/jump/jump0027.png" id="30_pr832"]
 [ext_resource type="Texture2D" uid="uid://3d48f173bdyv" path="res://Animation Frames/jump/jump0028.png" id="31_aun7w"]
 [ext_resource type="Texture2D" uid="uid://vj7jtwh320kq" path="res://Animation Frames/runanim/run0005.png" id="31_k0dgq"]
+[ext_resource type="Texture2D" uid="uid://bfr226jkmpwp" path="res://Animation Frames/fallinganim/jump00260005.png" id="31_yc476"]
 [ext_resource type="Texture2D" uid="uid://dnthc2j7rp7hq" path="res://Animation Frames/runanim/run0006.png" id="32_4c0yy"]
 [ext_resource type="Texture2D" uid="uid://cr4el342ft704" path="res://Animation Frames/jump/jump0029.png" id="32_rugen"]
 [ext_resource type="Texture2D" uid="uid://dfjqnm7ywyy45" path="res://Animation Frames/runanim/run0007.png" id="33_hal0t"]
@@ -141,6 +147,29 @@ animations = [{
 }],
 "loop": false,
 "name": &"Jump",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("26_uvyxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_33gip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_lpenh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_uu375")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nwrbt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_yc476")
+}],
+"loop": true,
+"name": &"falling",
 "speed": 24.0
 }, {
 "frames": [{
@@ -352,7 +381,7 @@ polygon = PackedVector2Array(0, -50, 3, -49, 6, -47, 8, -44, 8, -40, 6, -36, 3, 
 position = Vector2(-5.96046e-08, 2.98023e-08)
 scale = Vector2(0.233, 0.233)
 sprite_frames = SubResource("SpriteFrames_mr0gl")
-animation = &"Jump"
+animation = &"idle"
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("60_iseu8")

@@ -19,6 +19,17 @@ func _process(delta):
 	
 	mouse_delta = Vector2.ZERO
 	
+	var max = 2000
+	if offset.x > max:
+		offset.x = max
+	if offset.x < -max:
+		offset.x = -max
+	max=500
+	if offset.y > max:
+		offset.y = max
+	if offset.y < -max:
+		offset.y = -max
+	
 	
 func _input(event):
 	if event is InputEventMouseMotion:
