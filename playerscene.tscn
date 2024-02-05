@@ -356,15 +356,15 @@ animation = &"idle"
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("60_iseu8")
-volume_db = -9.0
+volume_db = -5.0
 
 [node name="Thud" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("61_pul4a")
-volume_db = -0.5
+volume_db = -3.5
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ix28g")
-volume_db = -2.7
+volume_db = 1.3
 pitch_scale = 0.96
 
 [node name="Swim" type="AudioStreamPlayer2D" parent="."]
