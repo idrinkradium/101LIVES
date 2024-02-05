@@ -32,7 +32,11 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("ui_page_up"):
 		$Player.position = Vector2($MouseBox.position) 
-
+	if Input.is_action_just_pressed("ui_cancel"):
+		$HUD/Darkness.modulate=(Color(0,0,0,.5))
+		$HUD/Home.position.y=400
+		$HUD/Options.position.y=400
+		$HUD/Restart.position.y=435
 func change_level(id: int):
 	var new_level = load("res://level{id}.tscn".format({"id":id}))
 	var instance = new_level.instantiate()
@@ -124,14 +128,17 @@ func _on_mute_music_pressed():
 	$Music.stream_paused = !$Music.stream_paused
 var home1= load("res://ui/home.png")
 var home2= load("res://ui/home2.png")
+var menu1= load("res://ui/menu.png")
+var menu2= load("res://ui/menu2.png")
 var _texture_toggle=true
 func _on_anime_time_timeout():
 	_texture_toggle=!_texture_toggle
 	if _texture_toggle==true:
 		$HUD/HomeButton.texture_normal=home1
+		$HUD/Menu.texture_normal=menu1
 	else:
 		$HUD/HomeButton.texture_normal=home2
-		
+		$HUD/Menu.texture_normal=menu2
 
 
 func _on_home_button_pressed():
@@ -141,3 +148,8 @@ var easteregg= load("res://ui/skulleasteregg.png")
 func _on_skull_pressed():
 	$HUD/skull.texture_normal=easteregg
 	print("hello")
+
+
+
+func _on_home_pressed():
+	get_tree().change_scene_to_file("res://mainmenu.tscn")

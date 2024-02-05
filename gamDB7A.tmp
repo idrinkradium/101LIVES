@@ -97,6 +97,7 @@ stream_6/weight = 1.0
 [node name="Game" type="Node" node_paths=PackedStringArray("level")]
 script = ExtResource("1_ldl6n")
 level = NodePath("Level1")
+lives = null
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 328)
@@ -293,6 +294,5 @@ autostart = true
 
 [connection signal="pressed" from="HUD/skull" to="." method="_on_skull_pressed"]
 [connection signal="pressed" from="HUD/HomeButton" to="." method="_on_home_button_pressed"]
-[connection signal="pressed" from="HUD/Home" to="." method="_on_home_pressed"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]
 [connection signal="timeout" from="AnimeTime" to="." method="_on_anime_time_timeout"]
