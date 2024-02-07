@@ -3,7 +3,9 @@ extends Powerable
 @export var height = 150
 @export var animation_duration = 0.1
 @export var player_velocity = 1000
-@export var ragdoll_force = 500
+
+
+@onready var start_pos: Vector2 = $Piston.position
 
 var tween:Tween
 var busy = false
@@ -27,32 +29,28 @@ func _on_power_changed(new_power):
 	else:
 		$PistonIn.play()
 
-	#$Piston/CollisionPolygon2D.disabled=true
-	
 	if powered:
 		for collision in $Piston/ShapeCast2D.collision_result:
 			if collision.collider is CharacterBody2D:
 				collision.collider.velocity.y = -player_velocity
-			elif collision.collider is RigidBody2D:
-				collision.collider.apply_impulse(Vector2(0, -1))
+
 	
 	if tween:
 		tween.kill() # Abort the previous animation.
 	
 	tween = create_tween()
-	animation_duration=.13
-	var new_y = $Piston.position.y - height if powered else $Piston.position.y + height
-	tween.parallel().tween_property($Piston, "position", Vector2($Piston.position.x, new_y), animation_duration)
+	
+	var new_y =  start_pos.y - height if powered else start_pos.y
+	tween.parallel().tween_property($Piston, "position", Vector2(start_pos.x, new_y), animation_duration)
 	
 	new_y = -.0014 * height if powered else 0
 	tween.parallel().tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
-	
 	var finished = func():
 		$SafezoneTimer.start()
 		busy = false
 
 	tween.finished.connect(finished)
-	
+
 
 func _on_safezone_timer_timeout():
 	if $Piston/ShapeCast2D.collision_result.is_empty():

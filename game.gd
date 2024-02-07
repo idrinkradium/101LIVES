@@ -33,10 +33,20 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_page_up"):
 		$Player.position = Vector2($MouseBox.position) 
 	if Input.is_action_just_pressed("ui_cancel"):
+		open_menu()
+
+func open_menu():
+	if $HUD/Home.position.y > 0:
+		$HUD/Darkness.modulate=(Color(0,0,0,.0))
+		$HUD/Home.position.y=-400
+		$HUD/Options.position.y=-400
+		$HUD/Restart.position.y=-435
+	else:
 		$HUD/Darkness.modulate=(Color(0,0,0,.5))
 		$HUD/Home.position.y=400
 		$HUD/Options.position.y=400
 		$HUD/Restart.position.y=435
+
 func change_level(id: int):
 	var new_level = load("res://level{id}.tscn".format({"id":id}))
 	var instance = new_level.instantiate()
@@ -146,10 +156,8 @@ func _on_home_button_pressed():
 
 var easteregg= load("res://ui/skulleasteregg.png")
 func _on_skull_pressed():
-	$HUD/skull.texture_normal=easteregg
-	print("hello")
+	if $HUD/skull.texture_normal == easteregg:
+		$HUD/skull.texture_normal = load("res://ui/skull.png")
+	else:
+		$HUD/skull.texture_normal=easteregg
 
-
-
-func _on_home_pressed():
-	get_tree().change_scene_to_file("res://mainmenu.tscn")

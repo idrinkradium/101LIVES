@@ -154,14 +154,6 @@ shape = SubResource("CircleShape2D_sd6va")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="skull" type="TextureButton" parent="HUD"]
-offset_left = 12.0
-offset_top = 3.0
-offset_right = 1036.0
-offset_bottom = 1027.0
-scale = Vector2(0.0771484, 0.0771484)
-texture_normal = ExtResource("7_s2iwq")
-
 [node name="TextureRect" type="TextureRect" parent="HUD"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -258,6 +250,14 @@ offset_bottom = 266.0
 scale = Vector2(0.35, 0.35)
 texture_normal = ExtResource("12_utinm")
 
+[node name="skull" type="TextureButton" parent="HUD"]
+offset_left = 12.0
+offset_top = 3.0
+offset_right = 1036.0
+offset_bottom = 1027.0
+scale = Vector2(0.0771484, 0.0771484)
+texture_normal = ExtResource("7_s2iwq")
+
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -291,8 +291,9 @@ volume_db = -7.0
 wait_time = 0.5
 autostart = true
 
-[connection signal="pressed" from="HUD/skull" to="." method="_on_skull_pressed"]
 [connection signal="pressed" from="HUD/HomeButton" to="." method="_on_home_button_pressed"]
-[connection signal="pressed" from="HUD/Home" to="." method="_on_home_pressed"]
+[connection signal="pressed" from="HUD/Menu" to="." method="open_menu"]
+[connection signal="pressed" from="HUD/Home" to="." method="_on_home_button_pressed"]
+[connection signal="pressed" from="HUD/skull" to="." method="_on_skull_pressed"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]
 [connection signal="timeout" from="AnimeTime" to="." method="_on_anime_time_timeout"]
