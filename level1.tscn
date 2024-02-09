@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://bxalumk13aqel" path="res://tiles/tileset.tres" id="2_x4g5o"]
 [ext_resource type="PackedScene" uid="uid://cq0r10no7tq1w" path="res://water/Water_Body.tscn" id="3_ojiat"]
 [ext_resource type="PackedScene" uid="uid://lli605rl70ib" path="res://ragdoll.tscn" id="5_mytrl"]
-[ext_resource type="PackedScene" uid="uid://c3scxhc5q5y7b" path="res://gear.tscn" id="5_q50xg"]
+[ext_resource type="PackedScene" uid="uid://vbvmm2v2b0jg" path="res://gear.tscn" id="5_q50xg"]
 
 [node name="Level1" type="Node2D"]
 

@@ -3,6 +3,7 @@ var churn=true
 @export var gear_rotation=45
 @export var gamenode: Node2D
 func _on_timer_timeout():
+	
 	$Area2D/CollisionShape2D.disabled=false
 	churn=!churn
 	var tween=create_tween()
@@ -17,4 +18,5 @@ func _on_timer_timeout():
 	tween.finished.connect(finished)
 
 func _on_area_2d_body_entered(body):
-	print(body)
+	if body is CharacterBody2D:
+		get_tree().current_scene.kill_player(true)
