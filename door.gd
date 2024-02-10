@@ -8,9 +8,13 @@ func _on_power_changed(new_power):
 	if powered == new_power or !requires_power:
 		return
 	powered = new_power
-		
-	$dorclose.visible = !powered
+	
+	#$dorclose.visible = !powered
+	$lock.visible = !powered
+	
 	if powered:
-		$OpenSfx.play()
+		$unlocked.play()
+		#$OpenSfx.play()
 	else:
-		$CloseSfx.play()
+		$locked.play()
+		#$CloseSfx.play()

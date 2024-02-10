@@ -12,7 +12,7 @@ size = Vector2(400, 20)
 script = ExtResource("1_w3vfs")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-position = Vector2(0, -41)
+position = Vector2(0, -38)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_nnrxo")
 collision_mask = 253
@@ -20,8 +20,8 @@ collision_mask = 253
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
-collision_layer = 253
-collision_mask = 253
+collision_layer = 509
+collision_mask = 509
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(0, -35)

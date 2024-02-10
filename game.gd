@@ -23,6 +23,9 @@ extends Node
 func _ready():
 	connect_door()
 	$"HUD/Game Over".position.y=-150
+	change_level(3)
+	
+	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_end"):
 		change_level(level.get_node("Door").new_level_id)
@@ -122,6 +125,8 @@ func kill_player(spawn_ragdoll:bool):
 		instance.get_node("torso").apply_impulse($Player.velocity * 4)
 		
 		level.add_child(instance)
+	
+		return instance
 
 func _input(event):
 	#print(event)

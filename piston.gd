@@ -8,7 +8,6 @@ extends Powerable
 @onready var start_pos: Vector2 = $Piston.position
 
 var tween:Tween
-var busy = false
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):

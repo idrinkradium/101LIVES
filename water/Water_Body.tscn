@@ -43,8 +43,8 @@ script = ExtResource("3")
 color = Color(1, 1, 1, 0.396078)
 
 [node name="Water_Body_Area" type="Area2D" parent="."]
-collision_layer = 249
-collision_mask = 249
+collision_layer = 253
+collision_mask = 253
 gravity_space_override = 3
 gravity_point_center = Vector2(0, -0.75)
 gravity_direction = Vector2(0, -0.75)

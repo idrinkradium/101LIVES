@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://vbvmm2v2b0jg"]
+[gd_scene load_steps=7 format=3 uid="uid://vbvmm2v2b0jg"]
 
 [ext_resource type="Texture2D" uid="uid://bcfkk5m1uwr5j" path="res://objects/gear.png" id="1_p0bhv"]
 [ext_resource type="Script" path="res://gear.gd" id="1_uf85c"]
 [ext_resource type="AudioStream" uid="uid://c6o7o6w075rmh" path="res://sounds/gearchurnp1.mp3" id="3_l6pjp"]
 [ext_resource type="AudioStream" uid="uid://bq5pm1ciuctug" path="res://sounds/gearchurnp2.mp3" id="4_l3fnu"]
+[ext_resource type="AudioStream" uid="uid://cqak0rgdc4ni2" path="res://sounds/bonebreak.mp3" id="5_u7x6d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1m3n"]
 
@@ -45,6 +46,11 @@ pitch_scale = 0.8
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
 autostart = true
+
+[node name="crunch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_u7x6d")
+volume_db = -10.0
+pitch_scale = 0.75
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="finished" from="churn1" to="." method="_on_audio_stream_player_2d_finished"]

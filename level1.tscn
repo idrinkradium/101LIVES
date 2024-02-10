@@ -26,7 +26,7 @@ requires_power = false
 powered = true
 
 [node name="Ragdoll" parent="." instance=ExtResource("5_mytrl")]
-position = Vector2(698, 233)
+position = Vector2(331, 183)
 
 [node name="Water_Body" parent="." instance=ExtResource("3_ojiat")]
 z_index = 3
@@ -37,4 +37,4 @@ depth = 300
 [node name="Gear" parent="." instance=ExtResource("5_q50xg")]
 position = Vector2(765, 563)
 scale = Vector2(0.2, 0.2)
-gear_rotation = 90
+gear_rotation = 30

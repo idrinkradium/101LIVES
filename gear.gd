@@ -17,6 +17,25 @@ func _on_timer_timeout():
 
 	tween.finished.connect(finished)
 
+func destroy_limb(body,name):
+	if body.name == name:
+		var ragdoll = body.get_parent()
+		var limb = ragdoll.get_node(name)
+		var joint = limb.get_node_or_null(name + "joint")
+		if joint:
+			joint.queue_free()
+
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:
 		get_tree().current_scene.kill_player(true)
+		$crunch.play()
+	elif body is RigidBody2D:
+		destroy_limb(body, "head")
+		destroy_limb(body, "rightairpod")
+		destroy_limb(body, "leftairpod")
+		destroy_limb(body, "bottomleftleg")
+		destroy_limb(body, "topleftleg")
+		destroy_limb(body, "bottomrightleg")
+		destroy_limb(body, "toprightleg")
+		destroy_limb(body, "bottomrightarm")
+		destroy_limb(body, "bottomleftarm")

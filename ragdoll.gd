@@ -31,3 +31,19 @@ func _on_torso_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			selected=true
+
+func _on_body_entered(body, limb):
+	#print(body)
+	if $Ragpact.playing:
+		return
+		
+	var velocity = get_node(limb).linear_velocity.y
+	#print(body)
+	#print(velocity)
+	if velocity < 100:
+		return
+		
+	$Ragpact.volume_db=(velocity/150)-15
+	if $Ragpact.volume_db>-7:
+		$Ragpact.volume_db=-7.1
+	$Ragpact.play()

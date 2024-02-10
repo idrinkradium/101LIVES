@@ -71,7 +71,7 @@ func _ready():
 
 	# area position stays right in the middle of the water body
 	# the extents of the rectangle are half of the size of the water body
-	var position = Vector2(total_lenght /2, depth/2 )
+	var position = Vector2(total_lenght /2, 13+depth/2 )
 	var rect_extents = Vector2(total_lenght , depth )
 	
 	#sets the position and the extents of the area and the collisionshape
