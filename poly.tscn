@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://biruvty6oo60x"]
+
+[ext_resource type="Script" path="res://poly.gd" id="1_7w70r"]
+
+[node name="Poly" type="Polygon2D"]
+z_index = 4
+position = Vector2(-473, -56)
+script = ExtResource("1_7w70r")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 253
+collision_mask = 253
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]

@@ -36,3 +36,9 @@ func _on_spike_retractor_power_changed(new_power):
 
 func _on_top_spike_retractor_power_changed(new_power):
 	yeah($TopSpikeRetractor, $TopSpikes, new_power, top_start_pos, false)
+
+
+func _process(delta):
+	if $BottomSpikeRetractor.powered and $TopSpikeRetractor.powered:
+		$roast2.modulate.a = 0
+		return

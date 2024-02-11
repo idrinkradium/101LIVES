@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ftfq3i2evcnk"]
+
+[ext_resource type="TileSet" uid="uid://bxalumk13aqel" path="res://tiles/tileset.tres" id="1_0qkiv"]
+[ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_fyl8p"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = 4
+tile_set = ExtResource("1_0qkiv")
+format = 2
+layer_0/tile_data = PackedInt32Array(589824, 196608, 0, 524288, 327680, 0, 524289, 65536, 0, 524290, 65536, 0, 524291, 65536, 0, 524292, 65536, 0, 524293, 65536, 0, 524294, 393216, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 262144, 0, 720897, 131072, 1, 720898, 131072, 1, 720899, 131072, 1, 720900, 131072, 1, 720901, 131072, 1, 720902, 65536, 1, 655366, 262144, 0, 655365, 0, 0, 655364, 0, 0, 655363, 0, 0, 655362, 0, 0, 655361, 0, 0, 655360, 196608, 0, 720896, 0, 1)
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(145, 356)
+
+[node name="CameraSpawn" type="Node2D" parent="."]
+
+[node name="Door" parent="." instance=ExtResource("2_fyl8p")]
+position = Vector2(1057, 444)
+new_level_id = 2

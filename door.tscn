@@ -13,6 +13,7 @@
 size = Vector2(392.982, 791.579)
 
 [node name="Door" type="Node2D"]
+z_index = -2
 script = ExtResource("1_0csxk")
 
 [node name="doropen" type="Sprite2D" parent="."]

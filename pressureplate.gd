@@ -10,6 +10,10 @@ var busy = false
 func _physics_process(delta):
 	if busy: 
 		return
+	
+	for collision in $ShapeCast2D.collision_result:
+		if collision.collider == null:
+			return
 		 
 	previously_powered = powered
 	powered = !$ShapeCast2D.collision_result.is_empty()

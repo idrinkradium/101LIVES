@@ -23,7 +23,7 @@ extends Node
 func _ready():
 	connect_door()
 	$"HUD/Game Over".position.y=-150
-	change_level(3)
+	change_level(1)
 	
 	
 func _process(delta):
@@ -137,10 +137,11 @@ func _physics_process(delta):
 	
 	if $Player.position.y >= 2000:
 		kill_player(false)
-
+		$Player.velocity=Vector2.ZERO
 
 func _on_mute_music_pressed():
 	$Music.stream_paused = !$Music.stream_paused
+	
 var home1= load("res://ui/home.png")
 var home2= load("res://ui/home2.png")
 var menu1= load("res://ui/menu.png")
@@ -166,3 +167,8 @@ func _on_skull_pressed():
 	else:
 		$HUD/skull.texture_normal=easteregg
 
+
+
+func _on_area_2d_mouse_entered():
+	print("gdfdfg")
+	$HUD/hover.play()

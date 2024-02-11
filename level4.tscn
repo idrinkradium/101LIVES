@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://ded7p1itmbmnm"]
+
+[ext_resource type="Script" path="res://level4.gd" id="1_4lysh"]
+[ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_e4tag"]
+[ext_resource type="PackedScene" uid="uid://vbvmm2v2b0jg" path="res://gear.tscn" id="3_5ucwg"]
+[ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="4_3tlsg"]
+[ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="7_a6jlx"]
+
+[node name="Level4" type="Node2D"]
+script = ExtResource("1_4lysh")
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(145, 356)
+
+[node name="CameraSpawn" type="Node2D" parent="."]
+
+[node name="Door" parent="." instance=ExtResource("2_e4tag")]
+position = Vector2(1057, 444)
+new_level_id = 2
+
+[node name="Gear" parent="." instance=ExtResource("3_5ucwg")]
+position = Vector2(481, 642)
+scale = Vector2(0.12, 0.12)
+
+[node name="PressurePlate" parent="." instance=ExtResource("4_3tlsg")]
+position = Vector2(315, 833)
+rotation = 3.14159
+
+[node name="PressurePlate2" parent="." instance=ExtResource("4_3tlsg")]
+position = Vector2(576, 512)
+rotation = 3.14159
+
+[node name="Poly" parent="." instance=ExtResource("7_a6jlx")]
+polygon = PackedVector2Array(473, 568, 793, 568, 793, 632, 537, 632, 537, 1016, 857, 1016, 857, 888, 665, 888, 665, 760, 1113, 760, 1113, 568, 985, 568, 985, 632, 921, 632, 921, 120, 1241, 120, 1241, 3256, 281, 3256, 281, -1800, 473, -1800)

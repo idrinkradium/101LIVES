@@ -17,6 +17,7 @@ func _on_timer_timeout():
 
 	tween.finished.connect(finished)
 
+
 func destroy_limb(body,name):
 	if body.name == name:
 		var ragdoll = body.get_parent()
@@ -24,6 +25,7 @@ func destroy_limb(body,name):
 		var joint = limb.get_node_or_null(name + "joint")
 		if joint:
 			joint.queue_free()
+
 
 func _on_area_2d_body_entered(body):
 	if body is CharacterBody2D:

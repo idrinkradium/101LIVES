@@ -76,14 +76,36 @@ func _physics_process(delta):
 	if not previously_on_floor and is_on_floor() and prev_velocity.y > 300:
 		sprite.play("impact fall")
 		$Thud.play()
-	
-	#print(is_falling)
+		
+		if prev_velocity.y > 1000:
+			$Grunt.play()
+			$Bone.play()
+			var ragdoll = await get_tree().current_scene.kill_player(true)
+			destroy_limb(ragdoll, "head",prev_velocity)
+			destroy_limb(ragdoll, "rightairpod",prev_velocity)
+			destroy_limb(ragdoll, "leftairpod",prev_velocity)
+			destroy_limb(ragdoll, "bottomleftleg",prev_velocity)
+			destroy_limb(ragdoll, "topleftleg",prev_velocity)
+			destroy_limb(ragdoll, "bottomrightleg",prev_velocity)
+			destroy_limb(ragdoll, "toprightleg",prev_velocity)
+			destroy_limb(ragdoll, "bottomrightarm",prev_velocity)
+			destroy_limb(ragdoll, "bottomleftarm",prev_velocity)
+			
 	if is_falling and (sprite.animation == "running" or sprite.animation == "run start") and input_direction == 0:
 		sprite.play("idle")
 	
 	previously_on_floor = is_on_floor()
 
-
+func destroy_limb(ragdoll, name, velocity):
+	var limb = ragdoll.get_node(name)
+	var vy = -velocity.y
+	var vx = randi_range(-velocity.y, velocity.y)
+	limb.apply_impulse(Vector2(vx,vy)*.3)
+	
+	var joint = limb.get_node_or_null(name + "joint")
+	if joint:
+		joint.queue_free()
+					
 func _on_animated_sprite_2d_animation_finished():
 	if sprite.animation == "Jump":
 		sprite.play("idle")
