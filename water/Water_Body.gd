@@ -25,10 +25,11 @@ var water_lenght = distance_between_springs * spring_number
 
 #the body of water depth
 @export var depth = 200
+@export var bruh = 999
 var target_height = global_position.y
 
 #the position of the bottom of our body of water
-var bottom = target_height + depth
+var bottom = target_height + (depth)
 
 #reference to our polygon2D
 @onready var water_polygon = $Water_Polygon
@@ -126,8 +127,8 @@ func draw_water_body():
 	var last_index = water_polygon_points.size()-1
 	
 	#add other two points at the bottom of the polygon, to close the water body
-	water_polygon_points.append(Vector2(water_polygon_points[last_index].x, bottom))
-	water_polygon_points.append(Vector2(water_polygon_points[first_index].x, bottom))
+	water_polygon_points.append(Vector2(water_polygon_points[last_index].x, bruh))
+	water_polygon_points.append(Vector2(water_polygon_points[first_index].x, bruh))
 	
 	#transforms our normal array into a poolvector2array
 	#the polygon draw function uses poolvector2arrays to draw the polygon, so we converted it

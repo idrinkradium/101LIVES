@@ -23,7 +23,7 @@ extends Node
 func _ready():
 	connect_door()
 	$"HUD/Game Over".position.y=-150
-	change_level(1)
+	change_level(3)
 	
 	
 func _process(delta):

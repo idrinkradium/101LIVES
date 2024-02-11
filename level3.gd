@@ -8,6 +8,7 @@ func yeah(retractor, spikes, new_power, start_pos, bruh):
 		return
 	
 	retractor.powered = new_power
+	retractor.busy = true
 	
 	var tween = create_tween()
 	
@@ -41,4 +42,4 @@ func _on_top_spike_retractor_power_changed(new_power):
 func _process(delta):
 	if $BottomSpikeRetractor.powered and $TopSpikeRetractor.powered:
 		$roast2.modulate.a = 0
-		return
+		

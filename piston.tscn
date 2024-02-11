@@ -29,7 +29,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_nb36i")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Piston"]
-position = Vector2(0, -40)
+position = Vector2(0, -62)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_6io66")
 target_position = Vector2(0, 180)

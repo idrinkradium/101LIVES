@@ -34,14 +34,16 @@ polygon = PackedVector2Array(-98, -495, 98, -495, 101, -394, 175, -368, 242, -44
 [node name="churn1" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(4, -7)
 stream = ExtResource("3_l6pjp")
-volume_db = -10.0
+volume_db = -12.0
 pitch_scale = 0.88
+attenuation = 2.0
 
 [node name="churn2" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-29, -16)
 stream = ExtResource("4_l3fnu")
-volume_db = -10.0
+volume_db = -12.0
 pitch_scale = 0.8
+attenuation = 2.0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.75
