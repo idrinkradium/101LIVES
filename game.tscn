@@ -284,6 +284,7 @@ texture = SubResource("GradientTexture2D_8bspp")
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_mb62d")
 volume_db = -17.0
+autoplay = true
 script = ExtResource("12_v5606")
 
 [node name="Death" type="AudioStreamPlayer" parent="."]

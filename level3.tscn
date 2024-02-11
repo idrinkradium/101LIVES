@@ -112,7 +112,7 @@ script = ExtResource("7_05kqi")
 script = ExtResource("7_05kqi")
 
 [node name="Poly" parent="." instance=ExtResource("10_axfjp")]
-polygon = PackedVector2Array(473, 568, 921, 568, 921, 1016, 985, 1016, 1049, 952, 1113, 1016, 1177, 1016, 1177, 568, 1625, 568, 1625, 1144, 473, 1144)
+polygon = PackedVector2Array(473, 568, 921, 568, 921, 1016, 985, 1016, 1049, 952, 1113, 1016, 1177, 1016, 1177, 568, 1625, 568, 1625, 1208, 1049, 1320, 473, 1208)
 
 [node name="Poly2" parent="." instance=ExtResource("10_axfjp")]
 polygon = PackedVector2Array(1177, 376, 1625, 376, 1625, -3912, 1177, -3912)

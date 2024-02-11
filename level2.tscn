@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfb43ggdwactk"]
+[gd_scene load_steps=6 format=3 uid="uid://dfb43ggdwactk"]
 
 [ext_resource type="TileSet" uid="uid://bxalumk13aqel" path="res://tiles/tileset.tres" id="1_lbh3r"]
 [ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="2_ypf6p"]
 [ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="3_joud2"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="4_8mcau"]
+[ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="5_mtcma"]
 
 [node name="Level2" type="Node2D"]
 
@@ -29,3 +30,6 @@ animation_duration = 0.15
 
 [node name="Door" parent="." instance=ExtResource("4_8mcau")]
 position = Vector2(859, 315)
+
+[node name="Poly" parent="." instance=ExtResource("5_mtcma")]
+polygon = PackedVector2Array(217, 696, 1689, 696, 1689, -136, 217, -136)

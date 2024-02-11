@@ -8,9 +8,9 @@ func _on_timer_timeout():
 	churn=!churn
 	var tween=create_tween()
 	tween.tween_property(self, "rotation_degrees", gear_rotation, .2).as_relative()
-	#if churn== true:
-		#$churn1.play()
-	#else: $churn2.play()
+	if churn== true:
+		$churn1.play()
+	else: $churn2.play()
 	var finished = func():
 		$Area2D/CollisionShape2D.disabled = true
 		

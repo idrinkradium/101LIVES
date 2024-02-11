@@ -42,4 +42,5 @@ func _on_top_spike_retractor_power_changed(new_power):
 func _process(delta):
 	if $BottomSpikeRetractor.powered and $TopSpikeRetractor.powered:
 		$roast2.modulate.a = 0
-		
+		$roast2.should_fade=false
+	else: $roast2.should_fade=true

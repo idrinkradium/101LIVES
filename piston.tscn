@@ -37,15 +37,15 @@ collision_mask = 253
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piston"]
 position = Vector2(-20, -44)
-polygon = PackedVector2Array(-25, 44, -19, 20, 60, 20, 65, 44)
+polygon = PackedVector2Array(-25, 44, -11, 20, 51, 20, 65, 44)
 
 [node name="PistonOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_i7arn")
-volume_db = -5.0
+volume_db = -7.0
 
 [node name="PistonIn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xf3mb")
-volume_db = -5.0
+volume_db = -7.0
 
 [node name="SafezoneTimer" type="Timer" parent="."]
 wait_time = 0.1
