@@ -5,45 +5,56 @@ extends Node2D
 var powered = false
 var previously_powered = false
 var tween: Tween
-@onready var start_pos: Vector2 = $StaticBody2D.position
+var busy = false
 
 func _physics_process(delta):
-	#if busy: 
-	#	return
+	if busy: 
+		print(1)
+		return
+	
+	var valid_collisions = len($ShapeCast2D.collision_result)
 	
 	for collision in $ShapeCast2D.collision_result:
-		if collision.collider == null:
-			return
-		 
+		if collision.collider == null or collision.collider is StaticBody2D:
+			valid_collisions -= 1
+	
+	#if valid_collisions < 1:
+	#	return
+	
 	previously_powered = powered
 	powered = !$ShapeCast2D.collision_result.is_empty()
 	
-	if previously_powered != powered:
+	if previously_powered == powered:
+		return
+	
+	busy = true
+	#print(powered, busy)
+	#print($ShapeCast2D.collision_result)
+	
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	
+	var animation_duration = 0.1
+	
+	if powered:
+		$PressurePlateIn.play()
+		tween.parallel().tween_property($StaticBody2D, "scale", Vector2($StaticBody2D.scale.x, 0.1), animation_duration)
+		tween.parallel().tween_property($StaticBody2D, "position", Vector2($StaticBody2D.position.x,$StaticBody2D.position.y + 6), animation_duration)
+		tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -26), animation_duration)
+	else:
+		$PressurePlateOut.play()
+		tween.parallel().tween_property($StaticBody2D, "scale", Vector2($StaticBody2D.scale.x, 0.2), animation_duration)
+		tween.parallel().tween_property($StaticBody2D, "position", Vector2($StaticBody2D.position.x, $StaticBody2D.position.y - 6), animation_duration)
+		tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -38), animation_duration)
+	
+	var finished = func():
+		busy = false
 		
-		#busy = true
-		
-		if tween:
-			tween.kill()
-		tween = create_tween()
-		
-		var animation_duration = 0.1
-		
-		if powered:
-			$PressurePlateIn.play()
-			tween.parallel().tween_property($StaticBody2D, "scale", Vector2($StaticBody2D.scale.x, 0.1), animation_duration)
-			tween.parallel().tween_property($StaticBody2D, "position", Vector2($StaticBody2D.position.x,start_pos.y + 6), animation_duration)
-			tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -26), animation_duration)
-		else:
-			$PressurePlateOut.play()
-			tween.parallel().tween_property($StaticBody2D, "scale", Vector2($StaticBody2D.scale.x, 0.2), animation_duration)
-			tween.parallel().tween_property($StaticBody2D, "position", Vector2($StaticBody2D.position.x, start_pos.y - 6), animation_duration)
-			tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -38), animation_duration)
-		#var finished = func():
-			#busy = false
-			
-			
-		#tween.finished.connect(finished)
-		
-		await get_tree().create_timer(0.12).timeout
+		#await get_tree().create_timer(0.12).timeout
 		for powerable in powerables:
 			powerable.power_changed.emit(powered)
+	
+	tween.finished.connect(finished)
+	
+
