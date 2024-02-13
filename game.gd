@@ -23,12 +23,13 @@ extends Node
 func _ready():
 	connect_door()
 	$"HUD/Game Over".position.y=-150
-	change_level(3)
+	change_level(2)
 	
 	
 func _process(delta):
 	if Input.is_action_just_pressed("ui_end"):
 		change_level(level.get_node("Door").new_level_id)
+	
 
 	if Input.is_action_just_pressed("Die"):
 		kill_player(true)

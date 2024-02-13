@@ -1,7 +1,10 @@
 class_name FadeText extends Label
 
-@export var distance_object: Node2D
+@export var distance_object: Node
 var should_fade = true
+
+func _ready():
+	modulate.a = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

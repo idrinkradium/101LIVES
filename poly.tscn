@@ -5,6 +5,7 @@
 [node name="Poly" type="Polygon2D"]
 z_index = 4
 position = Vector2(-473, -56)
+antialiased = true
 script = ExtResource("1_7w70r")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
