@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cs8h8mde5pqlb" path="res://spike.tscn" id="6_p7sro"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="6_yglya"]
 [ext_resource type="Script" path="res://powerable.gd" id="7_05kqi"]
-[ext_resource type="Script" path="res://FadeText.gd" id="7_uvujv"]
+[ext_resource type="Script" path="res://fadeitem.gd" id="7_uvujv"]
 [ext_resource type="AudioStream" uid="uid://csok6sudtr1rn" path="res://sounds/retract.mp3" id="8_0nq47"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="10_axfjp"]
 
