@@ -2,7 +2,8 @@ class_name FadeText extends Label
 
 @export var distance_object: Node
 var should_fade = true
-
+var far= 0
+var spread=0
 func _ready():
 	modulate.a = 0
 
@@ -14,8 +15,8 @@ func _process(delta):
 	var player = get_tree().current_scene.get_node("Player")
 	var distance = player.position.distance_to(distance_object.position)
 
-	if distance < 100:
+	if distance < far:
 		modulate.a = 1
 		return
 		
-	modulate.a = -.0001*((distance-100)*(distance-100))+1
+	modulate.a = spread*((distance-far)*(distance-far))+1

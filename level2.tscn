@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="4_8mcau"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="5_klc1o"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="5_mtcma"]
-[ext_resource type="Script" path="res://FadeText.gd" id="6_f7ms0"]
+[ext_resource type="Script" path="res://fadeitem.gd" id="6_f7ms0"]
 
 [node name="Level2" type="Node2D"]
 
@@ -26,8 +26,8 @@ powerables = [NodePath("../Piston")]
 
 [node name="Piston" parent="." instance=ExtResource("3_joud2")]
 position = Vector2(584, 384)
-height = 250
-animation_duration = 0.16
+height = 246
+animation_duration = 0.18
 
 [node name="Door" parent="." instance=ExtResource("4_8mcau")]
 position = Vector2(1376, 320)

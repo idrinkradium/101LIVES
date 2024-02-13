@@ -20,7 +20,7 @@ var input_direction = 0
 var stoptime=0
 
 func _physics_process(delta):
-	var is_jumping = Input.is_action_just_pressed("ui_accept") and (is_on_floor() or in_water)
+	var is_jumping = Input.is_action_just_pressed("w") and (is_on_floor() or in_water)
 	var is_falling = velocity.y > 0 and not is_on_floor()
 	var is_running = not is_zero_approx(velocity.x)
 	var is_idling = not is_running and not is_falling
@@ -39,7 +39,7 @@ func _physics_process(delta):
 		if in_water == true:
 			velocity.y = JUMP_VELOCITY*1.2
 			
-	input_direction = Input.get_axis("ui_left", "ui_right")
+	input_direction = Input.get_axis("a", "d")
 	if input_direction:
 		velocity.x = input_direction * SPEED
 	else:
@@ -136,7 +136,7 @@ func _on_animated_sprite_2d_frame_changed():
 	flip_sprite_direction()
 		
 func flip_sprite_direction():
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis("a", "d")
 	if direction < 0:
 		sprite.flip_h = true
 	elif direction > 0:
