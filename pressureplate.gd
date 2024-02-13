@@ -12,17 +12,20 @@ func _physics_process(delta):
 		print(1)
 		return
 	
-	var valid_collisions = len($ShapeCast2D.collision_result)
+	var shapecast = $StaticBody2D/ShapeCast2D
+	var valid_collisions = shapecast.collision_result
 	
-	for collision in $ShapeCast2D.collision_result:
-		if collision.collider == null or collision.collider is StaticBody2D:
-			valid_collisions -= 1
+	for collision in shapecast.collision_result:
+		if collision.collider == null :#or collision.collider is StaticBody2D:
+			#valid_collisions -= 1
+			return
+			
 	
 	#if valid_collisions < 1:
 	#	return
 	
 	previously_powered = powered
-	powered = !$ShapeCast2D.collision_result.is_empty()
+	powered = !shapecast.collision_result.is_empty()
 	
 	if previously_powered == powered:
 		return
@@ -39,19 +42,23 @@ func _physics_process(delta):
 	
 	if powered:
 		$PressurePlateIn.play()
-		tween.parallel().tween_property($StaticBody2D, "scale", Vector2($StaticBody2D.scale.x, 0.1), animation_duration)
-		tween.parallel().tween_property($StaticBody2D, "position", Vector2($StaticBody2D.position.x,$StaticBody2D.position.y + 6), animation_duration)
-		tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -26), animation_duration)
+		$StaticBody2D/CollisionPolygon2D.polygon[1].y = 25
+		$StaticBody2D/CollisionPolygon2D.polygon[2].y = 25
+		tween.parallel().tween_property($Sprite2D, "scale", Vector2($Sprite2D.scale.x, 0.1), animation_duration)
+		#tween.parallel().tween_property($Sprite2D, "position", Vector2($Sprite2D.position.x,$Sprite2D.position.y + 6), animation_duration)
+		#tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -26), animation_duration)
 	else:
 		$PressurePlateOut.play()
-		tween.parallel().tween_property($StaticBody2D, "scale", Vector2($StaticBody2D.scale.x, 0.2), animation_duration)
-		tween.parallel().tween_property($StaticBody2D, "position", Vector2($StaticBody2D.position.x, $StaticBody2D.position.y - 6), animation_duration)
-		tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -38), animation_duration)
+		tween.parallel().tween_property($Sprite2D, "scale", Vector2($Sprite2D.scale.x, 0.2), animation_duration)
+		$StaticBody2D/CollisionPolygon2D.polygon[1].y = -25
+		$StaticBody2D/CollisionPolygon2D.polygon[2].y = -25
+		#tween.parallel().tween_property($Sprite2D, "position", Vector2($Sprite2D.position.x, $Sprite2D.position.y - 6), animation_duration)
+		#tween.parallel().tween_property($ShapeCast2D, "position", Vector2($ShapeCast2D.position.x, -38), animation_duration)
 	
 	var finished = func():
 		busy = false
 		
-		#await get_tree().create_timer(0.12).timeout
+		await get_tree().create_timer(0.12).timeout
 		for powerable in powerables:
 			powerable.power_changed.emit(powered)
 	

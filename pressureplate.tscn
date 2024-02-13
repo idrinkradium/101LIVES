@@ -6,16 +6,17 @@
 [ext_resource type="AudioStream" uid="uid://b5cgn02pa7ytt" path="res://sounds/pressureplateout.mp3" id="3_pcwky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnrxo"]
-size = Vector2(400, 20)
+size = Vector2(300, 50)
 
 [node name="PressurePlate" type="Node2D"]
 script = ExtResource("1_w3vfs")
+metadata/_edit_vertical_guides_ = [-84.0]
 
-[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-position = Vector2(0, -38)
-scale = Vector2(0.2, 0.2)
-shape = SubResource("RectangleShape2D_nnrxo")
-collision_mask = 253
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.195, 0.19)
+texture = ExtResource("1_4mjyw")
+centered = false
+offset = Vector2(-200, -200)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, -12)
@@ -23,9 +24,12 @@ scale = Vector2(0.2, 0.2)
 collision_layer = 509
 collision_mask = 509
 
-[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(0, -35)
-texture = ExtResource("1_4mjyw")
+[node name="ShapeCast2D" type="ShapeCast2D" parent="StaticBody2D"]
+position = Vector2(0, -105)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_nnrxo")
+target_position = Vector2(0, 100)
+collision_mask = 253
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(0, -35)
