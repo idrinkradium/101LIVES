@@ -20,9 +20,9 @@ extends Node
 				$HUD/HomeButton.position=Vector2($HUD/HomeButton.position.x, 420)
 
 			tween.finished.connect(finished)
+			
 func _ready():
 	connect_door()
-	$"HUD/Game Over".position.y=-150
 	change_level(2)
 	
 	#😍
@@ -145,17 +145,13 @@ func _on_mute_music_pressed():
 	
 var home1= load("res://ui/home.png")
 var home2= load("res://ui/home2.png")
-var menu1= load("res://ui/menu.png")
-var menu2= load("res://ui/menu2.png")
 var _texture_toggle=true
 func _on_anime_time_timeout():
 	_texture_toggle=!_texture_toggle
 	if _texture_toggle==true:
 		$HUD/HomeButton.texture_normal=home1
-		$HUD/Menu.texture_normal=menu1
 	else:
 		$HUD/HomeButton.texture_normal=home2
-		$HUD/Menu.texture_normal=menu2
 
 
 func _on_home_button_pressed():
@@ -167,3 +163,7 @@ func _on_skull_pressed():
 		$HUD/skull.texture_normal = load("res://ui/skull.png")
 	else:
 		$HUD/skull.texture_normal=easteregg
+
+# loop infinitely
+func _on_music_finished():
+	$Music.play()
