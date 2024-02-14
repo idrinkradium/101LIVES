@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=8 format=3 uid="uid://jiy6adpvuo7a"]
 
 [ext_resource type="Script" path="res://level1.gd" id="1_deb6n"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://fadesprite.gd" id="5_ioq4s"]
 [ext_resource type="Texture2D" uid="uid://dr7pmltrvbshe" path="res://tips/level1tip2.png" id="6_0dqj1"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="6_jrwfq"]
-[ext_resource type="Texture2D" uid="uid://dckvt30me0i23" path="res://tips/level1tip3.png" id="7_3fwqw"]
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
 
 [node name="Level1" type="Node2D"]
@@ -41,15 +40,6 @@ spread = 20.0
 position = Vector2(760, 280)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_0dqj1")
-script = ExtResource("5_ioq4s")
-distance_object = NodePath(".")
-far = 200.0
-spread = 20.0
-
-[node name="Level1Tip3" type="Sprite2D" parent="." node_paths=PackedStringArray("distance_object")]
-position = Vector2(1264, 272)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("7_3fwqw")
 script = ExtResource("5_ioq4s")
 distance_object = NodePath(".")
 far = 200.0

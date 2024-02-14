@@ -13,7 +13,7 @@ func _process(delta):
 		return
 	
 	var player = get_tree().current_scene.get_node("Player")
-	var distance = absf(player.position.y -distance_object.position.y)
+	var distance = absf(player.position.x -distance_object.position.x)
 
 	if distance < far:
 		modulate.a = 1

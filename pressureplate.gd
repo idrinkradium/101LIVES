@@ -58,9 +58,9 @@ func _physics_process(delta):
 	var finished = func():
 		busy = false
 		
-		await get_tree().create_timer(0.12).timeout
-		for powerable in powerables:
-			powerable.power_changed.emit(powered)
+		#await get_tree().create_timer(0.05).timeout
+	for powerable in powerables:
+		powerable.power_changed.emit(powered)
 	
 	tween.finished.connect(finished)
 	

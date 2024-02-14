@@ -20,7 +20,6 @@ func _on_power_changed(new_power):
 	if powered == new_power or busy:
 		return
 	
-	busy = true
 	powered = new_power
 	
 	if powered:

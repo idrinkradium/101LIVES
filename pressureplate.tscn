@@ -26,7 +26,6 @@ collision_mask = 509
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="StaticBody2D"]
 position = Vector2(0, -105)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_nnrxo")
 target_position = Vector2(0, 100)
 collision_mask = 253
