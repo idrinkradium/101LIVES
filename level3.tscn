@@ -21,7 +21,7 @@ position = Vector2(145, 356)
 
 [node name="Door" parent="." instance=ExtResource("2_u7tca")]
 position = Vector2(1057, 444)
-new_level_id = 2
+new_level_id = 4
 
 [node name="Gear" parent="." instance=ExtResource("4_t6aia")]
 z_index = 5

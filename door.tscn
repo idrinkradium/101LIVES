@@ -25,6 +25,11 @@ position = Vector2(-2.38419e-07, -4.76837e-07)
 scale = Vector2(0.178125, 0.178125)
 texture = ExtResource("1_3hjtr")
 
+[node name="lock" type="Sprite2D" parent="."]
+position = Vector2(-21, -3)
+scale = Vector2(0.0318663, 0.0303182)
+texture = ExtResource("6_tdnj7")
+
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(-2.38419e-07, -4.76837e-07)
 scale = Vector2(0.178125, 0.178125)
@@ -38,11 +43,6 @@ stream = ExtResource("4_8fqkx")
 
 [node name="OpenSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qbppe")
-
-[node name="lock" type="Sprite2D" parent="."]
-position = Vector2(-21, -3)
-scale = Vector2(0.0318663, 0.0303182)
-texture = ExtResource("6_tdnj7")
 
 [node name="locked" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_tmyan")

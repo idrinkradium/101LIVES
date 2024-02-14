@@ -4,11 +4,11 @@ extends Node2D
 @onready var top_start_pos: Vector2 = $TopSpikes.position
 
 func yeah(retractor, spikes, new_power, start_pos, bruh):
-	if retractor.powered == new_power or retractor.busy:
+	if retractor.powered == new_power:
 		return
 	
 	retractor.powered = new_power
-	retractor.busy = true
+	#retractor.busy = true
 	
 	var tween = create_tween()
 	
@@ -24,12 +24,13 @@ func yeah(retractor, spikes, new_power, start_pos, bruh):
 		
 	var finished = func():
 		retractor.busy = false
+		
+		if $BottomSpikeRetractor.powered and $TopSpikeRetractor.powered:
+			$Door.power_changed.emit(true)
+		else:
+			$Door.power_changed.emit(false)
 	tween.finished.connect(finished)
-	
-	if $BottomSpikeRetractor.powered and $TopSpikeRetractor.powered:
-		$Door.power_changed.emit(true)
-	else:
-		$Door.power_changed.emit(false)
+
 		
 func _on_spike_retractor_power_changed(new_power):
 	yeah($BottomSpikeRetractor, $BottomSpikes, new_power, bottom_start_pos, true)

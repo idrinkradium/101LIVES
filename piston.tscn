@@ -48,7 +48,7 @@ stream = ExtResource("5_xf3mb")
 volume_db = -7.0
 
 [node name="SafezoneTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 
 [connection signal="power_changed" from="." to="." method="_on_power_changed"]
 [connection signal="timeout" from="SafezoneTimer" to="." method="_on_safezone_timer_timeout"]

@@ -7,8 +7,6 @@ extends Powerable
 
 @onready var start_pos: Vector2 = $Piston.position
 
-var tween:Tween
-
 func _process(delta):
 	if Input.is_action_just_pressed("ui_down"):
 		power_changed.emit(false)
@@ -17,7 +15,7 @@ func _process(delta):
 		
 
 func _on_power_changed(new_power):
-	if powered == new_power or busy:
+	if powered == new_power:
 		return
 	
 	powered = new_power
@@ -32,20 +30,15 @@ func _on_power_changed(new_power):
 			if collision.collider is CharacterBody2D:
 				collision.collider.velocity.y = -player_velocity
 
-	
-	if tween:
-		tween.kill() # Abort the previous animation.
-	
-	tween = create_tween()
+	var tween = create_tween()
 	
 	var new_y =  start_pos.y - height if powered else start_pos.y
 	tween.parallel().tween_property($Piston, "position", Vector2(start_pos.x, new_y), animation_duration)
 	
-	new_y = -.0014 * height if powered else 0
+	new_y = -.00138 * height if powered else 0
 	tween.parallel().tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
 	var finished = func():
 		$SafezoneTimer.start()
-		busy = false
 
 	tween.finished.connect(finished)
 

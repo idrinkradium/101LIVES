@@ -23,7 +23,7 @@ extends Node
 			
 func _ready():
 	connect_door()
-	change_level(2)
+	#change_level(2)
 	
 	#😍
 func _process(delta):
@@ -71,30 +71,26 @@ func connect_door():
 			return
 		
 		var door = level.get_node("Door")
-		
-		if !door.requires_power:
-			$Player.visible = false
-			
-			door.get_node("OpenSfx").play()
-			door.get_node("dorclose").visible = false
-			
-			var tween = create_tween()
-			tween.tween_property($HUD/Darkness, "modulate", Color(0,0,0,1), .5)
-			
-			var finished = func():
-				change_level(door.new_level_id)
-				
-				$Player.visible = true
-				
-				tween = create_tween()
-				tween.tween_property($HUD/Darkness, "modulate", Color(0,0,0,0), .5)
-				
-			tween.finished.connect(finished)
-	
+		if door.requires_power and !door.powered:
 			return
-			
-		if door.powered:
+		
+		$Player.visible = false
+		
+		door.get_node("OpenSfx").play()
+		door.get_node("dorclose").visible = false
+		
+		var tween = create_tween()
+		tween.tween_property($HUD/Darkness, "modulate", Color(0,0,0,1), .5)
+		
+		var finished = func():
 			change_level(door.new_level_id)
+			
+			$Player.visible = true
+			
+			tween = create_tween()
+			tween.tween_property($HUD/Darkness, "modulate", Color(0,0,0,0), .5)
+			
+		tween.finished.connect(finished)
 		
 	level.get_node("Door").get_node("Area2D").connect("body_entered", on_body_entered)
 
