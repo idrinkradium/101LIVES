@@ -20,4 +20,4 @@ func _process(delta):
 		modulate.a = 1
 		return
 	
-	modulate.a = (-spread/100000)*((distance-far)*(distance-far))+1
+	modulate.a = (-spread/100000)*(distance-far ** 2)+1

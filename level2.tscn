@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfb43ggdwactk"]
+[gd_scene load_steps=11 format=3 uid="uid://dfb43ggdwactk"]
 
 [ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="2_ypf6p"]
 [ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="3_joud2"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://fadeitem.gd" id="6_f7ms0"]
 [ext_resource type="Texture2D" uid="uid://dckvt30me0i23" path="res://tips/level1tip3.png" id="7_sn0kc"]
 [ext_resource type="Script" path="res://fadesprite.gd" id="8_ky4gt"]
+[ext_resource type="Script" path="res://fadeable.gd" id="9_y7ueg"]
+[ext_resource type="Texture2D" uid="uid://cxmlriwb3bfpg" path="res://objects/spike.png" id="10_to3vn"]
 
 [node name="Level2" type="Node2D"]
 
@@ -85,3 +87,10 @@ script = ExtResource("8_ky4gt")
 distance_object = NodePath(".")
 far = 300.0
 spread = 20.0
+
+[node name="Fadable" type="Node2D" parent="."]
+script = ExtResource("9_y7ueg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fadable"]
+position = Vector2(2, 164)
+texture = ExtResource("10_to3vn")
