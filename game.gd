@@ -167,9 +167,3 @@ func _on_skull_pressed():
 		$HUD/skull.texture_normal = load("res://ui/skull.png")
 	else:
 		$HUD/skull.texture_normal=easteregg
-
-
-
-func _on_area_2d_mouse_entered():
-	print("gdfdfg")
-	$HUD/hover.play()

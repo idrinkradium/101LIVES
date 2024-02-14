@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=38 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -14,12 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://fhmgxmgommtt" path="res://ui/gradient.png" id="8_g7d6x"]
 [ext_resource type="AudioStream" uid="uid://crng5oys5wmfd" path="res://Muzak/Muzak5.mp3" id="9_ocqy5"]
 [ext_resource type="Texture2D" uid="uid://blbw0sdq6ys40" path="res://ui/menu.png" id="10_ky1oy"]
+[ext_resource type="Script" path="res://clickybutton.gd" id="10_m2n0n"]
 [ext_resource type="AudioStream" uid="uid://cwqrdfei2tcco" path="res://Muzak/Muzak6.mp3" id="10_rrefb"]
 [ext_resource type="AudioStream" uid="uid://dbf8ndvlk1k5k" path="res://Muzak/Muzak7.mp3" id="11_g4ikt"]
 [ext_resource type="Texture2D" uid="uid://dgy0x34a04ym7" path="res://ui/options1.png" id="11_hp460"]
 [ext_resource type="Texture2D" uid="uid://b5h402y252j27" path="res://ui/restart.png" id="12_utinm"]
 [ext_resource type="Script" path="res://AudioStreamPlayer.gd" id="12_v5606"]
-[ext_resource type="AudioStream" uid="uid://cwvjs25lutdoi" path="res://sounds/buttonclick.mp3" id="13_8it5m"]
 [ext_resource type="AudioStream" uid="uid://tl5ybac1gdq7" path="res://sounds/death.mp3" id="13_aj5lm"]
 [ext_resource type="AudioStream" uid="uid://57aq2p603q37" path="res://sounds/endgrunt.mp3" id="18_0uw3j"]
 [ext_resource type="AudioStream" uid="uid://dorroardwrxu" path="res://sounds/trumpetofdeath.mp3" id="19_63csq"]
@@ -70,8 +70,6 @@ colors = PackedColorArray(0.74978, 0.74978, 0.74978, 1, 0.942823, 0.942823, 0.94
 radius = 3.0
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5da5w"]
-
-[sub_resource type="GDScript" id="GDScript_jahuq"]
 
 [sub_resource type="Gradient" id="Gradient_i1flq"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -221,19 +219,16 @@ texture_normal = ExtResource("20_yswpp")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -293.0
-offset_top = -19.0
-offset_right = 561.0
-offset_bottom = 461.0
+offset_left = -501.0
+offset_top = -87.0
+offset_right = 231.0
+offset_bottom = 193.0
 grow_horizontal = 0
 scale = Vector2(0.34, 0.34)
+pivot_offset = Vector2(366, 140)
+action_mode = 0
 texture_normal = ExtResource("10_ky1oy")
-script = SubResource("GDScript_jahuq")
-
-[node name="Area2D" type="Area2D" parent="HUD/Menu"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HUD/Menu/Area2D"]
-polygon = PackedVector2Array(85.2944, 344.118, 82.353, 308.823, 94.1177, 258.824, 100, 194.118, 114.706, 144.118, 200, 132.353, 347.059, 129.412, 473.53, 114.706, 667.647, 114.706, 770.588, 129.412, 788.235, 223.529, 800, 294.118, 785.294, 326.471, 732.353, 344.118, 661.765, 347.059, 614.706, 352.941, 485.294, 352.941, 341.177, 344.118, 173.53, 364.706, 105.882, 361.765)
+script = ExtResource("10_m2n0n")
 
 [node name="Options" type="TextureButton" parent="HUD"]
 offset_left = 1007.0
@@ -266,9 +261,6 @@ offset_right = 1036.0
 offset_bottom = 1027.0
 scale = Vector2(0.0771484, 0.0771484)
 texture_normal = ExtResource("7_s2iwq")
-
-[node name="hover" type="AudioStreamPlayer" parent="HUD"]
-stream = ExtResource("13_8it5m")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -305,7 +297,6 @@ autostart = true
 
 [connection signal="pressed" from="HUD/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/Menu" to="." method="open_menu"]
-[connection signal="mouse_entered" from="HUD/Menu/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="pressed" from="HUD/Home" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/skull" to="." method="_on_skull_pressed"]
 [connection signal="finished" from="Music" to="Music" method="_on_finished"]

@@ -13,23 +13,15 @@ func _process(delta):
 		
 	if Input.is_action_pressed("Camera Pan"):
 		offset-=mouse_delta/zoom
+	mouse_delta = Vector2.ZERO
 	
 	n = pow(1.5,zoomfactor)
 	zoom = Vector2(n, n)
 	
-	mouse_delta = Vector2.ZERO
-	
 	var max = 2000
-	if offset.x > max:
-		offset.x = max
-	if offset.x < -max:
-		offset.x = -max
-	max=500
-	if offset.y > max:
-		offset.y = max
-	if offset.y < -max:
-		offset.y = -max
-	
+	offset.x = clamp(offset.x, -max, max)
+	max = 500
+	offset.y = clamp(offset.y, -max, max)
 	
 func _input(event):
 	if event is InputEventMouseMotion:
