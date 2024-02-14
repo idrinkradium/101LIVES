@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://level1.gd" id="1_deb6n"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
 [ext_resource type="Texture2D" uid="uid://cgyqd22ud4c45" path="res://tips/level1tip.png" id="4_ht3aw"]
-[ext_resource type="Script" path="res://fadesprite.gd" id="5_ioq4s"]
 [ext_resource type="Texture2D" uid="uid://dr7pmltrvbshe" path="res://tips/level1tip2.png" id="6_0dqj1"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="6_jrwfq"]
+[ext_resource type="Script" path="res://fadeable.gd" id="7_6qd8g"]
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
 
 [node name="Level1" type="Node2D"]
@@ -26,35 +26,25 @@ powered = true
 position = Vector2(-264, 220)
 polygon = PackedVector2Array(264, 292, 712, 292, 712, 548, 1352, 548, 1352, 228, 1800, 228, 1800, 804, 264, 804)
 
-[node name="Level1Tip" type="Sprite2D" parent="." node_paths=PackedStringArray("distance_object")]
+[node name="Level1Tip" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(224, 280)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_ht3aw")
-script = ExtResource("5_ioq4s")
-distance_object = NodePath(".")
-far = 200.0
-spread = 20.0
+script = ExtResource("7_6qd8g")
 
-[node name="Level1Tip2" type="Sprite2D" parent="." node_paths=PackedStringArray("distance_object")]
+[node name="Level1Tip2" type="Sprite2D" parent="."]
 position = Vector2(760, 280)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("6_0dqj1")
-script = ExtResource("5_ioq4s")
-distance_object = NodePath(".")
-far = 200.0
-spread = 20.0
+script = ExtResource("7_6qd8g")
 
-[node name="Level1Tip4" type="Sprite2D" parent="." node_paths=PackedStringArray("distance_object")]
+[node name="Level1Tip4" type="Sprite2D" parent="."]
 position = Vector2(776, 552)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_d4jst")
-script = ExtResource("5_ioq4s")
-distance_object = NodePath(".")
-should_fade = false
-far = 200.0
-spread = 20.0
-seconds = 5.0
+script = ExtResource("7_6qd8g")
+wait_time = 5
 
 [node name="TipTimer" type="Timer" parent="."]
 wait_time = 10.0

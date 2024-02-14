@@ -1,15 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfb43ggdwactk"]
+[gd_scene load_steps=8 format=3 uid="uid://dfb43ggdwactk"]
 
 [ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="2_ypf6p"]
 [ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="3_joud2"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="4_8mcau"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="5_klc1o"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="5_mtcma"]
-[ext_resource type="Script" path="res://fadeitem.gd" id="6_f7ms0"]
 [ext_resource type="Texture2D" uid="uid://dckvt30me0i23" path="res://tips/level1tip3.png" id="7_sn0kc"]
-[ext_resource type="Script" path="res://fadesprite.gd" id="8_ky4gt"]
 [ext_resource type="Script" path="res://fadeable.gd" id="9_y7ueg"]
-[ext_resource type="Texture2D" uid="uid://cxmlriwb3bfpg" path="res://objects/spike.png" id="10_to3vn"]
 
 [node name="Level2" type="Node2D"]
 
@@ -45,7 +42,7 @@ position = Vector2(-473, 544)
 invert_border = 207.8
 polygon = PackedVector2Array(-6839, 3184, 6681, 3200, 6681, -160, -6823, -160)
 
-[node name="roast2" type="Label" parent="." node_paths=PackedStringArray("distance_object")]
+[node name="roast2" type="Label" parent="."]
 z_index = 10
 offset_left = -1872.0
 offset_top = 200.0
@@ -57,12 +54,9 @@ theme_override_fonts/font = ExtResource("5_klc1o")
 theme_override_font_sizes/font_size = 100
 text = "go back"
 horizontal_alignment = 1
-script = ExtResource("6_f7ms0")
-distance_object = NodePath(".")
-far = 200.0
-spread = 20.0
+script = ExtResource("9_y7ueg")
 
-[node name="roast3" type="Label" parent="." node_paths=PackedStringArray("distance_object")]
+[node name="roast3" type="Label" parent="."]
 z_index = 10
 offset_left = 2568.0
 offset_top = 200.0
@@ -74,23 +68,11 @@ theme_override_fonts/font = ExtResource("5_klc1o")
 theme_override_font_sizes/font_size = 100
 text = "wrong way"
 horizontal_alignment = 1
-script = ExtResource("6_f7ms0")
-distance_object = NodePath(".")
-far = 200.0
-spread = 20.0
+script = ExtResource("9_y7ueg")
 
-[node name="Level1Tip3" type="Sprite2D" parent="." node_paths=PackedStringArray("distance_object")]
+[node name="Level1Tip3" type="Sprite2D" parent="."]
 position = Vector2(296, 160)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_sn0kc")
-script = ExtResource("8_ky4gt")
-distance_object = NodePath(".")
-far = 300.0
-spread = 20.0
-
-[node name="Fadable" type="Node2D" parent="."]
 script = ExtResource("9_y7ueg")
-
-[node name="Sprite2D" type="Sprite2D" parent="Fadable"]
-position = Vector2(2, 164)
-texture = ExtResource("10_to3vn")
+far = 300.0

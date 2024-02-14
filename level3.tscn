@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_u7tca"]
 [ext_resource type="PackedScene" uid="uid://vbvmm2v2b0jg" path="res://gear.tscn" id="4_t6aia"]
 [ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="5_ugxi7"]
+[ext_resource type="Script" path="res://fadeable.gd" id="6_7kagj"]
 [ext_resource type="PackedScene" uid="uid://cs8h8mde5pqlb" path="res://spike.tscn" id="6_p7sro"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="6_yglya"]
 [ext_resource type="Script" path="res://powerable.gd" id="7_05kqi"]
-[ext_resource type="Script" path="res://fadeitem.gd" id="7_uvujv"]
 [ext_resource type="AudioStream" uid="uid://csok6sudtr1rn" path="res://sounds/retract.mp3" id="8_0nq47"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="10_axfjp"]
 
@@ -52,7 +52,7 @@ theme_override_font_sizes/font_size = 100
 text = "why are you up here?
 play the level."
 
-[node name="roast2" type="Label" parent="." node_paths=PackedStringArray("distance_object")]
+[node name="roast2" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
 z_index = 10
 offset_left = 947.0
@@ -66,8 +66,7 @@ theme_override_font_sizes/font_size = 100
 text = "you need to activate
 the last pressure plate..."
 horizontal_alignment = 1
-script = ExtResource("7_uvujv")
-distance_object = NodePath("../Door")
+script = ExtResource("6_7kagj")
 
 [node name="BottomSpikes" type="Node2D" parent="."]
 position = Vector2(733, 486)
