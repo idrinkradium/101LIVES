@@ -8,7 +8,6 @@ func yeah(retractor, spikes, new_power, start_pos, bruh):
 		return
 	
 	retractor.powered = new_power
-	#retractor.busy = true
 	
 	var tween = create_tween()
 	
@@ -23,8 +22,6 @@ func yeah(retractor, spikes, new_power, start_pos, bruh):
 	$BottomSpikes/retract1.play()
 		
 	var finished = func():
-		retractor.busy = false
-		
 		if $BottomSpikeRetractor.powered and $TopSpikeRetractor.powered:
 			$Door.power_changed.emit(true)
 		else:
