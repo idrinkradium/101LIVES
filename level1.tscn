@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=7 format=3 uid="uid://jiy6adpvuo7a"]
 
-[ext_resource type="Script" path="res://level1.gd" id="1_deb6n"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
 [ext_resource type="Texture2D" uid="uid://cgyqd22ud4c45" path="res://tips/level1tip.png" id="4_ht3aw"]
 [ext_resource type="Texture2D" uid="uid://dr7pmltrvbshe" path="res://tips/level1tip2.png" id="6_0dqj1"]
@@ -9,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
 
 [node name="Level1" type="Node2D"]
-script = ExtResource("1_deb6n")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(145, 356)

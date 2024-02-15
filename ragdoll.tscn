@@ -57,10 +57,11 @@ scale = Vector2(0.33, 0.33)
 texture = ExtResource("1_w04ov")
 
 [node name="headjoint" type="PinJoint2D" parent="head"]
-position = Vector2(0, 12)
+position = Vector2(0, 10)
 node_a = NodePath("../../torso")
 node_b = NodePath("..")
 disable_collision = false
+softness = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
 shape = SubResource("CircleShape2D_f2aq3")
