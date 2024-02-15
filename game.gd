@@ -23,7 +23,7 @@ extends Node
 			
 func _ready():
 	connect_door()
-	#change_level(2)
+	change_level(1)
 	
 	#😍
 func _process(delta):
@@ -103,7 +103,7 @@ func kill_player(spawn_ragdoll:bool):
 	# copy of where the player was at the death action
 	var prev_player_pos = Vector2($Player.position)
 	# offset for how far up we want to put the ragdoll, so feet dont get stuck in the ground
-	prev_player_pos.y -= 25
+	prev_player_pos.y -= 20
 	
 	# respawn player at new location (level decides this)
 	$Player.position = Vector2(level.get_node("PlayerSpawn").position)
@@ -111,10 +111,10 @@ func kill_player(spawn_ragdoll:bool):
 	$PoofParticles.position = prev_player_pos
 	$PoofParticles.emitting = true
 	
-	# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
-	await get_tree().create_timer(0.1).timeout
-	
 	if spawn_ragdoll:
+		# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
+		await get_tree().create_timer(0.05).timeout
+		
 		var ragdoll = load("res://ragdoll.tscn")
 		var instance = ragdoll.instantiate()
 		# spawn ragdoll at death action position
