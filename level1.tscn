@@ -43,6 +43,7 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_d4jst")
 script = ExtResource("7_6qd8g")
 wait_time = 5
+wait_distance = 350
 
 [node name="TipTimer" type="Timer" parent="."]
 wait_time = 10.0
