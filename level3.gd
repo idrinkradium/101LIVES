@@ -42,3 +42,5 @@ func _process(delta):
 		$roast2.modulate.a = 0
 		$roast2.should_fade=false
 	else: $roast2.should_fade=true
+	if $BottomSpikeRetractor.powered:
+		$Pushtheparts.should_fade=true

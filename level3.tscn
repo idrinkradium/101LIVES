@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d2gemev5gs7pc"]
+[gd_scene load_steps=12 format=3 uid="uid://d2gemev5gs7pc"]
 
 [ext_resource type="Script" path="res://level3.gd" id="1_ek7ji"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_u7tca"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://powerable.gd" id="7_05kqi"]
 [ext_resource type="AudioStream" uid="uid://csok6sudtr1rn" path="res://sounds/retract.mp3" id="8_0nq47"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="10_axfjp"]
+[ext_resource type="Texture2D" uid="uid://drugu57ud4rh3" path="res://tips/pushtheparts.png" id="11_uifk5"]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource("1_ek7ji")
@@ -114,6 +115,16 @@ polygon = PackedVector2Array(473, 568, 921, 568, 921, 1016, 985, 1016, 1049, 952
 
 [node name="Poly2" parent="." instance=ExtResource("10_axfjp")]
 polygon = PackedVector2Array(1177, 376, 1625, 376, 1625, -3912, 1177, -3912)
+
+[node name="Pushtheparts" type="Sprite2D" parent="."]
+position = Vector2(584, 848)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("11_uifk5")
+script = ExtResource("6_7kagj")
+should_fade = false
+far = 999.0
+spread = 99.0
+wait_distance = 999
 
 [connection signal="power_changed" from="BottomSpikeRetractor" to="." method="_on_spike_retractor_power_changed"]
 [connection signal="power_changed" from="TopSpikeRetractor" to="." method="_on_top_spike_retractor_power_changed"]

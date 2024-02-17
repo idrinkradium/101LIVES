@@ -294,6 +294,7 @@ offset_top = 3.0
 offset_right = 1036.0
 offset_bottom = 1027.0
 scale = Vector2(0.0771484, 0.0771484)
+focus_mode = 0
 texture_normal = ExtResource("7_s2iwq")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]

@@ -7,6 +7,7 @@ class_name Fadable extends CanvasItem
 @export var spread=20.0
 @export var wait_time = 0
 @export var wait_distance = 500
+@export var fade_time = 1.0
 var wait_counter = 0.0
 var f = 1
 
@@ -31,7 +32,7 @@ func _process(delta):
 		if wait_counter < wait_time:
 			return
 		
-		f += delta
+		f += delta * fade_time
 		f = min(f, 1)
 	
 	if distance < far:

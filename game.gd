@@ -2,7 +2,7 @@ extends Node
 
 @export var level:Node2D
 
-@export var lives = 3:
+@export var lives = 101:
 	get:
 		return lives
 	set(value):
@@ -23,7 +23,7 @@ extends Node
 			
 func _ready():
 	connect_door()
-	change_level(1)
+	change_level(2)
 	
 	#😍
 func _process(delta):
