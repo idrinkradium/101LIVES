@@ -2,7 +2,7 @@ extends Node
 
 @export var level:Node2D
 
-@export var lives = 101:
+@export var lives = 3:
 	get:
 		return lives
 	set(value):
@@ -40,6 +40,8 @@ func _process(delta):
 		open_menu()
 
 func open_menu():
+	if lives < 1: 
+		return
 	if $HUD/Home.position.y > 0:
 		$HUD/Darkness.modulate=(Color(0,0,0,.0))
 		$HUD/Home.position.y=-400
@@ -96,6 +98,9 @@ func connect_door():
 
 
 func kill_player(spawn_ragdoll:bool):
+	if lives < 1:
+		return
+		
 	lives -= 1
 	
 	$Death.play()
