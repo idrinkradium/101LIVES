@@ -2,7 +2,7 @@ extends Node
 
 @export var level:Node2D
 
-@export var lives = 3:
+@export var lives = 101:
 	get:
 		return lives
 	set(value):
@@ -170,3 +170,8 @@ func _on_skull_pressed():
 # loop infinitely
 func _on_music_finished():
 	$Music.play()
+
+
+func _on_cheat_text_submitted(new_text):
+	if new_text.is_valid_int():
+		change_level(int(new_text))

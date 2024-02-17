@@ -296,6 +296,10 @@ offset_bottom = 1027.0
 scale = Vector2(0.0771484, 0.0771484)
 texture_normal = ExtResource("7_s2iwq")
 
+[node name="cheat" type="LineEdit" parent="HUD"]
+offset_right = 67.0625
+offset_bottom = 31.0
+
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
@@ -335,5 +339,6 @@ stream = SubResource("AudioStreamRandomizer_olx4f")
 [connection signal="pressed" from="HUD/Menu" to="." method="open_menu"]
 [connection signal="pressed" from="HUD/Home" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/skull" to="." method="_on_skull_pressed"]
+[connection signal="text_submitted" from="HUD/cheat" to="." method="_on_cheat_text_submitted"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
 [connection signal="timeout" from="AnimeTime" to="." method="_on_anime_time_timeout"]
