@@ -47,9 +47,9 @@ func open_menu():
 		$HUD/Restart.position.y=-435
 	else:
 		$HUD/Darkness.modulate=(Color(0,0,0,.5))
-		$HUD/Home.position.y=400
-		$HUD/Options.position.y=400
-		$HUD/Restart.position.y=435
+		$HUD/Home.position.y=422
+		$HUD/Options.position.y=408
+		$HUD/Restart.position.y=350
 
 func change_level(id: int):
 	var new_level = load("res://level{id}.tscn".format({"id":id}))
@@ -155,10 +155,12 @@ func _on_home_button_pressed():
 
 var easteregg= load("res://ui/skulleasteregg.png")
 func _on_skull_pressed():
+	$Quack.play()
 	if $HUD/skull.texture_normal == easteregg:
 		$HUD/skull.texture_normal = load("res://ui/skull.png")
 	else:
 		$HUD/skull.texture_normal=easteregg
+		
 
 # loop infinitely
 func _on_music_finished():

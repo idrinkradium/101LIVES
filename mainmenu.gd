@@ -28,23 +28,3 @@ func _on_ragdoll_timer_timeout():
 	
 	
 	add_child(instance)
-
-
-var play1 = load("res://ui/play1.png")
-var play2 = load("res://ui/play2.png")
-var options1 = load("res://ui/options1.png")
-var options2 = load("res://ui/options2.png")
-var levels1 = load("res://ui/levels1.png")
-var levels2 = load("res://ui/levels2.png")
-var _texture_toggle=true
-func _on_timer_timeout():
-	_texture_toggle=!_texture_toggle
-	if _texture_toggle==true:
-		$Play.texture_normal=play1
-		$Options.texture_normal=options1
-		$Levels.texture_normal=levels1
-	else:
-		$Play.texture_normal=play2
-		$Options.texture_normal=options2
-		$Levels.texture_normal=levels2
-	

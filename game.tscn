@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=43 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -15,15 +15,19 @@
 [ext_resource type="AudioStream" uid="uid://crng5oys5wmfd" path="res://Muzak/Muzak5.mp3" id="9_ocqy5"]
 [ext_resource type="Texture2D" uid="uid://blbw0sdq6ys40" path="res://ui/menu.png" id="10_ky1oy"]
 [ext_resource type="Script" path="res://clickybutton.gd" id="10_m2n0n"]
+[ext_resource type="Texture2D" uid="uid://ckebc5ow8wk8d" path="res://ui/home2.png" id="10_mmke6"]
 [ext_resource type="AudioStream" uid="uid://cwqrdfei2tcco" path="res://Muzak/Muzak6.mp3" id="10_rrefb"]
 [ext_resource type="AudioStream" uid="uid://dbf8ndvlk1k5k" path="res://Muzak/Muzak7.mp3" id="11_g4ikt"]
 [ext_resource type="Texture2D" uid="uid://dgy0x34a04ym7" path="res://ui/options1.png" id="11_hp460"]
 [ext_resource type="Texture2D" uid="uid://c1j3mwomtaovw" path="res://ui/menu2.png" id="11_j0a0n"]
 [ext_resource type="Texture2D" uid="uid://b5h402y252j27" path="res://ui/restart.png" id="12_utinm"]
 [ext_resource type="AudioStream" uid="uid://tl5ybac1gdq7" path="res://sounds/death.mp3" id="13_aj5lm"]
+[ext_resource type="Texture2D" uid="uid://bhxl351rqvxx8" path="res://ui/options2.png" id="14_4f7m1"]
+[ext_resource type="Texture2D" uid="uid://duceqsbiy7bol" path="res://ui/restart2.png" id="16_n78tj"]
 [ext_resource type="AudioStream" uid="uid://57aq2p603q37" path="res://sounds/endgrunt.mp3" id="18_0uw3j"]
 [ext_resource type="AudioStream" uid="uid://dorroardwrxu" path="res://sounds/trumpetofdeath.mp3" id="19_63csq"]
 [ext_resource type="Texture2D" uid="uid://jink76thjnsx" path="res://ui/home.png" id="20_yswpp"]
+[ext_resource type="AudioStream" uid="uid://buc2ajsgoc6v" path="res://sounds/quack.wav" id="28_uxdpc"]
 
 [sub_resource type="Curve" id="Curve_sdxtf"]
 min_value = -200.0
@@ -94,6 +98,13 @@ stream_5/stream = ExtResource("10_rrefb")
 stream_5/weight = 1.0
 stream_6/stream = ExtResource("11_g4ikt")
 stream_6/weight = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_olx4f"]
+random_pitch = 2.0
+random_volume_offset_db = 0.1
+streams_count = 1
+stream_0/stream = ExtResource("28_uxdpc")
+stream_0/weight = 1.0
 
 [node name="Game" type="Node" node_paths=PackedStringArray("level")]
 script = ExtResource("1_ldl6n")
@@ -208,13 +219,17 @@ anchor_left = 0.5
 anchor_top = -0.081
 anchor_right = 0.5
 anchor_bottom = -0.081
-offset_left = -240.0
-offset_top = -122.52
-offset_right = 614.0
-offset_bottom = 422.48
+offset_left = -354.0
+offset_top = -287.52
+offset_right = 347.0
+offset_bottom = -29.52
 grow_horizontal = 2
 scale = Vector2(0.55, 0.55)
+pivot_offset = Vector2(350, 128)
 texture_normal = ExtResource("20_yswpp")
+script = ExtResource("10_m2n0n")
+texture1 = ExtResource("20_yswpp")
+texture2 = ExtResource("10_mmke6")
 
 [node name="Menu" type="TextureButton" parent="HUD"]
 anchors_preset = 1
@@ -227,6 +242,7 @@ offset_bottom = 193.0
 grow_horizontal = 0
 scale = Vector2(0.34, 0.34)
 pivot_offset = Vector2(366, 140)
+focus_mode = 0
 action_mode = 0
 texture_normal = ExtResource("10_ky1oy")
 script = ExtResource("10_m2n0n")
@@ -234,30 +250,45 @@ texture1 = ExtResource("10_ky1oy")
 texture2 = ExtResource("11_j0a0n")
 
 [node name="Options" type="TextureButton" parent="HUD"]
-offset_left = 1007.0
-offset_top = -256.0
-offset_right = 1861.0
-offset_bottom = 224.0
+offset_left = 898.0
+offset_top = -537.0
+offset_right = 1640.0
+offset_bottom = -281.0
 scale = Vector2(0.55, 0.55)
+pivot_offset = Vector2(360, 125)
 texture_normal = ExtResource("11_hp460")
+script = ExtResource("10_m2n0n")
+texture1 = ExtResource("11_hp460")
+texture2 = ExtResource("14_4f7m1")
 
 [node name="Home" type="TextureButton" parent="HUD"]
-offset_left = 459.0
-offset_top = -186.0
-offset_right = 1160.0
-offset_bottom = 72.0
+offset_left = 317.0
+offset_top = -527.0
+offset_right = 1018.0
+offset_bottom = -269.0
 scale = Vector2(0.55, 0.55)
+pivot_offset = Vector2(350, 125)
 texture_normal = ExtResource("20_yswpp")
+script = ExtResource("10_m2n0n")
+rotation_change = -4
+texture1 = ExtResource("20_yswpp")
+texture2 = ExtResource("10_mmke6")
 
 [node name="Restart" type="TextureButton" parent="HUD"]
-offset_left = 874.0
-offset_top = -214.0
-offset_right = 1354.0
-offset_bottom = 266.0
+offset_left = 774.0
+offset_top = -595.0
+offset_right = 1158.0
+offset_bottom = -227.0
 scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(190, 190)
 texture_normal = ExtResource("12_utinm")
+script = ExtResource("10_m2n0n")
+rotation_change = 80
+texture1 = ExtResource("12_utinm")
+texture2 = ExtResource("16_n78tj")
 
 [node name="skull" type="TextureButton" parent="HUD"]
+z_index = -1
 offset_left = 12.0
 offset_top = 3.0
 offset_right = 1036.0
@@ -296,6 +327,9 @@ volume_db = -7.0
 [node name="AnimeTime" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="Quack" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_olx4f")
 
 [connection signal="pressed" from="HUD/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/Menu" to="." method="open_menu"]

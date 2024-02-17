@@ -21,7 +21,7 @@ func _process(delta):
 
 	var distance = abs(player.position.x - distance_object.position.x)
 	
-	print(" f:", f, " wait_distance:", wait_distance, " wait_counter:", wait_counter, " distance:", distance)
+	#print(" f:", f, " wait_distance:", wait_distance, " wait_counter:", wait_counter, " distance:", distance)
 	if wait_time > 0:
 		if wait_distance < distance:
 			return

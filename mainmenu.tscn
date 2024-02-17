@@ -1,11 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnj4jx004byma"]
+[gd_scene load_steps=15 format=3 uid="uid://dnj4jx004byma"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_1ra5l"]
 [ext_resource type="Texture2D" uid="uid://b6tk65u5eo2y0" path="res://ui/101lives logo.png" id="2_ot5ck"]
 [ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/play1.png" id="2_q0lq7"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="3_uc0vy"]
 [ext_resource type="Texture2D" uid="uid://dgy0x34a04ym7" path="res://ui/options1.png" id="4_rsc4b"]
+[ext_resource type="Script" path="res://clickybutton.gd" id="5_2h3nx"]
 [ext_resource type="Texture2D" uid="uid://bej33vxk5ktur" path="res://ui/levels1.png" id="5_rtmgw"]
+[ext_resource type="Texture2D" uid="uid://pr08fmnl4p4v" path="res://ui/play2.png" id="6_jmhlr"]
+[ext_resource type="Texture2D" uid="uid://bhxl351rqvxx8" path="res://ui/options2.png" id="8_qapfc"]
+[ext_resource type="Texture2D" uid="uid://bxc3pau03silm" path="res://ui/levels2.png" id="10_4k6mt"]
 
 [sub_resource type="Gradient" id="Gradient_6of1j"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -75,24 +79,28 @@ text = "best game ever!!!!!!!!"
 
 [node name="Play" type="TextureButton" parent="."]
 anchors_preset = -1
-anchor_left = 0.495
-anchor_top = 0.56
-anchor_right = 0.495
-anchor_bottom = 0.56
-offset_left = -234.4
-offset_top = -125.8
-offset_right = 235.6
-offset_bottom = 129.2
+anchor_left = 0.492
+anchor_top = 0.569
+anchor_right = 0.492
+anchor_bottom = 0.569
+offset_left = -343.64
+offset_top = -127.52
+offset_right = 388.36
+offset_bottom = 116.48
+scale = Vector2(0.526632, 0.526632)
+pivot_offset = Vector2(356, 140)
 texture_normal = ExtResource("2_q0lq7")
-ignore_texture_size = true
-stretch_mode = 0
+script = ExtResource("5_2h3nx")
+rotation_change = 4
+texture1 = ExtResource("2_q0lq7")
+texture2 = ExtResource("6_jmhlr")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Play"]
 collision_layer = 255
 collision_mask = 255
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Play/StaticBody2D"]
-polygon = PackedVector2Array(58, 79, 100, 78, 147, 78, 185, 71, 250, 67, 332, 66, 413, 71, 437, 79, 436, 125, 416, 171, 373, 185, 273, 185, 59, 180, 41, 165)
+polygon = PackedVector2Array(36.0782, 30.3817, 106.336, 26.584, 163.302, 28.4829, 229.762, 18.9885, 307.615, 13.292, 442.434, 7.59546, 660.803, 11.3932, 719.668, 30.3817, 715.87, 150.01, 675.994, 216.47, 362.682, 229.762, 248.751, 220.268, 37.9771, 224.066, 9.49414, 161.403)
 
 [node name="Options" type="TextureButton" parent="."]
 anchors_preset = -1
@@ -100,45 +108,49 @@ anchor_left = 0.23
 anchor_top = 0.569
 anchor_right = 0.23
 anchor_bottom = 0.569
-offset_left = -225.6
-offset_top = -118.52
-offset_right = 220.4
-offset_bottom = 118.48
+offset_left = -364.6
+offset_top = -120.52
+offset_right = 377.4
+offset_bottom = 135.48
+scale = Vector2(0.538251, 0.538251)
+pivot_offset = Vector2(380, 130)
 texture_normal = ExtResource("4_rsc4b")
-ignore_texture_size = true
-stretch_mode = 0
+script = ExtResource("5_2h3nx")
+rotation_change = -2
+texture1 = ExtResource("4_rsc4b")
+texture2 = ExtResource("8_qapfc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Options"]
 collision_layer = 255
 collision_mask = 255
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Options/StaticBody2D"]
-polygon = PackedVector2Array(382, 63, 404, 69, 411, 90, 414, 153, 49, 172, 43, 128, 47, 79, 129, 63)
+position = Vector2(-63.1676, -104.041)
+polygon = PackedVector2Array(373.432, 126.335, 756.153, 124.477, 787.737, 156.061, 780.305, 313.98, 679.243, 318.145, 104.041, 341.848, 78.0305, 169.066, 81.7463, 144.914, 222.944, 124.477)
 
 [node name="Levels" type="TextureButton" parent="."]
 anchors_preset = -1
-anchor_left = 0.762
-anchor_top = 0.556
-anchor_right = 0.762
-anchor_bottom = 0.556
-offset_left = -220.04
-offset_top = -123.48
-offset_right = 239.96
-offset_bottom = 126.52
+anchor_left = 0.755
+anchor_top = 0.561
+anchor_right = 0.755
+anchor_bottom = 0.561
+offset_left = -349.6
+offset_top = -130.88
+offset_right = 386.4
+offset_bottom = 130.12
+scale = Vector2(0.540381, 0.540381)
+pivot_offset = Vector2(360, 139)
 texture_normal = ExtResource("5_rtmgw")
-ignore_texture_size = true
-stretch_mode = 0
+script = ExtResource("5_2h3nx")
+rotation_change = 7
+texture1 = ExtResource("5_rtmgw")
+texture2 = ExtResource("10_4k6mt")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Levels"]
 collision_layer = 255
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/StaticBody2D"]
-polygon = PackedVector2Array(63, 80, 113, 70, 218, 68, 342, 62, 413, 70, 428, 135, 424, 167, 262, 181, 45, 182, 53, 122)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.3
-autostart = true
+polygon = PackedVector2Array(42.5623, 40.712, 129.538, 31.4593, 270.179, 29.6087, 408.97, 12.9538, 597.726, 16.6548, 701.356, 29.6087, 714.31, 192.457, 643.99, 227.617, 18.5051, 235.019, 27.7578, 122.136)
 
 [connection signal="timeout" from="RagdollTimer" to="." method="_on_ragdoll_timer_timeout"]
 [connection signal="pressed" from="Play" to="." method="_on_play_button_pressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
