@@ -15,20 +15,27 @@ func _process(delta):
 func _on_power_changed(new_power):
 	if powered == new_power:
 		return
-	var y_rotation_velocity = player_velocity * cos((3.14159) * (rotation_degrees/180))
-	var x_rotation_velocity = player_velocity * sin((3.14159) * (rotation_degrees/180))
-	print(x_rotation_velocity,"  ",y_rotation_velocity)
-	powered = new_power
 	
+	powered = new_power
+
 	if powered:
 		$PistonOut.play()
+		
+		for collision in $Piston/ShapeCast2D.collision_result:
+			if not collision.collider is CharacterBody2D:
+				continue
+			
+			var r = rotation_degrees/180
+			var y_rotation_velocity = player_velocity * cos(PI * r)
+			var x_rotation_velocity = player_velocity * sin(PI * r)
+			#print(x_rotation_velocity,"  ",y_rotation_velocity)
+			
+			var character = collision.collider as CharacterBody2D
+			character.velocity.y = -y_rotation_velocity
+			character.recoil = x_rotation_velocity
 	else:
 		$PistonIn.play()
-	if powered:
-		for collision in $Piston/ShapeCast2D.collision_result:
-			if collision.collider is CharacterBody2D:
-				collision.collider.velocity.y = -y_rotation_velocity
-				collision.collider.velocity.x = x_rotation_velocity
+
 
 	var tween = create_tween()
 	
@@ -37,6 +44,7 @@ func _on_power_changed(new_power):
 	
 	new_y = -.00139 * height if powered else 0
 	tween.parallel().tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
+	
 	var finished = func():
 		$SafezoneTimer.start()
 

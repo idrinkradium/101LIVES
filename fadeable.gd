@@ -39,5 +39,5 @@ func _process(delta):
 		modulate.a = 1 * f
 	else:
 		modulate.a = ((-spread/100000)*((distance-far)**2)+1) * f
-		print(name, modulate.a)
+		#print(name, modulate.a)
 

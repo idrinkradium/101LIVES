@@ -9,21 +9,11 @@ extends Node
 		lives = value
 		$HUD/Lives.text = str(lives)
 		if lives<1:
-			$Music.stop()
-			$Grunt.play()
-			$Trumpet.play()
-			var tween = create_tween()
-			tween.parallel().tween_property($HUD/Darkness, "modulate", Color(0,0,0,.5), 2)
-			tween.parallel().tween_property($"HUD/Game Over", "position", Vector2($"HUD/Game Over".position.x , 180),5  )
-			
-			var finished = func():
-				$HUD/HomeButton.position=Vector2($HUD/HomeButton.position.x, 420)
-
-			tween.finished.connect(finished)
+			$HUD.game_over()
 			
 func _ready():
 	connect_door()
-	change_level(2)
+	#change_level(4)
 	
 	#😍
 func _process(delta):
@@ -36,22 +26,8 @@ func _process(delta):
 		
 	if Input.is_action_just_pressed("ui_page_up"):
 		$Player.position = Vector2($MouseBox.position) 
-	if Input.is_action_just_pressed("ui_cancel"):
-		open_menu()
+		
 
-func open_menu():
-	if lives < 1: 
-		return
-	if $HUD/Home.position.y > 0:
-		$HUD/Darkness.modulate=(Color(0,0,0,.0))
-		$HUD/Home.position.y=-400
-		$HUD/Options.position.y=-400
-		$HUD/Restart.position.y=-435
-	else:
-		$HUD/Darkness.modulate=(Color(0,0,0,.5))
-		$HUD/Home.position.y=422
-		$HUD/Options.position.y=408
-		$HUD/Restart.position.y=350
 
 func change_level(id: int):
 	var new_level = load("res://level{id}.tscn".format({"id":id}))
@@ -130,48 +106,13 @@ func kill_player(spawn_ragdoll:bool):
 	
 		return instance
 
-func _input(event):
-	#print(event)
-	pass
-	
 func _physics_process(delta):
 	$MouseBox.position = get_viewport().canvas_transform.affine_inverse() * get_viewport().get_mouse_position()
 	
 	if $Player.position.y >= 2000:
 		kill_player(false)
 		$Player.velocity=Vector2.ZERO
-
-func _on_mute_music_pressed():
-	$Music.stream_paused = !$Music.stream_paused
-	
-var home1= load("res://ui/home.png")
-var home2= load("res://ui/home2.png")
-var _texture_toggle=true
-func _on_anime_time_timeout():
-	_texture_toggle=!_texture_toggle
-	if _texture_toggle==true:
-		$HUD/HomeButton.texture_normal=home1
-	else:
-		$HUD/HomeButton.texture_normal=home2
-
-
-func _on_home_button_pressed():
-	get_tree().change_scene_to_file("res://mainmenu.tscn")
-
-var easteregg= load("res://ui/skulleasteregg.png")
-func _on_skull_pressed():
-	$Quack.play()
-	if $HUD/skull.texture_normal == easteregg:
-		$HUD/skull.texture_normal = load("res://ui/skull.png")
-	else:
-		$HUD/skull.texture_normal=easteregg
 		
-
 # loop infinitely
 func _on_music_finished():
 	$Music.play()
-
-
-func _on_cheat_text_submitted(new_text):
-	if new_text.is_valid_int():
-		change_level(int(new_text))

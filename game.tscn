@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=44 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://b5h4ayeo8na53" path="res://Muzak/Muzak1.mp3" id="5_yu0lv"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="6_kkr6p"]
 [ext_resource type="AudioStream" uid="uid://ds6sboud8bj24" path="res://Muzak/Muzak2.mp3" id="6_m11ex"]
+[ext_resource type="Script" path="res://HUD.gd" id="6_vytpp"]
 [ext_resource type="AudioStream" uid="uid://d1k4ibrfax3ei" path="res://Muzak/Muzak3.mp3" id="7_6lh3q"]
 [ext_resource type="Texture2D" uid="uid://denf0vbowjkr3" path="res://ui/skull.png" id="7_s2iwq"]
 [ext_resource type="AudioStream" uid="uid://bppv51nv4ucnd" path="res://Muzak/Muzak4.mp3" id="8_exxjx"]
@@ -165,6 +166,8 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_sd6va")
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("6_vytpp")
 
 [node name="Gradient" type="TextureRect" parent="HUD"]
 anchors_preset = 15
@@ -302,6 +305,7 @@ offset_left = 4.0
 offset_top = 1042.0
 offset_right = 71.0625
 offset_bottom = 1073.0
+focus_mode = 1
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -331,17 +335,12 @@ volume_db = -2.0
 stream = ExtResource("19_63csq")
 volume_db = -7.0
 
-[node name="AnimeTime" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
 [node name="Quack" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_olx4f")
 
-[connection signal="pressed" from="HUD/HomeButton" to="." method="_on_home_button_pressed"]
-[connection signal="pressed" from="HUD/Menu" to="." method="open_menu"]
-[connection signal="pressed" from="HUD/Home" to="." method="_on_home_button_pressed"]
-[connection signal="pressed" from="HUD/skull" to="." method="_on_skull_pressed"]
-[connection signal="text_submitted" from="HUD/cheat" to="." method="_on_cheat_text_submitted"]
+[connection signal="pressed" from="HUD/HomeButton" to="HUD" method="_on_home_button_pressed"]
+[connection signal="pressed" from="HUD/Menu" to="HUD" method="open_menu"]
+[connection signal="pressed" from="HUD/Home" to="HUD" method="_on_home_button_pressed"]
+[connection signal="pressed" from="HUD/skull" to="HUD" method="_on_skull_pressed"]
+[connection signal="text_submitted" from="HUD/cheat" to="HUD" method="_on_cheat_text_submitted"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]
-[connection signal="timeout" from="AnimeTime" to="." method="_on_anime_time_timeout"]
