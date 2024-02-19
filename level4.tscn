@@ -14,7 +14,7 @@
 script = ExtResource("1_4lysh")
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-position = Vector2(145, 356)
+position = Vector2(160, 288)
 
 [node name="CameraSpawn" type="Node2D" parent="."]
 

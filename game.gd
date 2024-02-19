@@ -12,8 +12,7 @@ extends Node
 			$HUD.game_over()
 			
 func _ready():
-	connect_door()
-	#change_level(4)
+	change_level(1)
 	
 	#😍
 func _process(delta):
@@ -33,7 +32,8 @@ func change_level(id: int):
 	var new_level = load("res://level{id}.tscn".format({"id":id}))
 	var instance = new_level.instantiate()
 	
-	level.queue_free()
+	if level:
+		level.queue_free()
 	add_child(instance)
 	level = instance
 	

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_1ra5l"]
 [ext_resource type="Texture2D" uid="uid://b6tk65u5eo2y0" path="res://ui/101lives logo.png" id="2_ot5ck"]
-[ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/play1.png" id="2_q0lq7"]
+[ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/Play1.png" id="2_q0lq7"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="3_uc0vy"]
 [ext_resource type="Texture2D" uid="uid://dgy0x34a04ym7" path="res://ui/options1.png" id="4_rsc4b"]
 [ext_resource type="Script" path="res://clickybutton.gd" id="5_2h3nx"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=79 format=3 uid="uid://scmvwqnfs8pa"]
 
 [ext_resource type="Texture2D" uid="uid://fuyrc4at53ht" path="res://101livesbasechar.png" id="1_bfcmr"]
-[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_mf3vi"]
+[ext_resource type="Script" path="res://playerscene.gd" id="1_dp6jx"]
 [ext_resource type="Texture2D" uid="uid://cb2yn7w1ouwqw" path="res://Animation Frames/jump/jump0000.png" id="3_qhwch"]
 [ext_resource type="Texture2D" uid="uid://dkmj6oomuwiud" path="res://Animation Frames/jump/jump0002.png" id="5_nst0h"]
 [ext_resource type="Texture2D" uid="uid://bxdwk5tuaku6j" path="res://Animation Frames/jump/jump0010.png" id="13_xx7lb"]
@@ -379,7 +379,7 @@ collision_mask = 253
 floor_constant_speed = true
 floor_max_angle = 1.0472
 platform_on_leave = 2
-script = ExtResource("1_mf3vi")
+script = ExtResource("1_dp6jx")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 scale = Vector2(1.165, 1.165)

@@ -1,10 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=43 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_3wcw7"]
 [ext_resource type="Texture2D" uid="uid://b4irab1i2nf0t" path="res://objects/poof.png" id="4_a5x07"]
-[ext_resource type="PackedScene" uid="uid://jiy6adpvuo7a" path="res://level1.tscn" id="4_ivtos"]
 [ext_resource type="AudioStream" uid="uid://b5h4ayeo8na53" path="res://Muzak/Muzak1.mp3" id="5_yu0lv"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="6_kkr6p"]
 [ext_resource type="AudioStream" uid="uid://ds6sboud8bj24" path="res://Muzak/Muzak2.mp3" id="6_m11ex"]
@@ -107,9 +106,8 @@ streams_count = 1
 stream_0/stream = ExtResource("28_uxdpc")
 stream_0/weight = 1.0
 
-[node name="Game" type="Node" node_paths=PackedStringArray("level")]
+[node name="Game" type="Node"]
 script = ExtResource("1_ldl6n")
-level = NodePath("Level1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 328)
@@ -155,8 +153,6 @@ scale_curve_x = null
 scale_curve_y = SubResource("Curve_0h2wl")
 color = Color(1, 1, 1, 0.278431)
 color_ramp = SubResource("Gradient_njrg2")
-
-[node name="Level1" parent="." instance=ExtResource("4_ivtos")]
 
 [node name="MouseBox" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -327,7 +323,7 @@ stream = ExtResource("13_aj5lm")
 volume_db = -9.0
 pitch_scale = 0.95
 
-[node name="Grunt" type="AudioStreamPlayer2D" parent="."]
+[node name="Grunt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_0uw3j")
 volume_db = -2.0
 
