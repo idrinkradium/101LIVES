@@ -122,8 +122,8 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("11_uifk5")
 script = ExtResource("6_7kagj")
 should_fade = false
-far = 999.0
-spread = 99.0
+far = 2000.0
+spread = 200.0
 wait_distance = 999
 
 [connection signal="power_changed" from="BottomSpikeRetractor" to="." method="_on_spike_retractor_power_changed"]

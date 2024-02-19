@@ -58,6 +58,7 @@ theme_override_font_sizes/font_size = 100
 text = "go back"
 horizontal_alignment = 1
 script = ExtResource("9_y7ueg")
+should_fade = false
 
 [node name="roast3" type="Label" parent="."]
 z_index = 10
@@ -72,13 +73,15 @@ theme_override_font_sizes/font_size = 100
 text = "wrong way"
 horizontal_alignment = 1
 script = ExtResource("9_y7ueg")
+should_fade = false
 
 [node name="Level1Tip3" type="Sprite2D" parent="."]
 position = Vector2(296, 160)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("7_sn0kc")
 script = ExtResource("9_y7ueg")
-far = 300.0
+far = 1500.0
+spread = 100.0
 
 [node name="Pushtip" type="Sprite2D" parent="."]
 position = Vector2(552, 316)

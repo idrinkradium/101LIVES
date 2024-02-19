@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ded7p1itmbmnm"]
+[gd_scene load_steps=11 format=3 uid="uid://ded7p1itmbmnm"]
 
 [ext_resource type="Script" path="res://level4.gd" id="1_4lysh"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_e4tag"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://csjwjt3xwypqj" path="res://sounds/waterup.mp3" id="7_rxwfp"]
 [ext_resource type="Script" path="res://powerable.gd" id="7_tymqq"]
 [ext_resource type="AudioStream" uid="uid://dojbrmvbrdao2" path="res://sounds/waterdown.mp3" id="8_4oh3i"]
+[ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="10_uq7bd"]
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_4lysh")
@@ -60,6 +61,10 @@ script = ExtResource("7_tymqq")
 
 [node name="WaterLevel2" type="Node2D" parent="."]
 script = ExtResource("7_tymqq")
+
+[node name="Piston" parent="." instance=ExtResource("10_uq7bd")]
+position = Vector2(304, 408)
+rotation = -0.349066
 
 [connection signal="power_changed" from="WaterLevel1" to="." method="_on_water_level_1_power_changed"]
 [connection signal="power_changed" from="WaterLevel2" to="." method="_on_water_level_2_power_changed"]

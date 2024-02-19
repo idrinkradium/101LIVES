@@ -18,7 +18,7 @@ var is_running = false
 var is_idling =false
 var input_direction = 0
 var stoptime=0
-
+var previnputdir = 0
 func _physics_process(delta):
 	var is_jumping = Input.is_action_just_pressed("w") and (is_on_floor() or in_water)
 	var is_falling = velocity.y > 0 and not is_on_floor()
@@ -38,12 +38,16 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		if in_water == true:
 			velocity.y = JUMP_VELOCITY*1.2
-			
+	previnputdir = input_direction
 	input_direction = Input.get_axis("a", "d")
-	if input_direction:
-		velocity.x = input_direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	if input_direction!=0:
+		velocity.x += input_direction * SPEED * delta
+	elif input_direction == 0:
+		velocity.x -= SPEED * delta
+	#if input_direction!=0:
+		#velocity.x = input_direction * SPEED
+	#elif input_direction==0 and is_falling:
+		#velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
 			
@@ -95,7 +99,8 @@ func _physics_process(delta):
 		sprite.play("idle")
 	
 	previously_on_floor = is_on_floor()
-
+	print(velocity.x," ",velocity.y)
+	print(input_direction)
 func destroy_limb(ragdoll, name, velocity):
 	var limb = ragdoll.get_node(name)
 	var vy = -velocity.y

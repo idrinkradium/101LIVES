@@ -298,8 +298,10 @@ focus_mode = 0
 texture_normal = ExtResource("7_s2iwq")
 
 [node name="cheat" type="LineEdit" parent="HUD"]
-offset_right = 67.0625
-offset_bottom = 31.0
+offset_left = 4.0
+offset_top = 1042.0
+offset_right = 71.0625
+offset_bottom = 1073.0
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
