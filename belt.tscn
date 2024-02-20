@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlisxhr5e8eo"]
+[gd_scene load_steps=4 format=3 uid="uid://b4yddv3ti47u"]
 
 [ext_resource type="Texture2D" uid="uid://dl1h33xumrhsy" path="res://objects/conveyormiddle.png" id="1_gl7jl"]
 [ext_resource type="AudioStream" uid="uid://tc0jrubyyrp" path="res://sounds/conveyorbelt.mp3" id="2_y5koy"]

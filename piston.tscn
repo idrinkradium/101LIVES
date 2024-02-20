@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bapgdvqlnxa5f" path="res://sounds/pistonin.mp3" id="5_xf3mb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6io66"]
-size = Vector2(400, 20)
+size = Vector2(400, 100)
 
 [node name="Piston" type="Node2D"]
 script = ExtResource("1_711en")
@@ -30,10 +30,10 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_nb36i")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="Piston"]
-position = Vector2(0, -62)
+position = Vector2(0, -76)
 scale = Vector2(0.2, 0.2)
 shape = SubResource("RectangleShape2D_6io66")
-target_position = Vector2(0, 180)
+target_position = Vector2(0, 200)
 collision_mask = 253
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Piston"]
