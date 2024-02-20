@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dr7pmltrvbshe" path="res://tips/level1tip2.png" id="6_0dqj1"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="6_jrwfq"]
 [ext_resource type="Script" path="res://fadeable.gd" id="7_6qd8g"]
-[ext_resource type="PackedScene" path="res://belt.tscn" id="7_vyeu0"]
+[ext_resource type="PackedScene" uid="uid://b4yddv3ti47u" path="res://belt.tscn" id="7_vyeu0"]
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
 
 [node name="Level1" type="Node2D"]
@@ -53,5 +53,16 @@ autostart = true
 
 [node name="Belt" parent="." instance=ExtResource("7_vyeu0")]
 position = Vector2(424, 449)
+end = true
+speed = 999
+
+[node name="Belt2" parent="." instance=ExtResource("7_vyeu0")]
+position = Vector2(328, 449)
+speed = 999
+
+[node name="Belt3" parent="." instance=ExtResource("7_vyeu0")]
+position = Vector2(232, 449)
+end = true
+flip = true
 
 [connection signal="timeout" from="TipTimer" to="." method="_on_tip_timer_timeout"]
