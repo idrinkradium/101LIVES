@@ -12,7 +12,7 @@ extends Node
 			$HUD.game_over()
 			
 func _ready():
-	change_level(1)
+	change_level(5)
 	
 	#😍
 func _process(delta):

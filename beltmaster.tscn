@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://lckxqoyv7fn"]
+
+[ext_resource type="Script" path="res://beltmaster.gd" id="1_7aujt"]
+[ext_resource type="AudioStream" uid="uid://busmainlonxjj" path="res://sounds/conveyorbelt.ogg" id="2_7k12e"]
+
+[node name="BeltMaster" type="Node2D"]
+script = ExtResource("1_7aujt")
+
+[node name="beltnoise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_7k12e")
+volume_db = -14.0
+autoplay = true
+attenuation = 1.18921
+
+[connection signal="finished" from="beltnoise" to="." method="_on_beltnoise_finished"]

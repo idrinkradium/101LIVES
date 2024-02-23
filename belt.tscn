@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://belt.gd" id="1_641ig"]
 [ext_resource type="Texture2D" uid="uid://dl1h33xumrhsy" path="res://objects/conveyormiddle.png" id="1_gl7jl"]
-[ext_resource type="AudioStream" uid="uid://tc0jrubyyrp" path="res://sounds/conveyorbelt.mp3" id="2_y5koy"]
+[ext_resource type="Texture2D" uid="uid://dr17kyqv1l66o" path="res://objects/conveyorball.png" id="4_xwq7h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbvdw"]
 size = Vector2(96, 89)
@@ -23,6 +23,9 @@ constant_linear_velocity = Vector2(100, 0)
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_cbvdw")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_y5koy")
-volume_db = -6.0
+[node name="BeltBall" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(0, 2)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("4_xwq7h")
+offset = Vector2(0, -11)
