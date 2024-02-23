@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq0r10no7tq1w"]
+[gd_scene load_steps=11 format=3 uid="uid://cq0r10no7tq1w"]
 
 [ext_resource type="Shader" path="res://water/water_shader.gdshader" id="1"]
 [ext_resource type="Script" path="res://water/Water_Body.gd" id="2"]
@@ -13,8 +13,6 @@ shader = ExtResource("1")
 shader_parameter/tint = Color(0.113725, 0.858824, 1, 1)
 
 [sub_resource type="Curve2D" id="1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7hqom"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xt6nh"]
 random_pitch = 1.05
@@ -53,7 +51,6 @@ linear_damp_space_override = 2
 linear_damp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water_Body_Area"]
-shape = SubResource("RectangleShape2D_7hqom")
 
 [node name="Splashing" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_xt6nh")

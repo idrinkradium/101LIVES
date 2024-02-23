@@ -26,10 +26,6 @@ var water_lenght = distance_between_springs * spring_number
 #the body of water depth
 @export var depth = 200
 @export var bruh = 999
-var target_height = global_position.y
-
-#the position of the bottom of our body of water
-var bottom = target_height + (depth)
 
 #reference to our polygon2D
 @onready var water_polygon = $Water_Polygon
@@ -72,11 +68,12 @@ func _ready():
 
 	# area position stays right in the middle of the water body
 	# the extents of the rectangle are half of the size of the water body
-	var position = Vector2(total_lenght /2, 13+depth/2 )
+	var pos = Vector2(total_lenght /2, 13+depth/2 )
 	var rect_extents = Vector2(total_lenght , depth )
 	
 	#sets the position and the extents of the area and the collisionshape
-	water_body_area.position = position
+	water_body_area.position = pos
+	collisionShape.shape = RectangleShape2D.new()
 	collisionShape.shape.size = rect_extents
 
 func _physics_process(delta):
@@ -167,24 +164,21 @@ func splash(index, speed):
 		springs[index].velocity += speed
 	pass
 
+func play_splash(velocity):
+	$Splashing.volume_db=(velocity.y/150)-12
+	if $Splashing.volume_db>.5:
+		$Splashing.volume_db=.45
+	$Splashing.pitch_scale=(-.0005*velocity.y)+1.5
+	if $Splashing.pitch_scale<.7:
+		$Splashing.pitch_scale=.71
+	$Splashing.play()
+		
 func _on_Water_Body_Area_body_entered(body):
 	if body is CharacterBody2D:
 		body.in_water = true
-		$Splashing.volume_db=(body.velocity.y/150)-12
-		if $Splashing.volume_db>.5:
-			$Splashing.volume_db=.45
-		$Splashing.pitch_scale=(-.0005*body.velocity.y)+1.5
-		if $Splashing.pitch_scale<.7:
-			$Splashing.pitch_scale=.71
-		$Splashing.play()
+		play_splash(body.velocity)
 	elif body is RigidBody2D and body.name=="topleftleg" and body.linear_velocity.y>150:
-		$Splashing.volume_db=(body.linear_velocity.y/150)-12
-		if $Splashing.volume_db>.5:
-			$Splashing.volume_db=.45
-		$Splashing.pitch_scale=(-.0005*body.linear_velocity.y)+1.5
-		if $Splashing.pitch_scale<.7:
-			$Splashing.pitch_scale=.71
-		$Splashing.play()
+		play_splash(body.linear_velocity)
 	#
 	#creates a instace of the particle system
 	var s = splash_particle.instantiate()
