@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=46 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -72,6 +72,17 @@ colors = PackedColorArray(0.74978, 0.74978, 0.74978, 1, 0.942823, 0.942823, 0.94
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 radius = 3.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bc2if"]
+radius = 50.0
+
+[sub_resource type="Gradient" id="Gradient_g5kcd"]
+offsets = PackedFloat32Array(0, 0.0538117, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.897059, 0.102941, 0, 1, 0, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q438n"]
+gradient = SubResource("Gradient_g5kcd")
+width = 100
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5da5w"]
 
@@ -160,6 +171,18 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
 shape = SubResource("CircleShape2D_sd6va")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="MouseBox"]
+shape = SubResource("CircleShape2D_bc2if")
+target_position = Vector2(0, 0)
+collision_mask = 253
+
+[node name="TextureRect" type="TextureRect" parent="MouseBox"]
+visible = false
+z_index = 999
+offset_right = 100.0
+offset_bottom = 17.0
+texture = SubResource("GradientTexture1D_q438n")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3

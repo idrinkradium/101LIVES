@@ -11,6 +11,9 @@ extends Node
 		if lives<1:
 			$HUD.game_over()
 			
+
+var explosion_charge = 0
+
 func _ready():
 	change_level(5)
 	
@@ -112,6 +115,20 @@ func _physics_process(delta):
 	if $Player.position.y >= 2000:
 		kill_player(false)
 		$Player.velocity=Vector2.ZERO
+		
+	if Input.is_action_pressed("Explode"):
+		explosion_charge += 2
+		explosion_charge = clamp(explosion_charge, 0, 100)
+		
+		$MouseBox/TextureRect.texture.gradient.offsets[1] = (explosion_charge/100.0)
+		$MouseBox/TextureRect.visible=true
+		
+	if Input.is_action_just_released("Explode"):
+		for collision in $MouseBox/ShapeCast2D.collision_result:
+			print(collision.collider)
+		
+		explosion_charge=0
+		$MouseBox/TextureRect.visible=false
 		
 # loop infinitely
 func _on_music_finished():

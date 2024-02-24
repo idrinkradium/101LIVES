@@ -36,6 +36,7 @@ func _physics_process(delta):
 	var finished = func():
 		for powerable in powerables:
 			powerable.power_changed.emit(powered)
+			
 	
 	tween.finished.connect(finished)
 	
