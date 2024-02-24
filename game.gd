@@ -115,6 +115,8 @@ func destroy_limb(body,name):
 		var joint = limb.get_node_or_null(name + "joint")
 		if joint:
 			joint.queue_free()
+			
+var explosion_stream = load("res://sounds/explosion.mp3")
 func _physics_process(delta):
 	$MouseBox.position = get_viewport().canvas_transform.affine_inverse() * get_viewport().get_mouse_position()
 	
@@ -125,13 +127,22 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Explode"):
 		explosion_charge += 2
 		explosion_charge = clamp(explosion_charge, 0, 100)
-		$MouseBox/explosion.pitch_scale = -.0025*(explosion_charge)+1.1
-		$MouseBox/explosion.volume_db =.07*(explosion_charge)-13
-		$MouseBox/explosion.play()
+		
 		$MouseBox/TextureRect.texture.gradient.offsets[1] = (explosion_charge/100.0)
 		$MouseBox/TextureRect.visible=true
 		
 	if Input.is_action_just_released("Explode"):
+		var explosion_player = AudioStreamPlayer2D.new()
+		explosion_player.stream = explosion_stream
+		var finished = func():
+			explosion_player.queue_free()
+		explosion_player.finished.connect(finished)
+		$MouseBox.add_child(explosion_player)
+		
+		explosion_player.pitch_scale = -.0025*(explosion_charge)+1.1
+		explosion_player.volume_db =.07*(explosion_charge)-13
+		explosion_player.play()
+		
 		for collision in $MouseBox/ShapeCast2D.collision_result:
 			if not collision.collider is RigidBody2D:
 				continue
