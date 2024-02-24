@@ -108,7 +108,13 @@ func kill_player(spawn_ragdoll:bool):
 		level.add_child(instance)
 	
 		return instance
-
+func destroy_limb(body,name):
+	if body.name == name:
+		var ragdoll = body.get_parent()
+		var limb = ragdoll.get_node(name)
+		var joint = limb.get_node_or_null(name + "joint")
+		if joint:
+			joint.queue_free()
 func _physics_process(delta):
 	$MouseBox.position = get_viewport().canvas_transform.affine_inverse() * get_viewport().get_mouse_position()
 	
@@ -119,14 +125,35 @@ func _physics_process(delta):
 	if Input.is_action_pressed("Explode"):
 		explosion_charge += 2
 		explosion_charge = clamp(explosion_charge, 0, 100)
-		
+		$MouseBox/explosion.pitch_scale = -.0025*(explosion_charge)+1.1
+		$MouseBox/explosion.volume_db =.07*(explosion_charge)-13
+		$MouseBox/explosion.play()
 		$MouseBox/TextureRect.texture.gradient.offsets[1] = (explosion_charge/100.0)
 		$MouseBox/TextureRect.visible=true
 		
 	if Input.is_action_just_released("Explode"):
 		for collision in $MouseBox/ShapeCast2D.collision_result:
-			print(collision.collider)
-		
+			if not collision.collider is RigidBody2D:
+				continue
+			var direction=$MouseBox.position.direction_to(collision.collider.global_position)
+			var distance=$MouseBox.position.distance_to(collision.collider.global_position)
+			var distancemulti=-.00333*(distance)+1
+			var explosionmulti=10*explosion_charge
+			var magnitude=direction*distancemulti*explosion_charge
+			collision.collider.apply_impulse(magnitude*8)
+			if distance>75:
+				continue
+			var body = collision.collider
+			destroy_limb(body, "head")
+			destroy_limb(body, "rightairpod")
+			destroy_limb(body, "leftairpod")
+			destroy_limb(body, "bottomleftleg")
+			destroy_limb(body, "topleftleg")
+			destroy_limb(body, "bottomrightleg")
+			destroy_limb(body, "toprightleg")
+			destroy_limb(body, "bottomrightarm")
+			destroy_limb(body, "bottomleftarm")
+			
 		explosion_charge=0
 		$MouseBox/TextureRect.visible=false
 		

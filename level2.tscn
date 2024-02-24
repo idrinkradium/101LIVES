@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfb43ggdwactk"]
+[gd_scene load_steps=11 format=3 uid="uid://dfb43ggdwactk"]
 
 [ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="2_ypf6p"]
 [ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="3_joud2"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="5_mtcma"]
 [ext_resource type="Texture2D" uid="uid://dckvt30me0i23" path="res://tips/level1tip3.png" id="7_sn0kc"]
 [ext_resource type="Texture2D" uid="uid://bjq8q6ehvu524" path="res://tips/pushtip.png" id="8_fsmtj"]
+[ext_resource type="Texture2D" uid="uid://wcvxvlri5v0k" path="res://wires/level2wire1.png" id="9_scp8r"]
 [ext_resource type="Script" path="res://fadeable.gd" id="9_y7ueg"]
+[ext_resource type="Texture2D" uid="uid://bcpyweka6dp1c" path="res://wires/level2wire2.png" id="10_ykt60"]
 
 [node name="Level2" type="Node2D"]
 
@@ -37,6 +39,7 @@ position = Vector2(1376, 320)
 new_level_id = 3
 
 [node name="Poly" parent="." instance=ExtResource("5_mtcma")]
+position = Vector2(-472, -56)
 invert_border = 207.8
 polygon = PackedVector2Array(-6823, 120, 6681, 120, 6729, -4000, -6839, -4104)
 
@@ -84,9 +87,21 @@ far = 1500.0
 spread = 100.0
 
 [node name="Pushtip" type="Sprite2D" parent="."]
-position = Vector2(552, 316)
+position = Vector2(552, 319)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("8_fsmtj")
 script = ExtResource("9_y7ueg")
 wait_time = 6
 wait_distance = 200
+
+[node name="Level2Wire1" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(446, 408)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("9_scp8r")
+
+[node name="Level2Wire2" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(993, 103)
+scale = Vector2(0.62, 0.62)
+texture = ExtResource("10_ykt60")

@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=7 format=3 uid="uid://jiy6adpvuo7a"]
 
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
 [ext_resource type="Texture2D" uid="uid://cgyqd22ud4c45" path="res://tips/level1tip.png" id="4_ht3aw"]
 [ext_resource type="Texture2D" uid="uid://dr7pmltrvbshe" path="res://tips/level1tip2.png" id="6_0dqj1"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="6_jrwfq"]
 [ext_resource type="Script" path="res://fadeable.gd" id="7_6qd8g"]
-[ext_resource type="PackedScene" uid="uid://b4yddv3ti47u" path="res://belt.tscn" id="7_vyeu0"]
-[ext_resource type="PackedScene" uid="uid://lckxqoyv7fn" path="res://beltmaster.tscn" id="7_xprc5"]
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
 
 [node name="Level1" type="Node2D"]
@@ -51,25 +49,5 @@ wait_distance = 350
 wait_time = 10.0
 one_shot = true
 autostart = true
-
-[node name="BeltMaster" parent="." instance=ExtResource("7_xprc5")]
-position = Vector2(336, 444)
-speed = 300.0
-
-[node name="Belt" parent="BeltMaster" instance=ExtResource("7_vyeu0")]
-position = Vector2(144, 0)
-end = true
-
-[node name="Belt2" parent="BeltMaster" instance=ExtResource("7_vyeu0")]
-position = Vector2(48, 0)
-
-[node name="Belt3" parent="BeltMaster" instance=ExtResource("7_vyeu0")]
-position = Vector2(-144, 0)
-end = true
-flip = true
-
-[node name="Belt4" parent="BeltMaster" instance=ExtResource("7_vyeu0")]
-position = Vector2(-48, 0)
-flip = true
 
 [connection signal="timeout" from="TipTimer" to="." method="_on_tip_timer_timeout"]
