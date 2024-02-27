@@ -15,7 +15,7 @@ extends Node
 var explosion_charge = 0
 
 func _ready():
-	change_level(1)
+	change_level(5)
 	
 	#😍
 func _process(delta):
@@ -95,7 +95,10 @@ func kill_player(spawn_ragdoll:bool):
 	$PoofParticles.position = prev_player_pos
 	$PoofParticles.emitting = true
 	
+	$Player.prev_velocity = Vector2.ZERO
+	$Player.velocity = Vector2.ZERO
 	if spawn_ragdoll:
+		
 		# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
 		await get_tree().create_timer(0.05).timeout
 		
@@ -108,6 +111,7 @@ func kill_player(spawn_ragdoll:bool):
 		level.add_child(instance)
 	
 		return instance
+		
 func destroy_limb(body,name):
 	if body.name == name:
 		var ragdoll = body.get_parent()
@@ -117,6 +121,7 @@ func destroy_limb(body,name):
 			joint.queue_free()
 			
 var explosion_stream = load("res://sounds/explosion.mp3")
+
 func _physics_process(delta):
 	$MouseBox.position = get_viewport().canvas_transform.affine_inverse() * get_viewport().get_mouse_position()
 	
@@ -124,13 +129,20 @@ func _physics_process(delta):
 		kill_player(false)
 		$Player.velocity=Vector2.ZERO
 		
+	if Input.is_action_just_pressed("Explode"):
+		$MouseBox/ExplosionCircle.modulate = Color.GREEN
+		var explosion_circle_tween = create_tween()
+		explosion_circle_tween.tween_property($MouseBox/ExplosionCircle, "modulate", Color(1,0,0,.75), .75)
+		
 	if Input.is_action_pressed("Explode"):
 		explosion_charge += 2
 		explosion_charge = clamp(explosion_charge, 0, 100)
 		
-		$MouseBox/TextureRect.texture.gradient.offsets[1] = (explosion_charge/100.0)
-		$MouseBox/TextureRect.visible=true
+		#$MouseBox/TextureRect.texture.gradient.offsets[1] = (explosion_charge/100.0)
+		$MouseBox/ExplosionCircle.visible=true
+		$MouseBox/ExplosionCircle.scale = (Vector2.ONE * explosion_charge) / 350
 		$MouseBox/ExplosionParticles.emitting=false
+	
 	if Input.is_action_just_released("Explode"):
 		$MouseBox/ExplosionParticles.emitting=true
 		var explosion_player = AudioStreamPlayer2D.new()
@@ -167,7 +179,7 @@ func _physics_process(delta):
 			destroy_limb(body, "bottomleftarm")
 			
 		explosion_charge=0
-		$MouseBox/TextureRect.visible=false
+		$MouseBox/ExplosionCircle.visible=false
 		
 # loop infinitely
 func _on_music_finished():

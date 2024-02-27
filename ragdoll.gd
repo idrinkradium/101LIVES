@@ -6,11 +6,22 @@ var velocity: Vector2
 var prev:Vector2
 var p:Vector2
 
+func deleteshit(node):
+	if node and node.position.y >= 2000:
+		node.queue_free()
+		
 func _physics_process(delta):
 	
-	if $torso.position.y >= 2000:
-		queue_free()
-	
+	deleteshit($head)
+	deleteshit($topleftleg)	
+	deleteshit($toprightleg)	
+	deleteshit($torso)	
+	deleteshit($rightairpod)	
+	deleteshit($leftairpod)	
+	deleteshit($bottomrightarm)	
+	deleteshit($bottomleftarm)
+	deleteshit($bottomleftleg)	
+	deleteshit($bottomrightleg)	
 	
 	if not draggydrag:
 		return

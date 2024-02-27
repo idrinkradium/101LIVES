@@ -1,16 +1,16 @@
-[gd_scene load_steps=48 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=46 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_3wcw7"]
 [ext_resource type="Texture2D" uid="uid://b4irab1i2nf0t" path="res://objects/poof.png" id="4_a5x07"]
-[ext_resource type="AudioStream" uid="uid://ciitb2dxy1l7d" path="res://sounds/explosion.mp3" id="5_6dxys"]
 [ext_resource type="AudioStream" uid="uid://b5h4ayeo8na53" path="res://Muzak/Muzak1.mp3" id="5_yu0lv"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="6_kkr6p"]
 [ext_resource type="AudioStream" uid="uid://ds6sboud8bj24" path="res://Muzak/Muzak2.mp3" id="6_m11ex"]
 [ext_resource type="Script" path="res://HUD.gd" id="6_vytpp"]
 [ext_resource type="Texture2D" uid="uid://de4vyjj1holss" path="res://objects/explosionparticle.png" id="6_ypes8"]
 [ext_resource type="AudioStream" uid="uid://d1k4ibrfax3ei" path="res://Muzak/Muzak3.mp3" id="7_6lh3q"]
+[ext_resource type="Texture2D" uid="uid://mrk7g6r467o5" path="res://ui/circle.png" id="7_d7qq3"]
 [ext_resource type="Texture2D" uid="uid://denf0vbowjkr3" path="res://ui/skull.png" id="7_s2iwq"]
 [ext_resource type="AudioStream" uid="uid://bppv51nv4ucnd" path="res://Muzak/Muzak4.mp3" id="8_exxjx"]
 [ext_resource type="Texture2D" uid="uid://fhmgxmgommtt" path="res://ui/gradient.png" id="8_g7d6x"]
@@ -74,14 +74,6 @@ colors = PackedColorArray(0.74978, 0.74978, 0.74978, 1, 0.942823, 0.942823, 0.94
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sd6va"]
 radius = 3.0
-
-[sub_resource type="Gradient" id="Gradient_g5kcd"]
-offsets = PackedFloat32Array(0, 0.0538117, 1)
-colors = PackedColorArray(1, 0, 0, 1, 0.897059, 0.102941, 0, 1, 0, 1, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_q438n"]
-gradient = SubResource("Gradient_g5kcd")
-width = 100
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j0hfx"]
 radius = 300.0
@@ -174,19 +166,10 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseBox"]
 shape = SubResource("CircleShape2D_sd6va")
 
-[node name="TextureRect" type="TextureRect" parent="MouseBox"]
-z_index = 999
-offset_right = 100.0
-offset_bottom = 17.0
-texture = SubResource("GradientTexture1D_q438n")
-
 [node name="ShapeCast2D" type="ShapeCast2D" parent="MouseBox"]
 shape = SubResource("CircleShape2D_j0hfx")
 target_position = Vector2(0, 0)
 collision_mask = 253
-
-[node name="explosion" type="AudioStreamPlayer2D" parent="MouseBox"]
-stream = ExtResource("5_6dxys")
 
 [node name="ExplosionParticles" type="CPUParticles2D" parent="MouseBox"]
 z_index = 10
@@ -210,6 +193,12 @@ linear_accel_min = 100.0
 linear_accel_max = 600.0
 scale_amount_min = 0.05
 scale_amount_max = 0.15
+
+[node name="ExplosionCircle" type="Sprite2D" parent="MouseBox"]
+visible = false
+z_index = 100
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_d7qq3")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -281,7 +270,6 @@ texture1 = ExtResource("20_yswpp")
 texture2 = ExtResource("10_mmke6")
 
 [node name="Menu" type="TextureButton" parent="HUD"]
-visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0

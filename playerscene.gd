@@ -18,7 +18,7 @@ var is_running = false
 var is_idling =false
 var input_direction = 0
 var recoil = 0
-
+var prev_velocity = Vector2.ZERO
 
 func _physics_process(delta):
 	var is_jumping = Input.is_action_just_pressed("w") and (is_on_floor() or in_water)
@@ -26,7 +26,7 @@ func _physics_process(delta):
 	var is_running = not is_zero_approx(velocity.x)
 	var is_idling = not is_running and not is_falling
 
-	var prev_velocity = Vector2(velocity) # make a copy
+	prev_velocity = Vector2(velocity) # make a copy
 
 	# Add the gravity.
 	if not is_on_floor():
