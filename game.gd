@@ -15,7 +15,7 @@ extends Node
 var explosion_charge = 0
 
 func _ready():
-	change_level(5)
+	change_level(1)
 	
 	#😍
 func _process(delta):
@@ -130,8 +130,9 @@ func _physics_process(delta):
 		
 		$MouseBox/TextureRect.texture.gradient.offsets[1] = (explosion_charge/100.0)
 		$MouseBox/TextureRect.visible=true
-		
+		$MouseBox/ExplosionParticles.emitting=false
 	if Input.is_action_just_released("Explode"):
+		$MouseBox/ExplosionParticles.emitting=true
 		var explosion_player = AudioStreamPlayer2D.new()
 		explosion_player.stream = explosion_stream
 		var finished = func():
