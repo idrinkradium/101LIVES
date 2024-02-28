@@ -184,3 +184,8 @@ func _physics_process(delta):
 # loop infinitely
 func _on_music_finished():
 	$Music.play()
+
+
+func _on_options_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://options.tscn")
