@@ -375,6 +375,7 @@ stream = SubResource("AudioStreamRandomizer_olx4f")
 
 [connection signal="pressed" from="HUD/HomeButton" to="HUD" method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/Menu" to="HUD" method="open_menu"]
+[connection signal="pressed" from="HUD/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="HUD/Home" to="HUD" method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/skull" to="HUD" method="_on_skull_pressed"]
 [connection signal="text_submitted" from="HUD/cheat" to="HUD" method="_on_cheat_text_submitted"]

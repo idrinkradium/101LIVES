@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://crlonduigjqvw"]
+
+[ext_resource type="Texture2D" uid="uid://bupwltbvgeds5" path="res://ui/slidercircle2.png" id="1_ukwyh"]
+
+[node name="Options" type="Node"]
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 159.0
+offset_bottom = 40.0
+scale = Vector2(2.49562, 2.53193)
+theme_override_icons/grabber = ExtResource("1_ukwyh")
