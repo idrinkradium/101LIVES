@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bupwltbvgeds5"
-path="res://.godot/imported/slidercircle2.png-2bff5a3942eb0a71e0fbfdd927ed39bd.ctex"
+uid="uid://jj6r0r24qprp"
+path="res://.godot/imported/sliderwater.png-5fbac1d1cf609409d6335d24ef9abbbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/slidercircle2.png"
-dest_files=["res://.godot/imported/slidercircle2.png-2bff5a3942eb0a71e0fbfdd927ed39bd.ctex"]
+source_file="res://ui/sliderwater.png"
+dest_files=["res://.godot/imported/sliderwater.png-5fbac1d1cf609409d6335d24ef9abbbf.ctex"]
 
 [params]
 
