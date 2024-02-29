@@ -1,13 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://crlonduigjqvw"]
+[gd_scene load_steps=5 format=3 uid="uid://cob1cg3ydjugj"]
 
-[ext_resource type="Texture2D" uid="uid://bupwltbvgeds5" path="res://ui/slidercircle2.png" id="1_ukwyh"]
+[ext_resource type="Texture2D" uid="uid://d2jjdfckc2w0i" path="res://ui/slidercircle.png" id="1_v1836"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_af6ov"]
+thickness = 51
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpod2"]
+bg_color = Color(0.6, 1, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhokk"]
+bg_color = Color(0.6, 1, 0.6, 1)
 
 [node name="Options" type="Node"]
 
-[node name="HSlider" type="HSlider" parent="."]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 159.0
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
 offset_bottom = 40.0
-scale = Vector2(2.49562, 2.53193)
-theme_override_icons/grabber = ExtResource("1_ukwyh")
+
+[node name="HSlider" type="HSlider" parent="Control"]
+offset_right = 841.0
+offset_bottom = 144.0
+theme_override_icons/grabber = ExtResource("1_v1836")
+theme_override_icons/grabber_highlight = ExtResource("1_v1836")
+theme_override_icons/grabber_disabled = ExtResource("1_v1836")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
