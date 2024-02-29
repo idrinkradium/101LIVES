@@ -1,6 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://crlonduigjqvw"]
+[gd_scene load_steps=20 format=3 uid="uid://crlonduigjqvw"]
 
-[ext_resource type="Texture2D" uid="uid://d2jjdfckc2w0i" path="res://ui/slidercircle.png" id="1_v1836"]
+[ext_resource type="Texture2D" uid="uid://d27p5aruogqfe" path="res://ui/sliderplayer.png" id="1_3o3y2"]
+[ext_resource type="Texture2D" uid="uid://cts351rdwk3" path="res://ui/sliderragdoll.png" id="2_hmlvc"]
+[ext_resource type="Texture2D" uid="uid://jj6r0r24qprp" path="res://ui/sliderwater.png" id="3_e8gn7"]
+[ext_resource type="Texture2D" uid="uid://til82ftwtkiq" path="res://ui/sliderpoof.png" id="4_jyc33"]
+[ext_resource type="Texture2D" uid="uid://dsas3djrd46j4" path="res://ui/slidergear.png" id="5_womis"]
+[ext_resource type="Texture2D" uid="uid://cxmlriwb3bfpg" path="res://objects/spike.png" id="6_1god8"]
+[ext_resource type="Texture2D" uid="uid://qnw0mk80pyey" path="res://ui/sliderconveyor.png" id="7_hqo4h"]
+[ext_resource type="Texture2D" uid="uid://2op16h2fxr8d" path="res://ui/sliderdoor.png" id="8_qlfuf"]
+[ext_resource type="Texture2D" uid="uid://bjxbd4up0xymk" path="res://ui/sliderpiston.png" id="9_8yu74"]
+[ext_resource type="Texture2D" uid="uid://m2b16svd0ujt" path="res://ui/sliderpressure.png" id="10_w00pi"]
+[ext_resource type="Texture2D" uid="uid://db5uliqvnnpsb" path="res://ui/sliderlock.png" id="11_yjwi3"]
+[ext_resource type="Texture2D" uid="uid://caqnjm3e7f8lt" path="res://ui/sliderexplosion.png" id="12_3tl3e"]
+[ext_resource type="Texture2D" uid="uid://c3n4pcqyn80t0" path="res://ui/sliderfire.png" id="13_puh7c"]
+[ext_resource type="Texture2D" uid="uid://3p3xdcuy5ng3" path="res://ui/sliderbuttons.png" id="14_pwjv5"]
+[ext_resource type="Texture2D" uid="uid://bdllgt0alwp65" path="res://ui/slidersfx.png" id="15_jbgtu"]
+[ext_resource type="Texture2D" uid="uid://d0i3fugb0880v" path="res://ui/slidermusic.png" id="16_55hhr"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_af6ov"]
 grow_begin = 0.0
@@ -22,12 +37,14 @@ expand_margin_bottom = 2.0
 [node name="Options" type="Node"]
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="HSlider" type="HSlider" parent="Control"]
+[node name="HSliderPlayer" type="HSlider" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 160.0
 offset_top = 128.0
@@ -36,15 +53,16 @@ offset_bottom = 272.0
 scale = Vector2(0.75, 0.75)
 theme_override_constants/center_grabber = -1
 theme_override_constants/grabber_offset = 0
-theme_override_icons/grabber = ExtResource("1_v1836")
-theme_override_icons/grabber_highlight = ExtResource("1_v1836")
-theme_override_icons/grabber_disabled = ExtResource("1_v1836")
+theme_override_icons/grabber = ExtResource("1_3o3y2")
+theme_override_icons/grabber_highlight = ExtResource("1_3o3y2")
+theme_override_icons/grabber_disabled = ExtResource("1_3o3y2")
 theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
 value = 50.0
 
-[node name="HSlider2" type="HSlider" parent="Control"]
+[node name="HSliderRagdoll" type="HSlider" parent="Control"]
+visible = false
 layout_mode = 0
 offset_left = 1120.0
 offset_top = 120.0
@@ -53,9 +71,259 @@ offset_bottom = 264.0
 scale = Vector2(0.75, 0.75)
 theme_override_constants/center_grabber = -1
 theme_override_constants/grabber_offset = 0
-theme_override_icons/grabber = ExtResource("1_v1836")
-theme_override_icons/grabber_highlight = ExtResource("1_v1836")
-theme_override_icons/grabber_disabled = ExtResource("1_v1836")
+theme_override_icons/grabber = ExtResource("2_hmlvc")
+theme_override_icons/grabber_highlight = ExtResource("2_hmlvc")
+theme_override_icons/grabber_disabled = ExtResource("2_hmlvc")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderWater" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 160.0
+offset_top = 320.0
+offset_right = 1001.0
+offset_bottom = 464.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("3_e8gn7")
+theme_override_icons/grabber_highlight = ExtResource("3_e8gn7")
+theme_override_icons/grabber_disabled = ExtResource("3_e8gn7")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderPoof" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 320.0
+offset_right = 1961.0
+offset_bottom = 464.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("4_jyc33")
+theme_override_icons/grabber_highlight = ExtResource("4_jyc33")
+theme_override_icons/grabber_disabled = ExtResource("4_jyc33")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderGear" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 160.0
+offset_top = 512.0
+offset_right = 1001.0
+offset_bottom = 656.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("5_womis")
+theme_override_icons/grabber_highlight = ExtResource("5_womis")
+theme_override_icons/grabber_disabled = ExtResource("5_womis")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderSpike" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 512.0
+offset_right = 1961.0
+offset_bottom = 656.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = -15
+theme_override_icons/grabber = ExtResource("6_1god8")
+theme_override_icons/grabber_highlight = ExtResource("6_1god8")
+theme_override_icons/grabber_disabled = ExtResource("6_1god8")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderConveyor" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 160.0
+offset_top = 704.0
+offset_right = 1001.0
+offset_bottom = 848.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = -10
+theme_override_icons/grabber = ExtResource("7_hqo4h")
+theme_override_icons/grabber_highlight = ExtResource("7_hqo4h")
+theme_override_icons/grabber_disabled = ExtResource("7_hqo4h")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderDoor" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 704.0
+offset_right = 1961.0
+offset_bottom = 848.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("8_qlfuf")
+theme_override_icons/grabber_highlight = ExtResource("8_qlfuf")
+theme_override_icons/grabber_disabled = ExtResource("8_qlfuf")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderPiston" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 160.0
+offset_top = 896.0
+offset_right = 1001.0
+offset_bottom = 1040.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("9_8yu74")
+theme_override_icons/grabber_highlight = ExtResource("9_8yu74")
+theme_override_icons/grabber_disabled = ExtResource("9_8yu74")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderPressure" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 896.0
+offset_right = 1961.0
+offset_bottom = 1040.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("10_w00pi")
+theme_override_icons/grabber_highlight = ExtResource("10_w00pi")
+theme_override_icons/grabber_disabled = ExtResource("10_w00pi")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderLock" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 160.0
+offset_top = 1088.0
+offset_right = 1001.0
+offset_bottom = 1232.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = -15
+theme_override_icons/grabber = ExtResource("11_yjwi3")
+theme_override_icons/grabber_highlight = ExtResource("11_yjwi3")
+theme_override_icons/grabber_disabled = ExtResource("11_yjwi3")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderExplosion" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 1088.0
+offset_right = 1961.0
+offset_bottom = 1232.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("12_3tl3e")
+theme_override_icons/grabber_highlight = ExtResource("12_3tl3e")
+theme_override_icons/grabber_disabled = ExtResource("12_3tl3e")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderFire" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 160.0
+offset_top = 1280.0
+offset_right = 1001.0
+offset_bottom = 1424.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = -20
+theme_override_icons/grabber = ExtResource("13_puh7c")
+theme_override_icons/grabber_highlight = ExtResource("13_puh7c")
+theme_override_icons/grabber_disabled = ExtResource("13_puh7c")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderButtons" type="HSlider" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 1120.0
+offset_top = 1280.0
+offset_right = 1961.0
+offset_bottom = 1424.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("14_pwjv5")
+theme_override_icons/grabber_highlight = ExtResource("14_pwjv5")
+theme_override_icons/grabber_disabled = ExtResource("14_pwjv5")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="Options" type="Node2D" parent="."]
+
+[node name="HSliderSfx" type="HSlider" parent="Options"]
+offset_left = 1056.0
+offset_top = 128.0
+offset_right = 1897.0
+offset_bottom = 272.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("15_jbgtu")
+theme_override_icons/grabber_highlight = ExtResource("15_jbgtu")
+theme_override_icons/grabber_disabled = ExtResource("15_jbgtu")
+theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")
+value = 50.0
+
+[node name="HSliderMusic" type="HSlider" parent="Options"]
+offset_left = 224.0
+offset_top = 128.0
+offset_right = 1065.0
+offset_bottom = 272.0
+scale = Vector2(0.75, 0.75)
+theme_override_constants/center_grabber = -1
+theme_override_constants/grabber_offset = 0
+theme_override_icons/grabber = ExtResource("16_55hhr")
+theme_override_icons/grabber_highlight = ExtResource("16_55hhr")
+theme_override_icons/grabber_disabled = ExtResource("16_55hhr")
 theme_override_styles/slider = SubResource("StyleBoxLine_af6ov")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_gpod2")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_qhokk")

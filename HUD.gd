@@ -20,7 +20,7 @@ func open_menu():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		open_menu()
-		
+	$Options/ADVANCED.rotation_degrees -=.0002
 func game_over():
 	$"../Music".stop()
 	$"../Grunt".play()
