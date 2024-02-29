@@ -7,6 +7,7 @@ extends Node2D
 	set(value):
 		on = value
 		$Area2D/CollisionShape2D.disabled = !on
+		$fire.stream_paused = !on
 		
 		if on: $fireon.play()
 		else: $fireoff.play()
