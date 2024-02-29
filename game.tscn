@@ -287,44 +287,6 @@ script = ExtResource("10_m2n0n")
 texture1 = ExtResource("10_ky1oy")
 texture2 = ExtResource("11_j0a0n")
 
-[node name="Options" type="TextureButton" parent="HUD"]
-offset_left = 898.0
-offset_top = -537.0
-offset_right = 1640.0
-offset_bottom = -281.0
-scale = Vector2(0.55, 0.55)
-pivot_offset = Vector2(360, 125)
-texture_normal = ExtResource("11_hp460")
-script = ExtResource("10_m2n0n")
-texture1 = ExtResource("11_hp460")
-texture2 = ExtResource("14_4f7m1")
-
-[node name="Home" type="TextureButton" parent="HUD"]
-offset_left = 317.0
-offset_top = -527.0
-offset_right = 1018.0
-offset_bottom = -269.0
-scale = Vector2(0.55, 0.55)
-pivot_offset = Vector2(350, 125)
-texture_normal = ExtResource("20_yswpp")
-script = ExtResource("10_m2n0n")
-rotation_change = -4
-texture1 = ExtResource("20_yswpp")
-texture2 = ExtResource("10_mmke6")
-
-[node name="Restart" type="TextureButton" parent="HUD"]
-offset_left = 774.0
-offset_top = -595.0
-offset_right = 1158.0
-offset_bottom = -227.0
-scale = Vector2(0.35, 0.35)
-pivot_offset = Vector2(190, 190)
-texture_normal = ExtResource("12_utinm")
-script = ExtResource("10_m2n0n")
-rotation_change = 80
-texture1 = ExtResource("12_utinm")
-texture2 = ExtResource("16_n78tj")
-
 [node name="skull" type="TextureButton" parent="HUD"]
 z_index = -1
 offset_left = 12.0
@@ -341,6 +303,47 @@ offset_top = 1042.0
 offset_right = 71.0625
 offset_bottom = 1073.0
 focus_mode = 1
+
+[node name="PauseMenu" type="Node2D" parent="HUD"]
+visible = false
+
+[node name="Options" type="TextureButton" parent="HUD/PauseMenu"]
+offset_left = 898.0
+offset_top = 399.75
+offset_right = 1640.0
+offset_bottom = 655.75
+scale = Vector2(0.55, 0.55)
+pivot_offset = Vector2(360, 125)
+texture_normal = ExtResource("11_hp460")
+script = ExtResource("10_m2n0n")
+texture1 = ExtResource("11_hp460")
+texture2 = ExtResource("14_4f7m1")
+
+[node name="Home" type="TextureButton" parent="HUD/PauseMenu"]
+offset_left = 317.0
+offset_top = 409.75
+offset_right = 1018.0
+offset_bottom = 667.75
+scale = Vector2(0.55, 0.55)
+pivot_offset = Vector2(350, 125)
+texture_normal = ExtResource("20_yswpp")
+script = ExtResource("10_m2n0n")
+rotation_change = -4
+texture1 = ExtResource("20_yswpp")
+texture2 = ExtResource("10_mmke6")
+
+[node name="Restart" type="TextureButton" parent="HUD/PauseMenu"]
+offset_left = 774.0
+offset_top = 341.75
+offset_right = 1158.0
+offset_bottom = 709.75
+scale = Vector2(0.35, 0.35)
+pivot_offset = Vector2(190, 190)
+texture_normal = ExtResource("12_utinm")
+script = ExtResource("10_m2n0n")
+rotation_change = 80
+texture1 = ExtResource("12_utinm")
+texture2 = ExtResource("16_n78tj")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -375,8 +378,8 @@ stream = SubResource("AudioStreamRandomizer_olx4f")
 
 [connection signal="pressed" from="HUD/HomeButton" to="HUD" method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/Menu" to="HUD" method="open_menu"]
-[connection signal="pressed" from="HUD/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="HUD/Home" to="HUD" method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/skull" to="HUD" method="_on_skull_pressed"]
 [connection signal="text_submitted" from="HUD/cheat" to="HUD" method="_on_cheat_text_submitted"]
+[connection signal="pressed" from="HUD/PauseMenu/Options" to="HUD" method="_on_options_pressed"]
+[connection signal="pressed" from="HUD/PauseMenu/Home" to="HUD" method="_on_home_button_pressed"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]

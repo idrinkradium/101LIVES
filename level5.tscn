@@ -70,12 +70,18 @@ position = Vector2(1122, 552)
 scale = Vector2(0.85, 0.85)
 
 [node name="FireTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 autostart = true
 
 [node name="PressurePlate" parent="." node_paths=PackedStringArray("powerables") instance=ExtResource("7_uj1mx")]
 position = Vector2(844, 0)
 powerables = [NodePath("../BeltMaster/BeltPowerable")]
+
+[node name="PressurePlateLeft" parent="." instance=ExtResource("7_uj1mx")]
+position = Vector2(412, 640)
+
+[node name="PressurePlateRight" parent="." instance=ExtResource("7_uj1mx")]
+position = Vector2(1150, 640)
 
 [connection signal="power_changed" from="BeltMaster/BeltPowerable" to="." method="_on_belt_powerable_power_changed"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

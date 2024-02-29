@@ -1,22 +1,21 @@
 extends CanvasLayer
 
+var opened_menu = null
 
 func open_menu():
 	if get_parent().lives < 1: 
 		return
-		
-	if $Home.position.y > 0:
-		$Darkness.modulate=(Color(0,0,0,.0))
-		$Home.position.y=-400
-		$Options.position.y=-400
-		$Restart.position.y=-435
-		get_tree().paused = false
-	else:
-		$Darkness.modulate=(Color(0,0,0,.5))
-		$Home.position.y=422
-		$Options.position.y=408
-		$Restart.position.y=350
+	
+	if !opened_menu:
+		$PauseMenu.visible = true
+		$Darkness.modulate=Color(0,0,0,0.5)
 		get_tree().paused = true
+		opened_menu = $PauseMenu
+	else:
+		$PauseMenu.visible = false
+		$Darkness.modulate=Color(0,0,0,0)
+		get_tree().paused = false
+		opened_menu = null
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -51,3 +50,8 @@ func _on_skull_pressed():
 func _on_cheat_text_submitted(new_text):
 	if new_text.is_valid_int():
 		get_parent().change_level(int(new_text))
+
+func _on_options_pressed():
+	pass
+	#var options = load("res://options.tscn").instantiate()
+	#$HUD.add_child(options)
