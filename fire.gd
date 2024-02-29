@@ -1,17 +1,27 @@
 extends Node2D
 
 
-@export var on = true:
+@onready var on = true:
 	get:
 		return on
 	set(value):
 		on = value
-		$Fire.visible = !on
-	
+		$Area2D/CollisionShape2D.disabled = !on
+		
+		if on: $fireon.play()
+		else: $fireoff.play()
+		
+		var tween = create_tween()
+		var new_y = .2 if on else 0
+		tween.tween_property($Fire, "scale", Vector2($Fire.scale.x, new_y), .05)
+		
+
+var previous_time = 0
+
 func _ready():
 	$Fire.play()
-	
-var previous_time = 0
+	if on:
+		$fire.play()
 
 func _on_area_2d_body_entered(body):
 	if !on:

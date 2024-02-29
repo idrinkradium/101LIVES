@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://lckxqoyv7fn"]
+[gd_scene load_steps=3 format=3 uid="uid://fr7iib3vacxl"]
 
 [ext_resource type="Script" path="res://beltmaster.gd" id="1_7aujt"]
 [ext_resource type="AudioStream" uid="uid://busmainlonxjj" path="res://sounds/conveyorbelt.ogg" id="2_7k12e"]
