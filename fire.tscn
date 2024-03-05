@@ -82,8 +82,9 @@ centered = false
 offset = Vector2(-958.4, -1047.12)
 
 [node name="fire" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(8, 0)
 stream = ExtResource("12_aasu5")
-volume_db = -8.0
+volume_db = -9.0
 
 [node name="fireon" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_kem8c")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d08xl2hmnylku"]
+[gd_scene load_steps=10 format=3 uid="uid://d08xl2hmnylku"]
 
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="1_sts2w"]
 [ext_resource type="Script" path="res://level5.gd" id="1_vc2ka"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b55ft2jlt5ep4" path="res://fire.tscn" id="5_2nlr4"]
 [ext_resource type="Script" path="res://powerable.gd" id="6_ws8yw"]
 [ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="7_uj1mx"]
+[ext_resource type="Texture2D" uid="uid://b7nkf32drh6xi" path="res://wires/level5wires.png" id="9_66w5t"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_vc2ka")
@@ -23,6 +24,14 @@ position = Vector2(768, -128)
 
 [node name="Poly" parent="." instance=ExtResource("1_sts2w")]
 polygon = PackedVector2Array(1113, 56, 1369, 56, 1369, 120, 1113, 144)
+
+[node name="Poly4" parent="." instance=ExtResource("1_sts2w")]
+position = Vector2(-824, -56)
+polygon = PackedVector2Array(1208, -456, 1336, -200, 1336, 224, 1208, 224)
+
+[node name="Poly5" parent="." instance=ExtResource("1_sts2w")]
+position = Vector2(-184, -56)
+polygon = PackedVector2Array(1208, -200, 1336, -456, 1336, 224, 1208, 224)
 
 [node name="Poly2" parent="." instance=ExtResource("1_sts2w")]
 polygon = PackedVector2Array(1137, 568, 1113, 1400, 665, 3128, 633, 568, 729, 568, 737, 696, 1041, 696, 1049, 568)
@@ -81,7 +90,13 @@ powerables = [NodePath("../BeltMaster/BeltPowerable")]
 position = Vector2(412, 640)
 
 [node name="PressurePlateRight" parent="." instance=ExtResource("7_uj1mx")]
-position = Vector2(1150, 640)
+position = Vector2(1124, 640)
+
+[node name="Level5Wires" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(934, 120)
+scale = Vector2(0.715, 0.715)
+texture = ExtResource("9_66w5t")
 
 [connection signal="power_changed" from="BeltMaster/BeltPowerable" to="." method="_on_belt_powerable_power_changed"]
 [connection signal="timeout" from="FireTimer" to="." method="_on_fire_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ded7p1itmbmnm"]
+[gd_scene load_steps=11 format=3 uid="uid://ded7p1itmbmnm"]
 
 [ext_resource type="Script" path="res://level4.gd" id="1_4lysh"]
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_e4tag"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://csjwjt3xwypqj" path="res://sounds/waterup.mp3" id="7_rxwfp"]
 [ext_resource type="Script" path="res://powerable.gd" id="7_tymqq"]
 [ext_resource type="AudioStream" uid="uid://dojbrmvbrdao2" path="res://sounds/waterdown.mp3" id="8_4oh3i"]
+[ext_resource type="Texture2D" uid="uid://ba2c77g64j4f2" path="res://tips/level4tip.png" id="10_hm50c"]
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_4lysh")
@@ -25,8 +26,8 @@ new_level_id = 2
 requires_power = false
 
 [node name="Gear" parent="." instance=ExtResource("3_5ucwg")]
-position = Vector2(488, 680)
-scale = Vector2(0.2, 0.2)
+position = Vector2(472, 712)
+scale = Vector2(0.25, 0.25)
 gear_rotation = 30
 
 [node name="PressurePlate" parent="." node_paths=PackedStringArray("powerables") instance=ExtResource("4_3tlsg")]
@@ -37,6 +38,7 @@ powerables = [NodePath("../WaterLevel1")]
 [node name="PressurePlate2" parent="." node_paths=PackedStringArray("powerables") instance=ExtResource("4_3tlsg")]
 position = Vector2(576, 544)
 rotation = 3.14159
+scale = Vector2(1.15, 1)
 powerables = [NodePath("../WaterLevel2")]
 
 [node name="Poly" parent="." instance=ExtResource("7_a6jlx")]
@@ -73,6 +75,11 @@ script = ExtResource("7_tymqq")
 
 [node name="Poly2" parent="." instance=ExtResource("7_a6jlx")]
 polygon = PackedVector2Array(1561, -200, 1497, 824, 1753, 824, 1753, -200)
+
+[node name="Level4Tip" type="Sprite2D" parent="."]
+position = Vector2(216, 256)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_hm50c")
 
 [connection signal="power_changed" from="WaterLevel1" to="." method="_on_water_level_1_power_changed"]
 [connection signal="power_changed" from="WaterLevel2" to="." method="_on_water_level_2_power_changed"]

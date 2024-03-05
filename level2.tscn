@@ -26,6 +26,7 @@ powerables = [NodePath("../Piston")]
 [node name="PressurePlate2" parent="." node_paths=PackedStringArray("powerables") instance=ExtResource("2_ypf6p")]
 position = Vector2(584, 64)
 rotation = 3.14159
+scale = Vector2(1.3, 1)
 powerables = [NodePath("../Door")]
 
 [node name="Piston" parent="." instance=ExtResource("3_joud2")]
