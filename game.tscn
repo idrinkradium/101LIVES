@@ -640,7 +640,8 @@ theme_override_icons/grabber_disabled = ExtResource("34_mhaev")
 theme_override_styles/slider = SubResource("StyleBoxLine_lh5rt")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_a42l6")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vt4c5")
-value = 50.0
+min_value = -60.0
+max_value = 0.0
 
 [node name="HSliderMusic" type="HSlider" parent="HUD/Options"]
 offset_left = 208.0
@@ -656,7 +657,8 @@ theme_override_icons/grabber_disabled = ExtResource("35_j0viq")
 theme_override_styles/slider = SubResource("StyleBoxLine_lh5rt")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_a42l6")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_vt4c5")
-value = 50.0
+min_value = -60.0
+max_value = 0.0
 
 [node name="ADVANCED" type="TextureButton" parent="HUD/Options"]
 offset_left = 373.0
@@ -664,6 +666,10 @@ offset_top = 428.0
 offset_right = 1540.0
 offset_bottom = 861.0
 texture_normal = ExtResource("36_o5nse")
+script = ExtResource("10_m2n0n")
+scale_change = 0.24
+texture1 = ExtResource("36_o5nse")
+texture2 = ExtResource("36_o5nse")
 
 [node name="BackgroundCanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -677,8 +683,11 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_8bspp")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = SubResource("AudioStreamRandomizer_mb62d")
 volume_db = -17.0
+autoplay = true
+bus = &"Music"
 
 [node name="Death" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_aj5lm")
@@ -702,4 +711,8 @@ stream = SubResource("AudioStreamRandomizer_olx4f")
 [connection signal="text_submitted" from="HUD/cheat" to="HUD" method="_on_cheat_text_submitted"]
 [connection signal="pressed" from="HUD/PauseMenu/Options" to="HUD" method="_on_options_pressed"]
 [connection signal="pressed" from="HUD/PauseMenu/Home" to="HUD" method="_on_home_button_pressed"]
+[connection signal="value_changed" from="HUD/Options/HSliderSfx" to="HUD" method="_on_h_slider_sfx_value_changed"]
+[connection signal="value_changed" from="HUD/Options/HSliderMusic" to="HUD" method="_on_h_slider_music_value_changed"]
+[connection signal="pressed" from="HUD/Options/ADVANCED" to="." method="_on_advanced_pressed"]
+[connection signal="pressed" from="HUD/Options/ADVANCED" to="HUD" method="_on_advanced_pressed"]
 [connection signal="finished" from="Music" to="." method="_on_music_finished"]

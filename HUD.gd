@@ -8,11 +8,11 @@ func open_menu():
 	
 	if !opened_menu:
 		$PauseMenu.visible = true
-		$Darkness.modulate=Color(0,0,0,0.5)
+		$Darkness.modulate=Color(0,0,0,0.6)
 		get_tree().paused = true
 		opened_menu = $PauseMenu
 	else:
-		$PauseMenu.visible = false
+		opened_menu.visible = false
 		$Darkness.modulate=Color(0,0,0,0)
 		get_tree().paused = false
 		opened_menu = null
@@ -21,6 +21,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		open_menu()
 	$Options/ADVANCED.rotation_degrees -=.0002
+	
 func game_over():
 	$"../Music".stop()
 	$"../Grunt".play()
@@ -52,6 +53,22 @@ func _on_cheat_text_submitted(new_text):
 		get_parent().change_level(int(new_text))
 
 func _on_options_pressed():
-	pass
-	#var options = load("res://options.tscn").instantiate()
-	#$HUD.add_child(options)
+	if opened_menu:
+		opened_menu.visible = false
+	opened_menu = $Options
+	$Options.visible = true
+	
+
+func _on_advanced_pressed():
+	if opened_menu:
+		opened_menu.visible = false
+	opened_menu = $AdvancedOptions
+	$AdvancedOptions.visible = true
+
+
+func _on_h_slider_sfx_value_changed(value):
+	AudioServer.set_bus_volume_db(0, linear_to_db(value))
+
+
+func _on_h_slider_music_value_changed(value):
+	AudioServer.set_bus_volume_db(1, linear_to_db(value))
