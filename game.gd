@@ -151,7 +151,7 @@ func _physics_process(delta):
 			explosion_player.queue_free()
 		explosion_player.finished.connect(finished)
 		$MouseBox.add_child(explosion_player)
-		
+		explosion_player.bus = "Explosion"
 		explosion_player.pitch_scale = -.0025*(explosion_charge)+1.1
 		explosion_player.volume_db =.07*(explosion_charge)-13
 		explosion_player.play()

@@ -399,23 +399,28 @@ bus = &"Player"
 [node name="Thud" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("61_pul4a")
 volume_db = -3.5
+bus = &"Player"
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ix28g")
 volume_db = 1.3
 pitch_scale = 0.96
+bus = &"Player"
 
 [node name="Swim" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_d40d7")
 volume_db = -2.0
+bus = &"Player"
 
 [node name="Grunt" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_ywmt5")
 volume_db = -5.0
+bus = &"Player"
 
 [node name="Bone" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("71_la6rb")
 volume_db = -4.0
+bus = &"Player"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 24)

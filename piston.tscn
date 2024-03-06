@@ -43,10 +43,12 @@ polygon = PackedVector2Array(-25, 44, -11, 20, 51, 20, 65, 44)
 [node name="PistonOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_i7arn")
 volume_db = -7.0
+bus = &"Piston"
 
 [node name="PistonIn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_xf3mb")
 volume_db = -7.0
+bus = &"Piston"
 
 [node name="SafezoneTimer" type="Timer" parent="."]
 wait_time = 0.05

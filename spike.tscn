@@ -26,5 +26,6 @@ polygon = PackedVector2Array(-62.5, 65, 0, -61, 62.5, 65)
 [node name="stab" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_3skik")
 volume_db = -8.0
+bus = &"Spike"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

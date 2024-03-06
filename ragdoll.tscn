@@ -272,6 +272,7 @@ shape = SubResource("CapsuleShape2D_7kfpr")
 [node name="Ragpact" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_cwhxt")
 volume_db = -10.0
+bus = &"Ragdoll"
 
 [connection signal="body_entered" from="head" to="." method="_on_body_entered" binds= ["head"]]
 [connection signal="body_entered" from="torso" to="." method="_on_body_entered" binds= ["torso"]]

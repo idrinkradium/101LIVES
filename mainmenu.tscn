@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dnj4jx004byma"]
+[gd_scene load_steps=17 format=3 uid="uid://dnj4jx004byma"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_1ra5l"]
 [ext_resource type="Texture2D" uid="uid://b6tk65u5eo2y0" path="res://ui/101lives logo.png" id="2_ot5ck"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://pr08fmnl4p4v" path="res://ui/play2.png" id="6_jmhlr"]
 [ext_resource type="Texture2D" uid="uid://bhxl351rqvxx8" path="res://ui/options2.png" id="8_qapfc"]
 [ext_resource type="Texture2D" uid="uid://bxc3pau03silm" path="res://ui/levels2.png" id="10_4k6mt"]
+[ext_resource type="AudioStream" uid="uid://dcv4odago5a02" path="res://Muzak/MuzakEnding.mp3" id="11_bvogl"]
+[ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="12_ip12m"]
 
 [sub_resource type="Gradient" id="Gradient_6of1j"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -151,6 +153,15 @@ collision_layer = 255
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Levels/StaticBody2D"]
 polygon = PackedVector2Array(42.5623, 40.712, 129.538, 31.4593, 270.179, 29.6087, 408.97, 12.9538, 597.726, 16.6548, 701.356, 29.6087, 714.31, 192.457, 643.99, 227.617, 18.5051, 235.019, 27.7578, 122.136)
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_bvogl")
+volume_db = -11.0
+autoplay = true
+bus = &"Music"
+
+[node name="Poly" parent="." instance=ExtResource("12_ip12m")]
+polygon = PackedVector2Array(474, 1137, 2392, 1137, 2424, 53, 3493, -594, 3487, 1423, -457, 1410, -493, -534, 440, 46)
 
 [connection signal="timeout" from="RagdollTimer" to="." method="_on_ragdoll_timer_timeout"]
 [connection signal="pressed" from="Play" to="." method="_on_play_button_pressed"]

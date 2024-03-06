@@ -416,6 +416,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Player"
 
 [node name="HSliderRagdoll" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -433,6 +434,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Ragdoll"
 
 [node name="HSliderWater" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -450,6 +452,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Water"
 
 [node name="HSliderPoof" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -467,6 +470,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Poof"
 
 [node name="HSliderGear" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -484,6 +488,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Gear"
 
 [node name="HSliderSpike" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -501,6 +506,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Spike"
 
 [node name="HSliderConveyor" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -518,6 +524,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Conveyor"
 
 [node name="HSliderDoor" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -535,6 +542,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Door"
 
 [node name="HSliderPiston" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -552,6 +560,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Piston"
 
 [node name="HSliderPressure" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -569,6 +578,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Pressure"
 
 [node name="HSliderLock" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -586,6 +596,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Lock"
 
 [node name="HSliderExplosion" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -603,6 +614,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Explosion"
 
 [node name="HSliderFire" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -620,6 +632,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Fire"
 
 [node name="HSliderButtons" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -637,6 +650,7 @@ theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
 script = ExtResource("21_tiurb")
+bus = "Buttons"
 
 [node name="Options" type="Node2D" parent="HUD"]
 visible = false
@@ -684,8 +698,8 @@ offset_right = 1540.0
 offset_bottom = 861.0
 texture_normal = ExtResource("36_o5nse")
 script = ExtResource("10_m2n0n")
-scale_change = 0.24
-rotation_change = -5
+scale_change = 0.1
+rotation_change = -3
 texture1 = ExtResource("36_o5nse")
 texture2 = ExtResource("36_o5nse")
 
@@ -711,17 +725,21 @@ bus = &"Music"
 stream = ExtResource("13_aj5lm")
 volume_db = -9.0
 pitch_scale = 0.95
+bus = &"Poof"
 
 [node name="Grunt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("18_0uw3j")
 volume_db = -10.0
+bus = &"Sfx"
 
 [node name="Trumpet" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_63csq")
 volume_db = -12.0
+bus = &"Sfx"
 
 [node name="Quack" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_olx4f")
+bus = &"Sfx"
 
 [connection signal="pressed" from="HUD/HomeButton" to="HUD" method="_on_home_button_pressed"]
 [connection signal="pressed" from="HUD/Menu" to="HUD" method="open_menu"]

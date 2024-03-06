@@ -11,5 +11,6 @@ stream = ExtResource("2_7k12e")
 volume_db = -14.0
 autoplay = true
 attenuation = 1.18921
+bus = &"Conveyor"
 
 [connection signal="finished" from="beltnoise" to="." method="_on_beltnoise_finished"]

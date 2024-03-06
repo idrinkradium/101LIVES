@@ -38,7 +38,9 @@ polygon = PackedVector2Array(-220, 96.9937, -150, -25.3165, 150, -25.3165, 220, 
 [node name="PressurePlateIn" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_kpakp")
 volume_db = -4.0
+bus = &"Pressure"
 
 [node name="PressurePlateOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pcwky")
 volume_db = -4.0
+bus = &"Pressure"

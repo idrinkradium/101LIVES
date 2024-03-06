@@ -40,16 +40,20 @@ shape = SubResource("RectangleShape2D_6dsf2")
 
 [node name="CloseSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_8fqkx")
+bus = &"Door"
 
 [node name="OpenSfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_qbppe")
+bus = &"Door"
 
 [node name="locked" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_tmyan")
 volume_db = 3.0
+bus = &"Lock"
 
 [node name="unlocked" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_y4q78")
 volume_db = 3.0
+bus = &"Lock"
 
 [connection signal="power_changed" from="." to="." method="_on_power_changed"]

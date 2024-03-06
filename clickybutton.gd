@@ -22,7 +22,7 @@ func _ready():
 	
 	add_child(stream_player)
 	add_child(animation_timer)
-
+	stream_player.bus = "Buttons"
 
 func on_mouse_entered():
 	# sometimes it freaks out and this function gets spammed because of rotation_degrees
