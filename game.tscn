@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://gmabqaesw860"]
+[gd_scene load_steps=70 format=3 uid="uid://gmabqaesw860"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_ldl6n"]
 [ext_resource type="PackedScene" uid="uid://scmvwqnfs8pa" path="res://playerscene.tscn" id="2_xogjc"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://d27p5aruogqfe" path="res://ui/sliderplayer.png" id="20_pcx3j"]
 [ext_resource type="Texture2D" uid="uid://jink76thjnsx" path="res://ui/home.png" id="20_yswpp"]
 [ext_resource type="Texture2D" uid="uid://cts351rdwk3" path="res://ui/sliderragdoll.png" id="21_b1sx3"]
+[ext_resource type="Script" path="res://soundslider.gd" id="21_tiurb"]
 [ext_resource type="Texture2D" uid="uid://jj6r0r24qprp" path="res://ui/sliderwater.png" id="22_wt16c"]
 [ext_resource type="Texture2D" uid="uid://til82ftwtkiq" path="res://ui/sliderpoof.png" id="23_kevl7"]
 [ext_resource type="Texture2D" uid="uid://dsas3djrd46j4" path="res://ui/slidergear.png" id="24_mdg4g"]
@@ -414,6 +415,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderRagdoll" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -430,6 +432,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderWater" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -446,6 +449,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderPoof" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -462,6 +466,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderGear" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -478,6 +483,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderSpike" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -494,6 +500,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderConveyor" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -510,6 +517,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderDoor" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -526,6 +534,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderPiston" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -542,6 +551,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderPressure" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -558,6 +568,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderLock" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -574,6 +585,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderExplosion" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -590,6 +602,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderFire" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 160.0
@@ -606,6 +619,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="HSliderButtons" type="HSlider" parent="HUD/AdvancedOptions"]
 offset_left = 1120.0
@@ -622,6 +636,7 @@ theme_override_styles/slider = SubResource("StyleBoxLine_wu6aa")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_0fduq")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_i2v1b")
 value = 50.0
+script = ExtResource("21_tiurb")
 
 [node name="Options" type="Node2D" parent="HUD"]
 visible = false
