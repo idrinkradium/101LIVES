@@ -67,8 +67,9 @@ func _on_advanced_pressed():
 
 
 func _on_h_slider_sfx_value_changed(value):
-	AudioServer.set_bus_volume_db(0, linear_to_db(value))
-
-
+	print(linear_to_db(value))
+	AudioServer.set_bus_volume_db(2, linear_to_db(value))
+	
 func _on_h_slider_music_value_changed(value):
+	print(linear_to_db(value))
 	AudioServer.set_bus_volume_db(1, linear_to_db(value))

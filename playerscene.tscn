@@ -394,6 +394,7 @@ animation = &"idle"
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("60_iseu8")
 volume_db = -5.0
+bus = &"Player"
 
 [node name="Thud" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("61_pul4a")
