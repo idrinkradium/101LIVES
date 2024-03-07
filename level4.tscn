@@ -22,7 +22,7 @@ position = Vector2(160, 288)
 [node name="Door" parent="." instance=ExtResource("2_e4tag")]
 position = Vector2(1136, 1096)
 rotation = 3.14159
-new_level_id = 2
+new_level_id = 5
 requires_power = false
 
 [node name="Gear" parent="." instance=ExtResource("3_5ucwg")]
