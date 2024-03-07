@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 400
+var SPEED = 400
 const JUMP_VELOCITY = -600
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -11,7 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var previously_on_floor = false
 
-var in_water = false
+var in_water = 0
 var is_jumping = false
 var is_falling = false
 var is_running = false
@@ -21,7 +21,7 @@ var recoil = 0
 var prev_velocity = Vector2.ZERO
 
 func _physics_process(delta):
-	var is_jumping = Input.is_action_just_pressed("w") and (is_on_floor() or in_water)
+	var is_jumping = Input.is_action_just_pressed("w") and (is_on_floor() or in_water>0)
 	var is_falling = velocity.y > 0 and not is_on_floor()
 	var is_running = not is_zero_approx(velocity.x)
 	var is_idling = not is_running and not is_falling
@@ -32,16 +32,28 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 			
-	if in_water:
+	if in_water==1:   
 		velocity.y /= 1.18
+	elif in_water==2:
+		velocity.y /= 1.4
 		
 	if is_jumping:
 		velocity.y = JUMP_VELOCITY
-		if in_water:
+		if in_water==1:
 			velocity.y = JUMP_VELOCITY*1.2
+		elif in_water==2:
+			velocity.y = JUMP_VELOCITY*.1
 	
 	input_direction = Input.get_axis("a", "d")
 	#if recoil < 1:
+	if in_water==2:
+		SPEED=100
+		$AnimatedSprite2D.speed_scale=.5
+		$Footsteps.pitch_scale=.8
+	else: 
+		SPEED=400
+		$AnimatedSprite2D.speed_scale=1
+		$Footsteps.pitch_scale=1
 	if input_direction:
 		velocity.x = input_direction * SPEED
 	else:
@@ -77,7 +89,7 @@ func _physics_process(delta):
 	
 	if is_jumping:
 		sprite.play("Jump")
-		if not in_water:
+		if in_water==0:
 			$Jump.play()
 		else: 
 			$Swim.play()

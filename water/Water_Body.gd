@@ -80,6 +80,7 @@ func _ready():
 	
 	if goo:
 		$Water_Body_Area.gravity = 500
+		$Water_Body_Area.linear_damp = 200
 		var mat = $Water_Polygon.material.duplicate()
 		mat.set_shader_parameter("tint", Color.GREEN)
 		$Water_Polygon.material = mat
@@ -177,18 +178,27 @@ func play_splash(velocity):
 	if $Splashing.volume_db>.5:
 		$Splashing.volume_db=.45
 	$Splashing.pitch_scale=(-.0005*velocity.y)+1.5
-	if $Splashing.pitch_scale<.7:
+	if goo: 
+		$Splashing.pitch_scale-=.5
+	if not goo and $Splashing.pitch_scale<.7:
 		$Splashing.pitch_scale=.71
+	elif goo and $Splashing.pitch_scale<.6:
+		$Splashing.pitch_scale=.6
+		
 	$Splashing.play()
 		
 func _on_Water_Body_Area_body_entered(body):
 	if body is CharacterBody2D:
-		body.in_water = true
+		if goo:
+			body.in_water = 2
+		else: body.in_water = 1
 		play_splash(body.velocity)
 	elif body is RigidBody2D and body.name=="topleftleg" and body.linear_velocity.y>150:
 		play_splash(body.linear_velocity)
 	#
 	#creates a instace of the particle system
+	if goo:
+		return
 	var s = splash_particle.instantiate()
 	
 	#adds the particle to the scene
@@ -202,4 +212,4 @@ func _on_Water_Body_Area_body_entered(body):
 
 func _on_water_body_area_body_exited(body):
 	if body is CharacterBody2D:
-		body.in_water = false
+		body.in_water = 0

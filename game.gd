@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 @export var level:Node2D
 
@@ -21,8 +21,6 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_end"):
 		change_level(level.get_node("Door").new_level_id)
-	
-
 	if Input.is_action_just_pressed("Die"):
 		kill_player(true)
 		

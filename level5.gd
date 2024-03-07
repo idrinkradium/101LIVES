@@ -1,7 +1,6 @@
 extends Node2D
 
 var fire_toggle = false
-
 func _ready():
 	$FireRight.on = false
 	
