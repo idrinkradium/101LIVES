@@ -20,7 +20,6 @@ func open_menu():
 func _process(delta):
 	if Input.is_action_just_pressed("ui_cancel"):
 		open_menu()
-	$Options/ADVANCED.rotation_degrees -=.0002
 	
 func game_over():
 	$"../Music".stop()
@@ -59,11 +58,6 @@ func _on_options_pressed():
 	$Options.visible = true
 	
 
-func _on_advanced_pressed():
-	if opened_menu:
-		opened_menu.visible = false
-	opened_menu = $AdvancedOptions
-	$AdvancedOptions.visible = true
 
 
 func _on_h_slider_sfx_value_changed(value):

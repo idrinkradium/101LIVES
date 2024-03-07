@@ -44,3 +44,4 @@ bruh = 200
 [node name="Water_Body2" parent="." instance=ExtResource("6_k2imd")]
 position = Vector2(304, 464)
 bruh = 200
+goo = true

@@ -41,6 +41,8 @@ var water_lenght = distance_between_springs * spring_number
 #reference to the particle we just created
 @onready var splash_particle = preload("splash_particles.tscn")
 
+@export var goo = false
+
 #initializes the spring array and all the springs
 func _ready():
 	water_border.width = border_thickness
@@ -75,6 +77,12 @@ func _ready():
 	water_body_area.position = pos
 	collisionShape.shape = RectangleShape2D.new()
 	collisionShape.shape.size = rect_extents
+	
+	if goo:
+		$Water_Body_Area.gravity = 500
+		var mat = $Water_Polygon.material.duplicate()
+		mat.set_shader_parameter("tint", Color.GREEN)
+		$Water_Polygon.material = mat
 
 func _physics_process(delta):
 	
