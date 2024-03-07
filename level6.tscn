@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1vu7r5v7uryv"]
+
+[ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="1_clcmx"]
+[ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="2_inp02"]
+[ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="3_m04km"]
+[ext_resource type="PackedScene" uid="uid://cs8h8mde5pqlb" path="res://spike.tscn" id="4_v4c32"]
+[ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="5_y8m0x"]
+[ext_resource type="PackedScene" uid="uid://cq0r10no7tq1w" path="res://water/Water_Body.tscn" id="6_k2imd"]
+
+[node name="Level6" type="Node2D"]
+
+[node name="CameraSpawn" type="Node2D" parent="."]
+position = Vector2(-688, 32)
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(-296, 372)
+
+[node name="Poly" parent="." instance=ExtResource("1_clcmx")]
+position = Vector2(-473, 392)
+polygon = PackedVector2Array(25, 24, 129, 56, 345, 56, 345, -416, 473, -416, 473, 248, 601, 248, 601, 56, 793, 56, 793, 248, 1881, 248, 1881, 56, 2137, 56, 2137, 504, 25, 504)
+
+[node name="Piston" parent="." instance=ExtResource("2_inp02")]
+position = Vector2(-400, 432)
+rotation = 0.296706
+
+[node name="PressurePlate" parent="." node_paths=PackedStringArray("powerables") instance=ExtResource("3_m04km")]
+position = Vector2(-392, 410)
+rotation = 0.296706
+powerables = [NodePath("../Piston")]
+
+[node name="Spike" parent="." instance=ExtResource("4_v4c32")]
+position = Vector2(-96, -48)
+
+[node name="Spike2" parent="." instance=ExtResource("4_v4c32")]
+position = Vector2(-32, -48)
+
+[node name="Door" parent="." instance=ExtResource("5_y8m0x")]
+position = Vector2(1536, 381)
+
+[node name="Water_Body" parent="." instance=ExtResource("6_k2imd")]
+position = Vector2(-16, 456)
+bruh = 200
+
+[node name="Water_Body2" parent="." instance=ExtResource("6_k2imd")]
+position = Vector2(304, 464)
+bruh = 200
