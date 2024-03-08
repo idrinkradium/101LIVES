@@ -54,8 +54,9 @@ func _on_cheat_text_submitted(new_text):
 func _on_options_pressed():
 	if opened_menu:
 		opened_menu.visible = false
-	opened_menu = $Options
-	$Options.visible = true
+	opened_menu = $OptionsScreen
+	$OptionsScreen.visible = true
+	$OptionsScreen.open()
 	
 
 

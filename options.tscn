@@ -377,4 +377,6 @@ rotation_change = -3
 texture1 = ExtResource("19_25co8")
 texture2 = ExtResource("19_25co8")
 
+[connection signal="value_changed" from="Options/HSliderSfx" to="." method="_on_h_slider_sfx_value_changed"]
+[connection signal="value_changed" from="Options/HSliderMusic" to="." method="_on_h_slider_music_value_changed"]
 [connection signal="pressed" from="Options/ADVANCED" to="." method="_on_advanced_pressed"]

@@ -112,7 +112,7 @@ streams_count = 1
 stream_0/stream = ExtResource("28_uxdpc")
 stream_0/weight = 1.0
 
-[node name="Game" type="Node2D"]
+[node name="Game" type="Node"]
 script = ExtResource("1_ldl6n")
 
 [node name="Camera2D" type="Camera2D" parent="."]
