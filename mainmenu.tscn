@@ -1,8 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dnj4jx004byma"]
+[gd_scene load_steps=20 format=3 uid="uid://dnj4jx004byma"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_1ra5l"]
 [ext_resource type="Texture2D" uid="uid://b6tk65u5eo2y0" path="res://ui/101lives logo.png" id="2_ot5ck"]
-[ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/play1.png" id="2_q0lq7"]
+[ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/Play1.png" id="2_q0lq7"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="3_uc0vy"]
 [ext_resource type="Texture2D" uid="uid://dgy0x34a04ym7" path="res://ui/options1.png" id="4_rsc4b"]
 [ext_resource type="Script" path="res://clickybutton.gd" id="5_2h3nx"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://bxc3pau03silm" path="res://ui/levels2.png" id="10_4k6mt"]
 [ext_resource type="AudioStream" uid="uid://dcv4odago5a02" path="res://Muzak/MuzakEnding.mp3" id="11_bvogl"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="12_ip12m"]
+[ext_resource type="PackedScene" uid="uid://crlonduigjqvw" path="res://options.tscn" id="13_f0byi"]
+[ext_resource type="Texture2D" uid="uid://jink76thjnsx" path="res://ui/home.png" id="14_8hkpf"]
+[ext_resource type="Texture2D" uid="uid://ckebc5ow8wk8d" path="res://ui/home2.png" id="15_6vkiv"]
 
 [sub_resource type="Gradient" id="Gradient_6of1j"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -163,5 +166,22 @@ bus = &"Music"
 [node name="Poly" parent="." instance=ExtResource("12_ip12m")]
 polygon = PackedVector2Array(474, 1137, 2392, 1137, 2424, 53, 3493, -594, 3487, 1423, -457, 1410, -493, -534, 440, 46)
 
+[node name="OptionsScreen" parent="." instance=ExtResource("13_f0byi")]
+visible = false
+z_index = 999
+
+[node name="HomeButton" type="TextureButton" parent="OptionsScreen"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 70.0
+offset_bottom = 70.0
+scale = Vector2(0.4, 0.4)
+script = ExtResource("5_2h3nx")
+rotation_change = -1
+texture1 = ExtResource("14_8hkpf")
+texture2 = ExtResource("15_6vkiv")
+
 [connection signal="timeout" from="RagdollTimer" to="." method="_on_ragdoll_timer_timeout"]
 [connection signal="pressed" from="Play" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="OptionsScreen/HomeButton" to="." method="_on_home_button_pressed"]

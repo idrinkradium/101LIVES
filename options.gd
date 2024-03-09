@@ -7,7 +7,7 @@ func _process(delta):
 		$AdvancedOptions.position.y -= scrollamount
 	if Input.is_action_just_released("Zoom In"):
 		$AdvancedOptions.position.y += scrollamount
-	$Options/ADVANCED.rotation_degrees -=.0002
+	$Options/ADVANCED.rotation_degrees -=.001
 
 func open():
 	$AdvancedOptions.visible = false

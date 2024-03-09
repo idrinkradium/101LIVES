@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://lli605rl70ib"]
+[gd_scene load_steps=19 format=3 uid="uid://lli605rl70ib"]
 
 [ext_resource type="Script" path="res://ragdoll.gd" id="1_cywo1"]
 [ext_resource type="Texture2D" uid="uid://dsgqhljj8icki" path="res://tiles/ragdoll/head.png" id="1_w04ov"]
+[ext_resource type="Script" path="res://ragdollpart.gd" id="2_558hq"]
 [ext_resource type="Texture2D" uid="uid://b2o8cxgi6wndb" path="res://tiles/ragdoll/leftairpod.png" id="2_iyppq"]
 [ext_resource type="Texture2D" uid="uid://conve0jb7uncx" path="res://tiles/ragdoll/bottomarm.png" id="3_puy5o"]
 [ext_resource type="Texture2D" uid="uid://ck3vi8x1fhl24" path="res://tiles/ragdoll/rightairpod.png" id="4_kdr0e"]
@@ -51,6 +52,7 @@ mass = 0.5
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="head"]
 scale = Vector2(0.33, 0.33)
@@ -75,6 +77,7 @@ gravity_scale = 0.8
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="torso"]
 position = Vector2(0, 4)
@@ -93,6 +96,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="rightairpod"]
 scale = Vector2(0.215, 0.215)
@@ -115,6 +119,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="leftairpod"]
 scale = Vector2(0.212, 0.212)
@@ -137,6 +142,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightarm"]
 position = Vector2(5.96046e-08, 14)
@@ -160,6 +166,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomleftarm"]
 position = Vector2(0, 14)
@@ -183,6 +190,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomrightleg"]
 position = Vector2(1, 0)
@@ -206,6 +214,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="bottomleftleg"]
 position = Vector2(1, 0)
@@ -230,6 +239,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="toprightleg"]
 position = Vector2(0, 9)
@@ -254,6 +264,7 @@ mass = 0.75
 continuous_cd = 2
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("2_558hq")
 
 [node name="Sprite2D" type="Sprite2D" parent="topleftleg"]
 position = Vector2(0, 9)
@@ -274,6 +285,9 @@ stream = SubResource("AudioStreamRandomizer_cwhxt")
 volume_db = -10.0
 bus = &"Ragdoll"
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="body_entered" from="head" to="." method="_on_body_entered" binds= ["head"]]
 [connection signal="body_entered" from="torso" to="." method="_on_body_entered" binds= ["torso"]]
 [connection signal="input_event" from="torso" to="." method="_on_torso_input_event"]
@@ -285,3 +299,4 @@ bus = &"Ragdoll"
 [connection signal="body_entered" from="bottomleftleg" to="." method="_on_body_entered" binds= ["bottomleftleg"]]
 [connection signal="body_entered" from="toprightleg" to="." method="_on_body_entered" binds= ["toprightleg"]]
 [connection signal="body_entered" from="topleftleg" to="." method="_on_body_entered" binds= ["topleftleg"]]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
