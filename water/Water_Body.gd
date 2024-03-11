@@ -81,9 +81,7 @@ func _ready():
 	if goo:
 		$Water_Body_Area.gravity = 500
 		$Water_Body_Area.linear_damp = 200
-		var mat = $Water_Polygon.material.duplicate()
-		mat.set_shader_parameter("tint", Color.GREEN)
-		$Water_Polygon.material = mat
+		$Water_Polygon.color = Color(0,1,0,0.8)
 
 func _physics_process(delta):
 	
