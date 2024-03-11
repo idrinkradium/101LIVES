@@ -18,6 +18,7 @@ position = Vector2(192, -192)
 
 [node name="Door" parent="." instance=ExtResource("2_efx0i")]
 position = Vector2(768, 176)
+new_level_id = 6
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
 position = Vector2(768, -128)

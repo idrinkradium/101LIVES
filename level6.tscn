@@ -38,6 +38,7 @@ position = Vector2(-32, -48)
 
 [node name="Door" parent="." instance=ExtResource("5_y8m0x")]
 position = Vector2(1536, 381)
+requires_power = false
 
 [node name="Water_Body" parent="." instance=ExtResource("6_k2imd")]
 position = Vector2(-16, 456)
