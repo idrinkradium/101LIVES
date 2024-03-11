@@ -174,18 +174,21 @@ func splash(index, speed):
 	pass
 
 func play_splash(velocity):
-	$Splashing.volume_db=(velocity.y/150)-12
-	if $Splashing.volume_db>.5:
-		$Splashing.volume_db=.45
-	$Splashing.pitch_scale=(-.0005*velocity.y)+1.5
-	if goo: 
-		$Splashing.pitch_scale-=.5
-	if not goo and $Splashing.pitch_scale<.7:
-		$Splashing.pitch_scale=.71
-	elif goo and $Splashing.pitch_scale<.6:
-		$Splashing.pitch_scale=.6
+	var sound = $Splashing
+	if goo:
+		sound = $Goo
+	sound.volume_db=(velocity.y/150)-12
+	if sound.volume_db>.5:
+		sound.volume_db=.45
+	sound.pitch_scale=(-.0005*velocity.y)+1.5
+	if goo:
+		sound.pitch_scale-=.25
+	if not goo and sound.pitch_scale<.7:
+		sound.pitch_scale=.71
+	elif goo and sound.pitch_scale<.6:
+		sound.pitch_scale=.61
 		
-	$Splashing.play()
+	sound.play()
 		
 func _on_Water_Body_Area_body_entered(body):
 	if body is CharacterBody2D:
