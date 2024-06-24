@@ -7,11 +7,11 @@ extends Powerable
 @onready var start_pos: Vector2 = $Piston.position
 
 func _process(delta):
-	if Input.is_action_just_pressed("o"):
-		power_changed.emit(false)
-	if Input.is_action_just_pressed("p"):
-		power_changed.emit(true)
-		
+	#if Input.is_action_just_pressed("o"):
+		#power_changed.emit(false)
+	#if Input.is_action_just_pressed("p"):
+		#power_changed.emit(true)
+	pass
 func _on_power_changed(new_power):
 	if powered == new_power:
 		return

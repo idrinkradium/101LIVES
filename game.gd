@@ -15,7 +15,7 @@ extends Node
 var explosion_charge = 0
 
 func _ready():
-	change_level(6)
+	change_level(1)
 	
 	#😍
 func _process(delta):

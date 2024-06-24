@@ -17,6 +17,7 @@ script = ExtResource("1_vc2ka")
 position = Vector2(192, -192)
 
 [node name="Door" parent="." instance=ExtResource("2_efx0i")]
+visible = false
 position = Vector2(768, 176)
 new_level_id = 6
 
@@ -27,10 +28,12 @@ position = Vector2(768, -128)
 polygon = PackedVector2Array(1113, 56, 1369, 56, 1369, 120, 1113, 144)
 
 [node name="Poly4" parent="." instance=ExtResource("1_sts2w")]
+visible = false
 position = Vector2(-824, -56)
 polygon = PackedVector2Array(1208, -456, 1336, -200, 1336, 224, 1208, 224)
 
 [node name="Poly5" parent="." instance=ExtResource("1_sts2w")]
+visible = false
 position = Vector2(-184, -56)
 polygon = PackedVector2Array(1208, -200, 1336, -456, 1336, 224, 1208, 224)
 

@@ -81,7 +81,7 @@ func _ready():
 	if goo:
 		$Water_Body_Area.gravity = 500
 		$Water_Body_Area.linear_damp = 200
-		$Water_Polygon.color = Color(0,1,0,0.8)
+		$Water_Polygon.color = Color(.14,1,.14,0.8)
 
 func _physics_process(delta):
 	

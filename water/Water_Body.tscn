@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cq0r10no7tq1w"]
+[gd_scene load_steps=11 format=3 uid="uid://cq0r10no7tq1w"]
 
 [ext_resource type="Script" path="res://water/Water_Body.gd" id="2"]
 [ext_resource type="Script" path="res://water/smooth_path_modified.gd" id="3"]
@@ -37,7 +37,7 @@ k = 0.014
 d = 0.15
 
 [node name="Water_Polygon" type="Polygon2D" parent="."]
-color = Color(0, 0.803922, 0.898039, 0.54902)
+color = Color(0, 0.866667, 0.968627, 0.54902)
 
 [node name="Water_Border" type="Path2D" parent="."]
 curve = SubResource("1")
