@@ -55,7 +55,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.speed_scale=1
 		$Footsteps.pitch_scale=1
 	if input_direction:
-		velocity.x = input_direction * SPEED
+		velocity.x = input_direction * SPEED*2
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	#else:
@@ -99,22 +99,14 @@ func _physics_process(delta):
 		sprite.play("impact fall")
 		$Thud.play()
 		
-		if prev_velocity.y > 1000:
-			$Grunt.play()
-			$Bone.play()
-			var ragdoll = await get_tree().current_scene.kill_player(true)
-			destroy_limb(ragdoll, "head",prev_velocity)
-			destroy_limb(ragdoll, "rightairpod",prev_velocity)
-			destroy_limb(ragdoll, "leftairpod",prev_velocity)
-			destroy_limb(ragdoll, "bottomleftleg",prev_velocity)
-			destroy_limb(ragdoll, "topleftleg",prev_velocity)
-			destroy_limb(ragdoll, "bottomrightleg",prev_velocity)
-			destroy_limb(ragdoll, "toprightleg",prev_velocity)
-			destroy_limb(ragdoll, "bottomrightarm",prev_velocity)
-			destroy_limb(ragdoll, "bottomleftarm",prev_velocity)
+		if prev_velocity.abs().y > 1000:
+			killfromvelocity(prev_velocity)
 			
 	if is_falling and (sprite.animation == "running" or sprite.animation == "run start") and input_direction == 0:
 		sprite.play("idle")
+	
+	if prev_velocity.abs().x > 1000 and velocity.abs().x < 10:
+		killfromvelocity(prev_velocity)
 	
 	# this will technically be like 1 frame late but who cares man 💔💝💟💌
 	previously_on_floor = is_on_floor()
@@ -128,7 +120,21 @@ func destroy_limb(ragdoll, name, velocity):
 	var joint = limb.get_node_or_null(name + "joint")
 	if joint:
 		joint.queue_free()
-					
+
+func killfromvelocity(vel):
+	$Grunt.play()
+	$Bone.play()
+	var ragdoll = await get_tree().current_scene.kill_player(true)
+	destroy_limb(ragdoll, "head",vel)
+	destroy_limb(ragdoll, "rightairpod",vel)
+	destroy_limb(ragdoll, "leftairpod",vel)
+	destroy_limb(ragdoll, "bottomleftleg",vel)
+	destroy_limb(ragdoll, "topleftleg",vel)
+	destroy_limb(ragdoll, "bottomrightleg",vel)
+	destroy_limb(ragdoll, "toprightleg",vel)
+	destroy_limb(ragdoll, "bottomrightarm",vel)
+	destroy_limb(ragdoll, "bottomleftarm",vel)
+
 func _on_animated_sprite_2d_animation_finished():
 	if sprite.animation == "Jump":
 		sprite.play("idle")
