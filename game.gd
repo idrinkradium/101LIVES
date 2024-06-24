@@ -114,6 +114,7 @@ func destroy_limb(body,name):
 	if body.name == name:
 		var ragdoll = body.get_parent()
 		var limb = ragdoll.get_node(name)
+		print(limb)
 		var joint = limb.get_node_or_null(name + "joint")
 		if joint:
 			joint.queue_free()
