@@ -82,7 +82,7 @@ radius = 300.0
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5da5w"]
 
 [sub_resource type="Gradient" id="Gradient_i1flq"]
-colors = PackedColorArray(0, 0.8, 0.247059, 1, 0, 0.8, 0.247059, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8bspp"]
 gradient = SubResource("Gradient_i1flq")
