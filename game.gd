@@ -110,11 +110,11 @@ func kill_player(spawn_ragdoll:bool):
 	
 		return instance
 		
-func destroy_limb(body,name):
+func destroy_limb(dmg,body,name):
 	if body.name == name:
 		var ragdoll = body.get_parent()
 		var limb = ragdoll.get_node(name)
-		print(limb)
+		limb.hp -= dmg
 		var joint = limb.get_node_or_null(name + "joint")
 		if joint:
 			joint.queue_free()
@@ -167,15 +167,19 @@ func _physics_process(delta):
 			if distance>75:
 				continue
 			var body = collision.collider
-			destroy_limb(body, "head")
-			destroy_limb(body, "rightairpod")
-			destroy_limb(body, "leftairpod")
-			destroy_limb(body, "bottomleftleg")
-			destroy_limb(body, "topleftleg")
-			destroy_limb(body, "bottomrightleg")
-			destroy_limb(body, "toprightleg")
-			destroy_limb(body, "bottomrightarm")
-			destroy_limb(body, "bottomleftarm")
+			
+			var dmg = explosion_charge * 2
+			# torso has no joint but we do want it to take damage
+			destroy_limb(dmg,body, "torso")
+			destroy_limb(dmg,body, "head")
+			destroy_limb(dmg,body, "rightairpod")
+			destroy_limb(dmg,body, "leftairpod")
+			destroy_limb(dmg,body, "bottomleftleg")
+			destroy_limb(dmg,body, "topleftleg")
+			destroy_limb(dmg,body, "bottomrightleg")
+			destroy_limb(dmg,body, "toprightleg")
+			destroy_limb(dmg,body, "bottomrightarm")
+			destroy_limb(dmg,body, "bottomleftarm")
 			
 		explosion_charge=0
 		$MouseBox/ExplosionCircle.visible=false
