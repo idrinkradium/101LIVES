@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://kqxkkdk25nay"]
+
+[ext_resource type="Script" path="res://rigidshapes.gd" id="1_r21pb"]
+
+[node name="Root" type="Node2D"]
+script = ExtResource("1_r21pb")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 253
+
+[node name="rigidshapes" type="Polygon2D" parent="RigidBody2D"]
+z_index = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+
+[node name="centerofmass" type="Marker2D" parent="."]
