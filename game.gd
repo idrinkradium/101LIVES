@@ -161,7 +161,6 @@ func _physics_process(delta):
 			var direction=$MouseBox.position.direction_to(collision.collider.global_position)
 			var distance=$MouseBox.position.distance_to(collision.collider.global_position)
 			var distancemulti=-.00333*(distance)+1
-			var explosionmulti=10*explosion_charge
 			var magnitude=direction*distancemulti*explosion_charge
 			collision.collider.apply_impulse(magnitude*8)
 			if distance>75:

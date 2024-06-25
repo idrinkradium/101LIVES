@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://wcvxvlri5v0k" path="res://wires/level2wire1.png" id="9_scp8r"]
 [ext_resource type="Script" path="res://fadeable.gd" id="9_y7ueg"]
 [ext_resource type="Texture2D" uid="uid://bcpyweka6dp1c" path="res://wires/level2wire2.png" id="10_ykt60"]
-[ext_resource type="PackedScene" uid="uid://cx3n2kq1lywb6" path="res://target.tscn" id="11_xu8tp"]
+[ext_resource type="PackedScene" uid="uid://d08087frmmk2g" path="res://target.tscn" id="11_xu8tp"]
 
 [node name="Level2" type="Node2D"]
 

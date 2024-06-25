@@ -1,11 +1,11 @@
 extends Node2D
 class_name Limb
-var hp = 100:
+var hp = 150:
 	get:
 		return hp
 	set(value):
 		hp=value
-		modulate.v=(hp * .003) + 0.7
+		modulate.v=(hp * .003) + 0.8
 		
 		
 @export var destroyparticles : CPUParticles2D
