@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfb43ggdwactk"]
+[gd_scene load_steps=12 format=3 uid="uid://dfb43ggdwactk"]
 
 [ext_resource type="PackedScene" uid="uid://cwitq4m302w3o" path="res://pressureplate.tscn" id="2_ypf6p"]
 [ext_resource type="PackedScene" uid="uid://dse5o84rnxnyy" path="res://piston.tscn" id="3_joud2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://wcvxvlri5v0k" path="res://wires/level2wire1.png" id="9_scp8r"]
 [ext_resource type="Script" path="res://fadeable.gd" id="9_y7ueg"]
 [ext_resource type="Texture2D" uid="uid://bcpyweka6dp1c" path="res://wires/level2wire2.png" id="10_ykt60"]
+[ext_resource type="PackedScene" uid="uid://cx3n2kq1lywb6" path="res://target.tscn" id="11_xu8tp"]
 
 [node name="Level2" type="Node2D"]
 
@@ -106,3 +107,7 @@ z_index = 10
 position = Vector2(993, 103)
 scale = Vector2(0.62, 0.62)
 texture = ExtResource("10_ykt60")
+
+[node name="Target" parent="." instance=ExtResource("11_xu8tp")]
+position = Vector2(476, 250)
+scale = Vector2(0.12, 0.12)

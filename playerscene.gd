@@ -55,7 +55,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.speed_scale=1
 		$Footsteps.pitch_scale=1
 	if input_direction:
-		velocity.x = input_direction * SPEED*2
+		velocity.x = input_direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	#else:
