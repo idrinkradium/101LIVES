@@ -47,6 +47,17 @@ func _on_power_changed(new_power):
 	
 	var finished = func():
 		$SafezoneTimer.start()
+		
+		var crush=false
+		print("b")
+		for collision in $Piston/ShapeCast2D.collision_result:
+			if collision.collider is StaticBody2D:
+				crush=true
+				
+			if crush and collision.collider is CharacterBody2D:
+				print("crush")
+				collision.collider.killfromvelocity(Vector2(player_velocity,player_velocity))
+			
 
 	tween.finished.connect(finished)
 
@@ -55,3 +66,7 @@ func _on_safezone_timer_timeout():
 	if $Piston/ShapeCast2D.collision_result.is_empty():
 		$Piston/CollisionPolygon2D.disabled=false
 		$SafezoneTimer.stop()
+
+
+func _on_crushzone_body_entered(body):
+	pass # Replace with function body.
