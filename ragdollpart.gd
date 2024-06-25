@@ -1,6 +1,13 @@
 extends Node2D
 class_name Limb
-var hp = 100
+var hp = 100:
+	get:
+		return hp
+	set(value):
+		hp=value
+		modulate.v=(hp * .003) + 0.7
+		
+		
 @export var destroyparticles : CPUParticles2D
 func _process(delta):
 	if position.y > 2000 or hp <= 0:
