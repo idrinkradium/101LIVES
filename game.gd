@@ -168,7 +168,7 @@ func _physics_process(delta):
 				continue
 			var body = collision.collider
 			
-			var dmg = explosion_charge * 2
+			var dmg = explosion_charge / 2
 			# torso has no joint but we do want it to take damage
 			destroy_limb(dmg,body, "torso")
 			destroy_limb(dmg,body, "head")
