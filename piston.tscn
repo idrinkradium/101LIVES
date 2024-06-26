@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://bapgdvqlnxa5f" path="res://sounds/pistonin.mp3" id="5_xf3mb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj7c0"]
-size = Vector2(30, 1)
+size = Vector2(30, 0.1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6io66"]
 size = Vector2(400, 100)
@@ -31,7 +31,7 @@ collision_mask = 244
 position = Vector2(-26, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/crushzone"]
-position = Vector2(25.5, 1)
+position = Vector2(26, 1)
 shape = SubResource("RectangleShape2D_oj7c0")
 
 [node name="Sprite" type="Sprite2D" parent="Piston"]
