@@ -8,6 +8,7 @@ extends Polygon2D
 func _ready():
 	$StaticBody2D/CollisionPolygon2D.polygon = polygon
 	color = Color.BLACK
+	
 
 func _draw():
 	var p = Geometry2D.offset_polygon(polygon, -line_thickness)[0]
