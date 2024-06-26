@@ -6,6 +6,7 @@ extends Powerable
 
 @onready var start_pos: Vector2 = $Piston.position
 
+var crushplayer : CharacterBody2D
 
 func _on_power_changed(new_power):
 	if powered == new_power:
@@ -53,8 +54,18 @@ func _on_safezone_timer_timeout():
 
 
 func _on_crushzone_body_entered(body):
-	
 	if body is CharacterBody2D:
+		crushplayer=body
+		$CrushTimer.start()
+
+
+func _on_crushzone_body_exited(body):
+	if body is CharacterBody2D:
+		crushplayer=null
+		$CrushTimer.stop()
+
+
+func _on_crush_timer_timeout():
+	if crushplayer:
 		print("crush")
-		body.killfromvelocity(Vector2(player_velocity,player_velocity))
-		
+		crushplayer.killfromvelocity(Vector2(player_velocity,player_velocity))
