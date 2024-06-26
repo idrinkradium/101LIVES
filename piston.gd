@@ -5,19 +5,8 @@ extends Powerable
 @export var player_velocity = 1000
 
 @onready var start_pos: Vector2 = $Piston.position
-func _ready():
-	pass
-	#$Piston/crushzone.add_exception($Piston)
-	
-func _process(delta):
-	for p in ($Piston/a.collision_result):
-		if p.collider is CharacterBody2D:
-			print(1)
-	#if Input.is_action_just_pressed("o"):
-		#power_changed.emit(false)
-	#if Input.is_action_just_pressed("p"):
-		#power_changed.emit(true)
-	pass
+
+
 func _on_power_changed(new_power):
 	if powered == new_power:
 		return
@@ -52,20 +41,7 @@ func _on_power_changed(new_power):
 	tween.parallel().tween_property($Spring, "scale", Vector2($Spring.scale.x, new_y), animation_duration)
 	
 	var finished = func():
-		$SafezoneTimer.start()
-		
-		if 0:
-			print("fin")
-			var crush=false
-			for collision in $Piston/crushzone.collision_result:
-				print(collision)
-				if collision.collider is StaticBody2D or  collision.collider is AnimatableBody2D:
-					crush=true
-			for collision in $Piston/crushzone.collision_result:
-				if crush and collision.collider is CharacterBody2D:
-					print("crush")
-					collision.collider.killfromvelocity(Vector2(player_velocity,player_velocity))
-				
+		$SafezoneTimer.start()			
 
 	tween.finished.connect(finished)
 
@@ -74,3 +50,11 @@ func _on_safezone_timer_timeout():
 	if $Piston/ShapeCast2D.collision_result.is_empty():
 		$Piston/CollisionPolygon2D.disabled=false
 		$SafezoneTimer.stop()
+
+
+func _on_crushzone_body_entered(body):
+	
+	if body is CharacterBody2D:
+		print("crush")
+		body.killfromvelocity(Vector2(player_velocity,player_velocity))
+		
