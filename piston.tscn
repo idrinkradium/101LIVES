@@ -63,6 +63,11 @@ bus = &"Piston"
 [node name="SafezoneTimer" type="Timer" parent="."]
 wait_time = 0.05
 
+[node name="CrushTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [connection signal="power_changed" from="." to="." method="_on_power_changed"]
 [connection signal="body_entered" from="Piston/crushzone" to="." method="_on_crushzone_body_entered"]
 [connection signal="timeout" from="SafezoneTimer" to="." method="_on_safezone_timer_timeout"]
+[connection signal="timeout" from="CrushTimer" to="." method="_on_crush_timer_timeout"]
