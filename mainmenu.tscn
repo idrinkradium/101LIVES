@@ -1,13 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://dnj4jx004byma"]
+[gd_scene load_steps=20 format=3 uid="uid://dnj4jx004byma"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_1ra5l"]
 [ext_resource type="Texture2D" uid="uid://b6tk65u5eo2y0" path="res://ui/101lives logo.png" id="2_ot5ck"]
-[ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/play1.png" id="2_q0lq7"]
+[ext_resource type="Texture2D" uid="uid://ept00eui0ixr" path="res://ui/Play1.png" id="2_q0lq7"]
 [ext_resource type="FontFile" uid="uid://bkoydq55snmj8" path="res://gobaaahandwrittencomic-regular-webfont.ttf" id="3_uc0vy"]
 [ext_resource type="Texture2D" uid="uid://dgy0x34a04ym7" path="res://ui/options1.png" id="4_rsc4b"]
 [ext_resource type="Script" path="res://clickybutton.gd" id="5_2h3nx"]
 [ext_resource type="Texture2D" uid="uid://bej33vxk5ktur" path="res://ui/levels1.png" id="5_rtmgw"]
 [ext_resource type="Texture2D" uid="uid://pr08fmnl4p4v" path="res://ui/play2.png" id="6_jmhlr"]
+[ext_resource type="Texture2D" uid="uid://bhxl351rqvxx8" path="res://ui/options2.png" id="8_rvtbs"]
 [ext_resource type="Texture2D" uid="uid://bxc3pau03silm" path="res://ui/levels2.png" id="10_4k6mt"]
 [ext_resource type="AudioStream" uid="uid://dcv4odago5a02" path="res://Muzak/MuzakEnding.mp3" id="11_bvogl"]
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="12_ip12m"]
@@ -120,6 +121,8 @@ scale = Vector2(0.538251, 0.538251)
 pivot_offset = Vector2(380, 130)
 texture_normal = ExtResource("4_rsc4b")
 script = ExtResource("5_2h3nx")
+texture1 = ExtResource("4_rsc4b")
+texture2 = ExtResource("8_rvtbs")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Options"]
 collision_layer = 255
