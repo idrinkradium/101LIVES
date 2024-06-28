@@ -25,7 +25,7 @@ animations = [{
 "texture": ExtResource("5_5ei0a")
 }],
 "loop": true,
-"name": &"default",
+"name": &"fan",
 "speed": 30.0
 }]
 
@@ -53,7 +53,7 @@ shape = SubResource("RectangleShape2D_5yl8a")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
 scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_k5d3q")
-frame_progress = 0.45562
+animation = &"fan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-1, 10)

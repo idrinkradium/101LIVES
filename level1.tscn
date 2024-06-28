@@ -55,6 +55,7 @@ autostart = true
 [node name="Fan" parent="." instance=ExtResource("7_l4ibq")]
 position = Vector2(352, 480)
 scale = Vector2(0.665184, 0.665184)
+powered = true
 
 [node name="Bomb" parent="." instance=ExtResource("8_6cmcy")]
 
