@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="6_jrwfq"]
 [ext_resource type="Script" path="res://fadeable.gd" id="7_6qd8g"]
 [ext_resource type="PackedScene" uid="uid://cgw2t5tkiewp1" path="res://fan.tscn" id="7_l4ibq"]
-[ext_resource type="PackedScene" uid="uid://gxofqe3v6sak" path="res://bomb.tscn" id="8_6cmcy"]
+[ext_resource type="PackedScene" uid="uid://1kc3uer76c1x" path="res://bomb.tscn" id="8_6cmcy"]
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
 
 [node name="Level1" type="Node2D"]
@@ -57,6 +57,16 @@ position = Vector2(352, 480)
 scale = Vector2(0.665184, 0.665184)
 powered = true
 
+[node name="Bomb4" parent="." instance=ExtResource("8_6cmcy")]
+position = Vector2(620, 228)
+
+[node name="Bomb3" parent="." instance=ExtResource("8_6cmcy")]
+position = Vector2(492, 324)
+
+[node name="Bomb2" parent="." instance=ExtResource("8_6cmcy")]
+position = Vector2(310, 114)
+
 [node name="Bomb" parent="." instance=ExtResource("8_6cmcy")]
+position = Vector2(128, 126)
 
 [connection signal="timeout" from="TipTimer" to="." method="_on_tip_timer_timeout"]

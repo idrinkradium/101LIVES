@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://gxofqe3v6sak"]
+[gd_scene load_steps=5 format=3 uid="uid://1kc3uer76c1x"]
 
+[ext_resource type="Script" path="res://bomb.gd" id="1_8jjiq"]
 [ext_resource type="Texture2D" uid="uid://cqa7ea0kt0ikw" path="res://objects/bomb.png" id="1_b02ft"]
+[ext_resource type="AudioStream" uid="uid://cxo5kyenhmojn" path="res://sounds/cannon boom.mp3" id="3_vcp7x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jraev"]
 radius = 75.0
 
 [node name="Bomb" type="Node2D"]
+script = ExtResource("1_8jjiq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+collision_layer = 253
+collision_mask = 253
+mass = 0.1
+max_contacts_reported = 5
+contact_monitor = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 scale = Vector2(0.25168, 0.25168)
@@ -17,3 +25,9 @@ shape = SubResource("CircleShape2D_jraev")
 position = Vector2(0, -2)
 scale = Vector2(0.0877111, 0.0953726)
 texture = ExtResource("1_b02ft")
+
+[node name="ExplodeSfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_vcp7x")
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="finished" from="ExplodeSfx" to="." method="_on_explode_sfx_finished"]
