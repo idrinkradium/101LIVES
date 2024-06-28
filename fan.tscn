@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgw2t5tkiewp1"]
+
+[ext_resource type="Script" path="res://Fan.gd" id="1_mxdb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ck1c0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5yl8a"]
+size = Vector2(202, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vrir"]
+
+[node name="Fan" type="Node2D"]
+script = ExtResource("1_mxdb8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 253
+collision_mask = 253
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="StaticBody2D"]
+visible = false
+shape = SubResource("RectangleShape2D_ck1c0")
+collision_mask = 255
+
+[node name="Area2D" type="Area2D" parent="StaticBody2D"]
+collision_layer = 253
+collision_mask = 253
+gravity_space_override = 3
+gravity_point_center = Vector2(1, 0)
+gravity_direction = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Area2D"]
+position = Vector2(91, -2.5)
+shape = SubResource("RectangleShape2D_5yl8a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_6vrir")
+
+[connection signal="power_changed" from="." to="." method="_on_power_changed"]
