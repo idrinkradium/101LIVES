@@ -52,6 +52,7 @@ one_shot = true
 autostart = true
 
 [node name="Fan" parent="." instance=ExtResource("7_l4ibq")]
-position = Vector2(256, 476)
+position = Vector2(323, 502)
+scale = Vector2(0.235, 0.235)
 
 [connection signal="timeout" from="TipTimer" to="." method="_on_tip_timer_timeout"]
