@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://b38mmdp32n5pk"]
+
+[ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="1_q0cnh"]
+[ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_tiebr"]
+
+[node name="level7" type="Node2D"]
+
+[node name="Poly" parent="." instance=ExtResource("1_q0cnh")]
+position = Vector2(-536, -576)
+polygon = PackedVector2Array(536, -1544, 537, 1400, 2457, 1400, 2456, -1544, 2264, -1544, 2265, 1208, 729, 1208, 728, -1544)
+
+[node name="PlayerSpawn" type="Node2D" parent="."]
+position = Vector2(512, 464)
+
+[node name="CameraSpawn" type="Node2D" parent="."]
+
+[node name="Door" parent="." instance=ExtResource("2_tiebr")]
+position = Vector2(1312, -664)
+new_level_id = 2
+requires_power = false
+powered = true

@@ -7,6 +7,7 @@ script = ExtResource("1_r21pb")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 253
+collision_mask = 253
 
 [node name="rigidshapes" type="Polygon2D" parent="RigidBody2D"]
 z_index = 5

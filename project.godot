@@ -93,7 +93,3 @@ Explode={
 [physics]
 
 2d/default_gravity=990.0
-
-[rendering]
-
-renderer/rendering_method="gl_compatibility"
