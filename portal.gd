@@ -22,8 +22,11 @@ func _on_area_2d_body_entered(body):
 		if ragdoll:
 			for limb in ragdoll.get_children():
 				if limb is Limb:
-					limb.global_transform.origin = exitpos-limb.startposs
-					limb.linear_velocity = -Vector2(limb.linear_velocity)
+					limb.global_transform.origin = exitpos+limb.startpos
+					limb.rotation = 0
 		else:
 			body.linear_velocity = -Vector2(body.linear_velocity)
 			body.global_transform.origin = exitpos
+
+static func new_integrate_forces(state):
+	print(1)

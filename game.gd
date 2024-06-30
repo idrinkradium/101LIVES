@@ -157,16 +157,21 @@ func _physics_process(delta):
 		explosion_player.play()
 		
 		for collision in $MouseBox/ShapeCast2D.collision_result:
-			if not collision.collider is RigidBody2D:
+			var body = collision.collider
+			if not body is RigidBody2D:
 				continue
-			var direction=$MouseBox.position.direction_to(collision.collider.global_position)
-			var distance=$MouseBox.position.distance_to(collision.collider.global_position)
+			
+			var direction=$MouseBox.position.direction_to(body.global_position)
+			var distance=$MouseBox.position.distance_to(body.global_position)
 			var distancemulti=-.00333*(distance)+1
 			var magnitude=direction*distancemulti*explosion_charge
-			collision.collider.apply_impulse(magnitude*8)
+			body.apply_impulse(magnitude*8)
+			
+			if body.get_parent() is Bomb:
+				body.get_parent().explode()
+				
 			if distance>75:
 				continue
-			var body = collision.collider
 			
 			var dmg = explosion_charge / 2
 			# torso has no joint but we do want it to take damage

@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Bomb
 var exploded=false
 
 func explode():
@@ -37,8 +37,8 @@ func explode():
 	
 	
 func enoughvel(vel):
-	var a = 100
-	return vel.abs().x > a or vel.abs().y > a
+	var v = 300
+	return vel.abs().x > v or vel.abs().y > v
 
 func tryexplode(vel:Vector2):
 	if enoughvel(vel):
