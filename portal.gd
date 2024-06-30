@@ -12,18 +12,18 @@ func _ready():
 		$Portalblue.visible = false
 		$Portalorange.visible = true
 func _on_area_2d_body_entered(body):
+	var exitpos = portal.position + Vector2(0,-70)
+	
 	if body is CharacterBody2D:
 		body.velocity = -Vector2(body.velocity)
-		body.position = portal.position + Vector2(0,-70)
-		#print(body.velocity)
-	if body is RigidBody2D and body.get_parent() is Ragdoll:
-		print("awdasd")
-		#body.get_parent().linear_velocity = -Vector2(body.linear_velocity)
-		body.get_parent().global_transform.origin = portal.position + Vector2(0,-70)
-		#print(body.linear_velocity)
-		print(body.position)
-		print(body.global_transform.origin)
-		#print(body)
-	if body is RigidBody2D:
-		body.linear_velocity = -Vector2(body.linear_velocity)
-		body.global_transform.origin = portal.position + Vector2(0,-70)
+		body.position = exitpos
+	elif body is RigidBody2D:
+		var ragdoll = body.get_parent() as Ragdoll
+		if ragdoll:
+			for limb in ragdoll.get_children():
+				if limb is Limb:
+					limb.global_transform.origin = exitpos-limb.startposs
+					limb.linear_velocity = -Vector2(limb.linear_velocity)
+		else:
+			body.linear_velocity = -Vector2(body.linear_velocity)
+			body.global_transform.origin = exitpos

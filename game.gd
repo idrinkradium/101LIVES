@@ -1,4 +1,5 @@
 extends Node
+class_name Game
 
 @export var level:Node2D
 
@@ -110,7 +111,7 @@ func kill_player(spawn_ragdoll:bool):
 	
 		return instance
 		
-func destroy_limb(dmg,body,name):
+static func destroy_limb(dmg,body,name):
 	if body.name == name:
 		var ragdoll = body.get_parent()
 		var limb = ragdoll.get_node(name)

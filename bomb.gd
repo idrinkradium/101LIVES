@@ -6,7 +6,35 @@ func explode():
 	if exploded: return
 	exploded=true
 	$ExplodeSfx.play()
+	
+	for collision in $RigidBody2D/ExplodeShape.collision_result:
+		if not collision.collider is RigidBody2D:
+			continue
+		var direction=position.direction_to(collision.collider.global_position)
+		var distance=position.distance_to(collision.collider.global_position)
+		var distancemulti=-.00333*(distance)+1
+		var magnitude=direction*distancemulti*100
+		collision.collider.apply_impulse(magnitude*8)
+		if distance>75:
+			continue
+		var body = collision.collider
+		
+		var dmg = 50
+		# torso has no joint but we do want it to take damage
+		Game.destroy_limb(dmg,body, "torso")
+		Game.destroy_limb(dmg,body, "head")
+		Game.destroy_limb(dmg,body, "rightairpod")
+		Game.destroy_limb(dmg,body, "leftairpod")
+		Game.destroy_limb(dmg,body, "bottomleftleg")
+		Game.destroy_limb(dmg,body, "topleftleg")
+		Game.destroy_limb(dmg,body, "bottomrightleg")
+		Game.destroy_limb(dmg,body, "toprightleg")
+		Game.destroy_limb(dmg,body, "bottomrightarm")
+		Game.destroy_limb(dmg,body, "bottomleftarm")
+	
 	$RigidBody2D.queue_free()
+	
+	
 	
 func enoughvel(vel):
 	var a = 100

@@ -1,5 +1,8 @@
 extends Node2D
 class_name Limb
+
+@onready var startpos = position
+
 var hp = 150:
 	get:
 		return hp
