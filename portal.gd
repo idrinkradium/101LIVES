@@ -19,7 +19,7 @@ func _on_area_2d_body_entered(body):
 	if body is RigidBody2D:
 		print("awdasd")
 		body.linear_velocity = -Vector2(body.linear_velocity)
-		body.global_transform.origin = portal.position 
+		body.global_transform.origin = portal.position + Vector2(0,-70)
 		#print(body.linear_velocity)
 		print(body.position)
 		print(body.global_transform.origin)

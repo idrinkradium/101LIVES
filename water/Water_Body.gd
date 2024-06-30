@@ -42,6 +42,7 @@ var water_lenght = distance_between_springs * spring_number
 @onready var splash_particle = preload("splash_particles.tscn")
 
 @export var goo = false
+@export var lava = false
 
 #initializes the spring array and all the springs
 func _ready():
@@ -82,6 +83,10 @@ func _ready():
 		$Water_Body_Area.gravity = 500
 		$Water_Body_Area.linear_damp = 200
 		$Water_Polygon.color = Color(.14,1,.14,0.8)
+	if lava:
+		$Water_Body_Area.gravity = 500
+		$Water_Body_Area.linear_damp = 200
+		$Water_Polygon.color = Color(1,1,.14,0.8)
 
 func _physics_process(delta):
 	
