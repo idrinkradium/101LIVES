@@ -16,11 +16,14 @@ func _on_area_2d_body_entered(body):
 		body.velocity = -Vector2(body.velocity)
 		body.position = portal.position + Vector2(0,-70)
 		#print(body.velocity)
-	if body is RigidBody2D:
+	if body is RigidBody2D and body.get_parent() is Ragdoll:
 		print("awdasd")
-		body.linear_velocity = -Vector2(body.linear_velocity)
-		body.global_transform.origin = portal.position + Vector2(0,-70)
+		#body.get_parent().linear_velocity = -Vector2(body.linear_velocity)
+		body.get_parent().global_transform.origin = portal.position + Vector2(0,-70)
 		#print(body.linear_velocity)
 		print(body.position)
 		print(body.global_transform.origin)
 		#print(body)
+	if body is RigidBody2D:
+		body.linear_velocity = -Vector2(body.linear_velocity)
+		body.global_transform.origin = portal.position + Vector2(0,-70)

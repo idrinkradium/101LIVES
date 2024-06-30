@@ -86,7 +86,7 @@ func _ready():
 	if lava:
 		$Water_Body_Area.gravity = 500
 		$Water_Body_Area.linear_damp = 200
-		$Water_Polygon.color = Color(1,1,.14,0.8)
+		$Water_Polygon.color = Color(1,.3,.14,0.8)
 
 func _physics_process(delta):
 	
@@ -180,6 +180,8 @@ func play_splash(velocity):
 	var sound = $Splashing
 	if goo:
 		sound = $Goo
+	if lava:
+		sound = $Burned
 	sound.volume_db=(velocity.y/150)-12
 	if sound.volume_db>.5:
 		sound.volume_db=.45

@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Ragdoll
 func _on_body_entered(body, limb):
 	if $Ragpact.playing:
 		return
