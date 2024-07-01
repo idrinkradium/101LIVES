@@ -12,21 +12,23 @@ func _ready():
 		$Portalblue.visible = false
 		$Portalorange.visible = true
 func _on_area_2d_body_entered(body):
-	var exitpos = portal.position + Vector2(0,-300)
+	var exitpos = portal.position + Vector2(0,-100)
 	
 	if body is CharacterBody2D:
 		body.velocity = -Vector2(body.velocity)
 		body.position = exitpos
 	elif body is RigidBody2D:
 		var ragdoll = body.get_parent() as Ragdoll
-		if ragdoll:
+		if ragdoll and (body.find_children("*", "PinJoint2D") or body.name == "torso"):
 			for limb in ragdoll.get_children():
-				if limb is Limb:
+				if limb is Limb and (limb.find_children("*", "PinJoint2D") or limb.name == "torso"):
 					limb.global_transform.origin = exitpos+limb.startpos
 					limb.rotation = 0
-					#limb.linear_velocity = Vector2.ZERO
+					print(limb)
+					limb.linear_velocity = -Vector2(body.linear_velocity)#Vector2.ZERO
 					var force = 100
 					limb.apply_impulse(Vector2(randf_range(-force, force),randf_range(-force, force)))
 		else:
+			print("body entered portal",body)
 			body.linear_velocity = -Vector2(body.linear_velocity)
 			body.global_transform.origin = exitpos
