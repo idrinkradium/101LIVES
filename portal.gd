@@ -12,7 +12,7 @@ func _ready():
 		$Portalblue.visible = false
 		$Portalorange.visible = true
 func _on_area_2d_body_entered(body):
-	var exitpos = portal.position + Vector2(0,-70)
+	var exitpos = portal.position + Vector2(0,-300)
 	
 	if body is CharacterBody2D:
 		body.velocity = -Vector2(body.velocity)
@@ -24,9 +24,9 @@ func _on_area_2d_body_entered(body):
 				if limb is Limb:
 					limb.global_transform.origin = exitpos+limb.startpos
 					limb.rotation = 0
+					#limb.linear_velocity = Vector2.ZERO
+					var force = 100
+					limb.apply_impulse(Vector2(randf_range(-force, force),randf_range(-force, force)))
 		else:
 			body.linear_velocity = -Vector2(body.linear_velocity)
 			body.global_transform.origin = exitpos
-
-static func new_integrate_forces(state):
-	print(1)
