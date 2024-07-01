@@ -24,11 +24,11 @@ func _on_area_2d_body_entered(body):
 				if limb is Limb and (limb.find_children("*", "PinJoint2D") or limb.name == "torso"):
 					limb.global_transform.origin = exitpos+limb.startpos
 					limb.rotation = 0
-					print(limb)
+					#print(limb)
 					limb.linear_velocity = -Vector2(body.linear_velocity)#Vector2.ZERO
 					var force = 100
 					limb.apply_impulse(Vector2(randf_range(-force, force),randf_range(-force, force)))
 		else:
-			print("body entered portal",body)
+			#print("body entered portal",body)
 			body.linear_velocity = -Vector2(body.linear_velocity)
 			body.global_transform.origin = exitpos
