@@ -8,6 +8,8 @@ script = ExtResource("1_r21pb")
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 253
 collision_mask = 253
+max_contacts_reported = 10
+contact_monitor = true
 
 [node name="rigidshapes" type="Polygon2D" parent="RigidBody2D"]
 z_index = 5
@@ -18,3 +20,5 @@ z_index = 4
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 
 [node name="centerofmass" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]

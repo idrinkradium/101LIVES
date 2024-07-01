@@ -6,8 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://cgiaeh82cxjob" path="res://sounds/splash2.mp3" id="5_2wvuj"]
 [ext_resource type="AudioStream" uid="uid://cwpp0iexli8qw" path="res://sounds/splash3.mp3" id="6_icer1"]
 [ext_resource type="AudioStream" uid="uid://d1q7i4wyngqtw" path="res://sounds/splash4.mp3" id="7_i4pn5"]
-[ext_resource type="AudioStream" uid="uid://d0vlisyewvsam" path="res://sounds/burned.mp3" id="8_7xkiu"]
 [ext_resource type="AudioStream" uid="uid://cx4s23on2yvqn" path="res://sounds/slime.ogg" id="8_ah64m"]
+[ext_resource type="AudioStream" uid="uid://dc6krcba8myd5" path="res://sounds/lava.ogg" id="8_vehuj"]
 
 [sub_resource type="Curve2D" id="1"]
 
@@ -69,7 +69,7 @@ pitch_scale = 0.6
 bus = &"Water"
 
 [node name="Burned" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_7xkiu")
+stream = ExtResource("8_vehuj")
 volume_db = -6.0
 bus = &"Water"
 

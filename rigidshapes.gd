@@ -15,3 +15,9 @@ func _ready():
 	$RigidBody2D/CollisionPolygon2D.polygon = $RigidBody2D/outline.polygon
 	$RigidBody2D/rigidshapes.polygon = Geometry2D.offset_polygon($RigidBody2D/outline.polygon, -line_thickness)[0]
 
+func _on_rigid_body_2d_body_entered(body):
+	if body is CharacterBody2D:
+		print($RigidBody2D.linear_velocity)
+		if abs($RigidBody2D.linear_velocity.y) or abs($RigidBody2D.linear_velocity.x) > 200:
+			await get_tree().create_timer(0.05).timeout
+			get_tree().root.get_node("Game").kill_player(true)

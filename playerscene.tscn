@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://scmvwqnfs8pa"]
+[gd_scene load_steps=80 format=3 uid="uid://scmvwqnfs8pa"]
 
 [ext_resource type="Texture2D" uid="uid://fuyrc4at53ht" path="res://101livesbasechar.png" id="1_bfcmr"]
 [ext_resource type="Script" path="res://playerscene.gd" id="1_dp6jx"]
@@ -373,6 +373,10 @@ height = 46.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_31prm"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xuno7"]
+radius = 24.0
+height = 118.0
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 253
 collision_mask = 253
@@ -443,7 +447,16 @@ shape = SubResource("CapsuleShape2D_1rsy0")
 position = Vector2(0, -73)
 shape = SubResource("CircleShape2D_31prm")
 
+[node name="CharacterArea" type="Area2D" parent="."]
+collision_layer = 255
+collision_mask = 255
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterArea"]
+shape = SubResource("CapsuleShape2D_xuno7")
+
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="animation_looped" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="body_entered" from="CharacterArea" to="." method="_on_character_area_body_entered"]
+[connection signal="body_exited" from="CharacterArea" to="." method="_on_character_area_body_exited"]

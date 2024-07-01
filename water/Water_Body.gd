@@ -42,7 +42,7 @@ var water_lenght = distance_between_springs * spring_number
 @onready var splash_particle = preload("splash_particles.tscn")
 
 @export var goo = false
-@export var lava = false
+@export var acid = false
 
 #initializes the spring array and all the springs
 func _ready():
@@ -83,10 +83,10 @@ func _ready():
 		$Water_Body_Area.gravity = 500
 		$Water_Body_Area.linear_damp = 200
 		$Water_Polygon.color = Color(.14,1,.14,0.8)
-	if lava:
+	if acid:
 		$Water_Body_Area.gravity = 500
 		$Water_Body_Area.linear_damp = 200
-		$Water_Polygon.color = Color(1,.3,.14,0.8)
+		$Water_Polygon.color = Color(1,.0,.9,0.8)
 
 func _physics_process(delta):
 	
@@ -118,7 +118,6 @@ func _physics_process(delta):
 				springs[i+1].velocity += right_deltas[i]
 	new_border()
 	draw_water_body()
-	
 
 func draw_water_body():
 	
@@ -180,7 +179,7 @@ func play_splash(velocity):
 	var sound = $Splashing
 	if goo:
 		sound = $Goo
-	if lava:
+	if acid:
 		sound = $Burned
 	sound.volume_db=(velocity.y/150)-12
 	if sound.volume_db>.5:
@@ -215,6 +214,8 @@ func _on_Water_Body_Area_body_entered(body):
 	#sets the position of the particle to the same of the body
 	s.global_position = body.global_position
 	
+	if acid and body is CharacterBody2D:
+		get_tree().root.get_node("Game").kill_player(true)
 	pass # Replace with function body.
 
 

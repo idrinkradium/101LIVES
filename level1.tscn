@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=7 format=3 uid="uid://jiy6adpvuo7a"]
 
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
 [ext_resource type="Texture2D" uid="uid://cgyqd22ud4c45" path="res://tips/level1tip.png" id="4_ht3aw"]
@@ -6,10 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://biruvty6oo60x" path="res://poly.tscn" id="6_jrwfq"]
 [ext_resource type="Script" path="res://fadeable.gd" id="7_6qd8g"]
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
-[ext_resource type="PackedScene" uid="uid://7u1uagghouot" path="res://rigidshapes.tscn" id="9_83idf"]
-[ext_resource type="PackedScene" uid="uid://cmct88gqd7jrf" path="res://portal.tscn" id="9_q1bai"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bakhb"]
 
 [node name="Level1" type="Node2D"]
 
@@ -27,6 +23,7 @@ powered = true
 [node name="Poly" parent="." instance=ExtResource("6_jrwfq")]
 position = Vector2(-264, 220)
 polygon = PackedVector2Array(264, 292, 712, 292, 712, 548, 1352, 548, 1352, 228, 1800, 228, 1800, 804, 264, 804)
+ice = true
 
 [node name="Level1Tip" type="Sprite2D" parent="."]
 z_index = -2
@@ -54,34 +51,9 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="Portal" parent="." node_paths=PackedStringArray("portal") instance=ExtResource("9_q1bai")]
-position = Vector2(384, 444)
-portal = NodePath("../Portal2")
-
-[node name="Portal2" parent="." node_paths=PackedStringArray("portal") instance=ExtResource("9_q1bai")]
-position = Vector2(1184, 312)
-bluetrue = true
-portal = NodePath("../Portal")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2(152, 200)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CircleShape2D_bakhb")
-
-[node name="RigidShape" parent="." instance=ExtResource("9_83idf")]
-position = Vector2(104, 0)
-
-[node name="outline" parent="RigidShape/RigidBody2D" index="1"]
-polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
-
-[node name="RigidShape2" parent="." instance=ExtResource("9_83idf")]
-position = Vector2(104, 0)
-
-[node name="outline" parent="RigidShape2/RigidBody2D" index="1"]
-polygon = PackedVector2Array(-8, -8, -8, 8, 8, 8, 8, -8)
+[node name="Poly2" parent="." instance=ExtResource("6_jrwfq")]
+position = Vector2(-264, 200)
+polygon = PackedVector2Array(264, 292, 712, 292, 1352, 228, 1800, 228, 1800, 804, 264, 804)
+ice = true
 
 [connection signal="timeout" from="TipTimer" to="." method="_on_tip_timer_timeout"]
-
-[editable path="RigidShape"]
-[editable path="RigidShape2"]

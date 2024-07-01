@@ -8,9 +8,9 @@ const JUMP_VELOCITY = -600
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var sprite = $AnimatedSprite2D
-
+var iceinitvflag = true
 var previously_on_floor = false
-
+var poo = 1
 var in_water = 0
 var is_jumping = false
 var is_falling = false
@@ -19,15 +19,22 @@ var is_idling =false
 var input_direction = 0
 var recoil = 0
 var prev_velocity = Vector2.ZERO
-
+var on_ice = false
+var icemove_toward = 0
+var runflag = false
+var iceinitv = 0
+var iceexitv = 0
 func _physics_process(delta):
 	var is_jumping = Input.is_action_just_pressed("w") and (is_on_floor() or in_water>0)
 	var is_falling = velocity.y > 0 and not is_on_floor()
-	var is_running = not is_zero_approx(velocity.x)
 	var is_idling = not is_running and not is_falling
-
 	prev_velocity = Vector2(velocity) # make a copy
-
+	if input_direction != 0 and runflag==false:
+		is_running=true
+		runflag = true
+	elif input_direction==0: 
+		is_running=false
+		runflag = false
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -66,9 +73,30 @@ func _physics_process(delta):
 	recoil = move_toward(recoil, 0, recoil_resistance*delta)  # reduce recoil back to zero recoil_resistance worth of units every frame
 	velocity.x += recoil # velocity.x = recoil
 	#print(recoil, velocity)
-	
+	if on_ice == true:
+		if iceinitvflag==true:
+			iceinitv = velocity.x
+		velocity.y*=.4
+		velocity.x = icemove_toward +iceinitv
+		if input_direction ==1:
+			icemove_toward += 200*delta
+		elif input_direction ==-1:
+			icemove_toward -= 200*delta
+		else: icemove_toward = move_toward(icemove_toward,0,80*delta)
+		if icemove_toward < -500:
+			icemove_toward = -500
+		if icemove_toward > 500:
+			icemove_toward = 500
+		iceinitv = move_toward(iceinitv, 0, 200*delta)
+		iceinitvflag = false
+		iceexitv = velocity.x
+	if on_ice == false:
+		if iceinitvflag == false:
+			pass
+		icemove_toward = 0
+		iceinitv = 0
+		iceinitvflag=true
 	move_and_slide()
-			
 	if not is_on_floor():
 		$Footsteps.stop()
 		
@@ -94,7 +122,6 @@ func _physics_process(delta):
 		else: 
 			$Swim.play()
 			
-
 	if not previously_on_floor and is_on_floor() and prev_velocity.y > 300:
 		sprite.play("impact fall")
 		$Thud.play()
@@ -110,6 +137,7 @@ func _physics_process(delta):
 	
 	# this will technically be like 1 frame late but who cares man 💔💝💟💌
 	previously_on_floor = is_on_floor()
+	
 	
 func destroy_limb(ragdoll, name, velocity):
 	var limb = ragdoll.get_node(name)
@@ -170,3 +198,12 @@ func flip_sprite_direction():
 		sprite.flip_h = true
 	elif direction > 0:
 		sprite.flip_h = false
+
+
+func _on_character_area_body_entered(body):
+	if "Poly" in body.get_parent().name and body.get_parent().ice == true:
+		on_ice = true
+
+func _on_character_area_body_exited(body):
+	if "Poly" in body.get_parent().name and body.get_parent().ice == true:
+		on_ice = false
