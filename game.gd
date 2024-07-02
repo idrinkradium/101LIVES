@@ -20,17 +20,16 @@ func _enter_tree():
 
 func _ready():
 	change_level(1)
-	
-	#😍
+
+#😍
 func _process(delta):
 	if Input.is_action_just_pressed("ui_end"):
 		change_level(level.get_node("Door").new_level_id)
 	if Input.is_action_just_pressed("Die"):
 		kill_player(true)
-		
+
 	if Input.is_action_just_pressed("ui_page_up"):
-		$Player.position = Vector2($MouseBox.position) 
-		
+		$Player.position = Vector2($MouseBox.position)
 
 
 func change_level(id: int):
@@ -46,7 +45,7 @@ func change_level(id: int):
 	$Camera2D.offset = Vector2(level.get_node("CameraSpawn").position)
 	
 	connect_door()
-	
+
 
 func connect_door():
 	var on_body_entered = func(body):

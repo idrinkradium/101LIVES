@@ -137,31 +137,12 @@ func _physics_process(delta):
 	
 	# this will technically be like 1 frame late but who cares man 💔💝💟💌
 	previously_on_floor = is_on_floor()
-	
-	
-func destroy_limb(ragdoll, name, velocity):
-	var limb = ragdoll.get_node(name)
-	var vy = -velocity.y
-	var vx = randi_range(-velocity.y, velocity.y)
-	limb.apply_impulse(Vector2(vx,vy)*.3)
-	
-	var joint = limb.get_node_or_null(name + "joint")
-	if joint:
-		joint.queue_free()
 
 func killfromvelocity(vel):
 	$Grunt.play()
 	$Bone.play()
 	var ragdoll = await Game.instance.kill_player(true)
-	destroy_limb(ragdoll, "head",vel)
-	destroy_limb(ragdoll, "rightairpod",vel)
-	destroy_limb(ragdoll, "leftairpod",vel)
-	destroy_limb(ragdoll, "bottomleftleg",vel)
-	destroy_limb(ragdoll, "topleftleg",vel)
-	destroy_limb(ragdoll, "bottomrightleg",vel)
-	destroy_limb(ragdoll, "toprightleg",vel)
-	destroy_limb(ragdoll, "bottomrightarm",vel)
-	destroy_limb(ragdoll, "bottomleftarm",vel)
+	ragdoll.explode(vel)
 
 func _on_animated_sprite_2d_animation_finished():
 	if sprite.animation == "Jump":

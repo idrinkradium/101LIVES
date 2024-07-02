@@ -19,15 +19,15 @@ func _on_area_2d_body_entered(body):
 		body.position = exitpos
 	elif body is RigidBody2D:
 		var ragdoll = body.get_parent() as Ragdoll
-		if ragdoll and (body.find_children("*", "PinJoint2D") or body.name == "torso"):
+		if ragdoll and body.joint:
 			for limb in ragdoll.get_children():
-				if limb is Limb and (limb.find_children("*", "PinJoint2D") or limb.name == "torso"):
+				if limb is Limb and limb.joint:
 					limb.global_transform.origin = exitpos+limb.startpos
 					limb.rotation = 0
 					#print(limb)
-					limb.linear_velocity = -Vector2(body.linear_velocity)#Vector2.ZERO
+					limb.linear_velocity = -Vector2(limb.linear_velocity)#Vector2.ZERO
 					var force = 100
-					limb.apply_impulse(Vector2(randf_range(-force, force),randf_range(-force, force)))
+					limb.apply_impulse(Vector2(randf_range(-force, force),-force))
 		else:
 			#print("body entered portal",body)
 			body.linear_velocity = -Vector2(body.linear_velocity)

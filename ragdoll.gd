@@ -16,6 +16,15 @@ func _on_body_entered(body, limb):
 
 # check if we have any parts left, if not then remove ourselves
 func _on_timer_timeout():
-	var parts = find_children("*", "RigidBody2D")
-	if parts.is_empty():
+	var limbs = find_children("*", "RigidBody2D")
+	if limbs.is_empty():
 		queue_free()
+
+func explode(v:Vector2):
+	var limbs = find_children("*", "RigidBody2D")
+	for limb in limbs:
+		var vy = -v.y
+		var vx = randi_range(-v.y, v.y)
+		limb.apply_impulse(Vector2(vx,vy)*.3)
+		if limb.joint:
+			limb.joint.queue_free()
