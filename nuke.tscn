@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://1kc3uer76c1x"]
+[gd_scene load_steps=6 format=3 uid="uid://bbu3y235bx3ju"]
 
-[ext_resource type="Script" path="res://bomb.gd" id="1_8jjiq"]
-[ext_resource type="Texture2D" uid="uid://cqa7ea0kt0ikw" path="res://objects/bomb.png" id="1_b02ft"]
-[ext_resource type="AudioStream" uid="uid://cxo5kyenhmojn" path="res://sounds/cannon boom.mp3" id="3_vcp7x"]
+[ext_resource type="Script" path="res://nuke.gd" id="1_qljpn"]
+[ext_resource type="Texture2D" uid="uid://cmkbkemrdx0sy" path="res://icon.svg" id="2_l5asa"]
+[ext_resource type="AudioStream" uid="uid://cxo5kyenhmojn" path="res://sounds/cannon boom.mp3" id="3_lwtex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jraev"]
 radius = 75.0
@@ -10,13 +10,13 @@ radius = 75.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1gmx5"]
 radius = 100.0
 
-[node name="Bomb" type="RigidBody2D"]
+[node name="Nuke" type="RigidBody2D"]
 collision_layer = 253
 collision_mask = 253
 mass = 0.1
 max_contacts_reported = 5
 contact_monitor = true
-script = ExtResource("1_8jjiq")
+script = ExtResource("1_qljpn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25168, 0.25168)
@@ -24,8 +24,8 @@ shape = SubResource("CircleShape2D_jraev")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
-scale = Vector2(0.0877111, 0.0953726)
-texture = ExtResource("1_b02ft")
+scale = Vector2(0.468, 0.505)
+texture = ExtResource("2_l5asa")
 
 [node name="ExplodeShape" type="ShapeCast2D" parent="."]
 shape = SubResource("CircleShape2D_1gmx5")
@@ -33,4 +33,4 @@ target_position = Vector2(0, 0)
 collision_mask = 253
 
 [node name="ExplodeSfx" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_vcp7x")
+stream = ExtResource("3_lwtex")

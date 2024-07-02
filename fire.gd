@@ -30,7 +30,7 @@ func _on_area_2d_body_entered(body):
 	
 	var playsound=false
 	if body is CharacterBody2D:
-		get_tree().current_scene.kill_player(false)
+		Game.instance.kill_player(false)
 		playsound=true
 	elif body is RigidBody2D:
 		body.queue_free()

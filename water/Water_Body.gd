@@ -215,7 +215,7 @@ func _on_Water_Body_Area_body_entered(body):
 	s.global_position = body.global_position
 	
 	if acid and body is CharacterBody2D:
-		get_tree().root.get_node("Game").kill_player(true)
+		Game.instance.kill_player(true)
 	pass # Replace with function body.
 
 

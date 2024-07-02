@@ -1,47 +1,27 @@
-extends Node2D
+extends RigidBody2D
 class_name Bomb
+
+@export var power = 100
 var exploded=false
 
 func explode():
 	if exploded: return
 	exploded=true
+	
+	await Game.wait(0.1)
+	
 	$ExplodeSfx.play()
 	
-	for collision in $RigidBody2D/ExplodeShape.collision_result:
-		if not collision.collider is RigidBody2D:
-			continue
-		var direction=position.direction_to(collision.collider.global_position)
-		var distance=position.distance_to(collision.collider.global_position)
-		var distancemulti=-.00333*(distance)+1
-		var magnitude=direction*distancemulti*100
-		collision.collider.apply_impulse(magnitude*8)
-		if distance>75:
-			continue
-		var body = collision.collider
+	Game.explosionatshapecast($ExplodeShape, power)
 		
-		var dmg = 50
-		# torso has no joint but we do want it to take damage
-		Game.destroy_limb(dmg,body, "torso")
-		Game.destroy_limb(dmg,body, "head")
-		Game.destroy_limb(dmg,body, "rightairpod")
-		Game.destroy_limb(dmg,body, "leftairpod")
-		Game.destroy_limb(dmg,body, "bottomleftleg")
-		Game.destroy_limb(dmg,body, "topleftleg")
-		Game.destroy_limb(dmg,body, "bottomrightleg")
-		Game.destroy_limb(dmg,body, "toprightleg")
-		Game.destroy_limb(dmg,body, "bottomrightarm")
-		Game.destroy_limb(dmg,body, "bottomleftarm")
-	
-	$RigidBody2D.queue_free()
-	
-	
-	
-func enoughvel(vel):
-	var v = 300
+	$CollisionShape2D.queue_free()
+	$Sprite2D.queue_free()
+
+func enoughvel(vel:Vector2,v):
 	return vel.abs().x > v or vel.abs().y > v
 
 func tryexplode(vel:Vector2):
-	if enoughvel(vel):
+	if enoughvel(vel, 300):
 		explode()
 
 func _on_rigid_body_2d_body_entered(body):
@@ -50,8 +30,8 @@ func _on_rigid_body_2d_body_entered(body):
 	elif 'linear_velocity' in body:
 		tryexplode(body.linear_velocity)
 	
-	tryexplode($RigidBody2D.linear_velocity)
+	tryexplode(linear_velocity)
 
-
+# sound is done playing, bomb is truly gone now
 func _on_explode_sfx_finished():
 	queue_free()

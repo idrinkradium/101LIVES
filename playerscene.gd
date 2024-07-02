@@ -152,7 +152,7 @@ func destroy_limb(ragdoll, name, velocity):
 func killfromvelocity(vel):
 	$Grunt.play()
 	$Bone.play()
-	var ragdoll = await get_tree().current_scene.kill_player(true)
+	var ragdoll = await Game.instance.kill_player(true)
 	destroy_limb(ragdoll, "head",vel)
 	destroy_limb(ragdoll, "rightairpod",vel)
 	destroy_limb(ragdoll, "leftairpod",vel)

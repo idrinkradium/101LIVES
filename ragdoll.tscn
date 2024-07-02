@@ -88,6 +88,9 @@ position = Vector2(0, 4)
 scale = Vector2(0.271, 0.271)
 texture = ExtResource("5_uc0td")
 
+[node name="dummyjoint" type="PinJoint2D" parent="torso"]
+editor_description = "exists to satisfy the condition of \"if ragdoll part has a joint then it must have a connection\""
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="torso"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_uvohg")

@@ -1,17 +1,22 @@
 extends Node2D
 class_name Limb
 
-@onready var startpos = position
+@onready var startpos := position
+@onready var joint := get_child(1) as PinJoint2D
 
-var hp = 150:
+var hp := 150:
 	get:
 		return hp
 	set(value):
 		hp=value
 		modulate.v=(hp * .003) + 0.8
 		
-		
+		if hp < 100 and joint != null:
+			joint.queue_free()
+			joint=null
+
 @export var destroyparticles : CPUParticles2D
+
 func _process(delta):
 	if position.y > 2000 or hp <= 0:
 		var p : CPUParticles2D= destroyparticles.duplicate()

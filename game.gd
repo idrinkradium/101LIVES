@@ -1,9 +1,10 @@
 extends Node
 class_name Game
 
+static var instance : Game
 @export var level:Node2D
 
-@export var lives = 101:
+@export var lives := 101:
 	get:
 		return lives
 	set(value):
@@ -11,9 +12,11 @@ class_name Game
 		$HUD/Lives.text = str(lives)
 		if lives<1:
 			$HUD.game_over()
-			
 
-var explosion_charge = 0
+var explosion_charge := 0
+
+func _enter_tree():
+	instance=self
 
 func _ready():
 	change_level(1)
@@ -96,10 +99,10 @@ func kill_player(spawn_ragdoll:bool):
 	
 	$Player.prev_velocity = Vector2.ZERO
 	$Player.velocity = Vector2.ZERO
+	
 	if spawn_ragdoll:
-		
 		# hack, wait some time so physics position of player updates, so the collision boxes aren't inside eachother
-		await get_tree().create_timer(0.05).timeout
+		await wait(0.05)
 		
 		var ragdoll = load("res://ragdoll.tscn")
 		var instance = ragdoll.instantiate()
@@ -110,16 +113,7 @@ func kill_player(spawn_ragdoll:bool):
 		level.add_child(instance)
 	
 		return instance
-		
-static func destroy_limb(dmg,body,name):
-	if body.name == name:
-		var ragdoll = body.get_parent()
-		var limb = ragdoll.get_node(name)
-		limb.hp -= dmg
-		var joint = limb.get_node_or_null(name + "joint")
-		if joint:
-			joint.queue_free()
-			
+	
 var explosion_stream = load("res://sounds/explosion.mp3")
 
 func _physics_process(delta):
@@ -130,65 +124,56 @@ func _physics_process(delta):
 		$Player.velocity=Vector2.ZERO
 		
 	if Input.is_action_just_pressed("Explode"):
-		$MouseBox/ExplosionCircle.modulate = Color.GREEN
+		$MouseBox/ShapeCast2D/ExplosionCircle.modulate = Color.GREEN
 		var explosion_circle_tween = create_tween()
-		explosion_circle_tween.tween_property($MouseBox/ExplosionCircle, "modulate", Color(1,0,0,.75), .75)
+		explosion_circle_tween.tween_property($MouseBox/ShapeCast2D/ExplosionCircle, "modulate", Color(1,0,0,.75), .75)
 		
 	if Input.is_action_pressed("Explode"):
-		explosion_charge += 2
-		explosion_charge = clamp(explosion_charge, 0, 100)
-		
-		#$MouseBox/TextureRect.texture.gradient.offsets[1] = (explosion_charge/100.0)
-		$MouseBox/ExplosionCircle.visible=true
-		$MouseBox/ExplosionCircle.scale = (Vector2.ONE * explosion_charge) / 350
+		explosion_charge = clamp(explosion_charge + 1, 0, 100)
+	
+		$MouseBox/ShapeCast2D.visible=true
+		$MouseBox/ShapeCast2D.scale = (Vector2.ONE * explosion_charge) 
 		$MouseBox/ExplosionParticles.emitting=false
 	
 	if Input.is_action_just_released("Explode"):
-		$MouseBox/ExplosionParticles.emitting=true
 		var explosion_player = AudioStreamPlayer2D.new()
-		explosion_player.stream = explosion_stream
-		var finished = func():
-			explosion_player.queue_free()
-		explosion_player.finished.connect(finished)
 		$MouseBox.add_child(explosion_player)
+		explosion_player.stream = explosion_stream
+		explosion_player.finished.connect(explosion_player.queue_free)
 		explosion_player.bus = "Explosion"
 		explosion_player.pitch_scale = -.0025*(explosion_charge)+1.1
 		explosion_player.volume_db =.07*(explosion_charge)-13
 		explosion_player.play()
 		
-		for collision in $MouseBox/ShapeCast2D.collision_result:
-			var body = collision.collider
-			if not body is RigidBody2D:
-				continue
-			
-			var direction=$MouseBox.position.direction_to(body.global_position)
-			var distance=$MouseBox.position.distance_to(body.global_position)
-			var distancemulti=-.00333*(distance)+1
-			var magnitude=direction*distancemulti*explosion_charge
-			body.apply_impulse(magnitude*8)
-			
-			if body.get_parent() is Bomb:
-				body.get_parent().explode()
-				
-			if distance>75:
-				continue
-			
-			var dmg = explosion_charge / 2
-			# torso has no joint but we do want it to take damage
-			destroy_limb(dmg,body, "torso")
-			destroy_limb(dmg,body, "head")
-			destroy_limb(dmg,body, "rightairpod")
-			destroy_limb(dmg,body, "leftairpod")
-			destroy_limb(dmg,body, "bottomleftleg")
-			destroy_limb(dmg,body, "topleftleg")
-			destroy_limb(dmg,body, "bottomrightleg")
-			destroy_limb(dmg,body, "toprightleg")
-			destroy_limb(dmg,body, "bottomrightarm")
-			destroy_limb(dmg,body, "bottomleftarm")
-			
-		explosion_charge=0
-		$MouseBox/ExplosionCircle.visible=false
+		$MouseBox/ExplosionParticles.emitting=true
 		
+		explosionatshapecast($MouseBox/ShapeCast2D, explosion_charge)
+		
+		explosion_charge=0
+		$MouseBox/ShapeCast2D.visible=false
+
+static func explosionatshapecast(shapecast:ShapeCast2D, power:float):
+	for collision in shapecast.collision_result:
+		var body = collision.collider as RigidBody2D
+		if body == null:
+			continue
+
+		var direction=shapecast.global_position.direction_to(body.global_position)
+		var distance=shapecast.global_position.distance_to(body.global_position)
+		var distancemulti=-.00333*(distance)+1
+		var magnitude=direction*distancemulti*power
+		body.apply_impulse(magnitude*10)
+
+		if body is Bomb:
+			body.explode()
+		
+		if 'hp' in body:
+			var dmg = power * distancemulti
+			body.hp -= dmg
+
+static func wait(time:float):
+	await instance.get_tree().create_timer(time).timeout
+
 # loop infinitely
 func _on_music_finished():
 	$Music.play()
