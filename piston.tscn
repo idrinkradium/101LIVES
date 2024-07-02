@@ -6,11 +6,11 @@
 [ext_resource type="AudioStream" uid="uid://jit1djxkwiys" path="res://sounds/pistonout.mp3" id="4_i7arn"]
 [ext_resource type="AudioStream" uid="uid://bapgdvqlnxa5f" path="res://sounds/pistonin.mp3" id="5_xf3mb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj7c0"]
-size = Vector2(30, 0.1)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6io66"]
 size = Vector2(400, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4wap"]
+size = Vector2(25, 10)
 
 [node name="Piston" type="Node2D"]
 script = ExtResource("1_711en")
@@ -26,13 +26,6 @@ centered = false
 position = Vector2(0, -1.90735e-06)
 collision_layer = 244
 collision_mask = 244
-
-[node name="crushzone" type="Area2D" parent="Piston"]
-position = Vector2(-26, -2)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston/crushzone"]
-position = Vector2(26, 1)
-shape = SubResource("RectangleShape2D_oj7c0")
 
 [node name="Sprite" type="Sprite2D" parent="Piston"]
 position = Vector2(0, -12)
@@ -50,6 +43,11 @@ collision_mask = 253
 position = Vector2(-20, -44)
 polygon = PackedVector2Array(-25, 44, -11, 20, 51, 20, 65, 44)
 
+[node name="crushzone" type="ShapeCast2D" parent="Piston"]
+position = Vector2(-15, -10)
+shape = SubResource("RectangleShape2D_y4wap")
+target_position = Vector2(30, 0)
+
 [node name="PistonOut" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_i7arn")
 volume_db = -7.0
@@ -63,11 +61,5 @@ bus = &"Piston"
 [node name="SafezoneTimer" type="Timer" parent="."]
 wait_time = 0.05
 
-[node name="CrushTimer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
 [connection signal="power_changed" from="." to="." method="_on_power_changed"]
-[connection signal="body_entered" from="Piston/crushzone" to="." method="_on_crushzone_body_entered"]
 [connection signal="timeout" from="SafezoneTimer" to="." method="_on_safezone_timer_timeout"]
-[connection signal="timeout" from="CrushTimer" to="." method="_on_crush_timer_timeout"]
