@@ -59,4 +59,6 @@ animation = &"fan"
 position = Vector2(-1, 10)
 shape = SubResource("RectangleShape2D_6vrir")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+
 [connection signal="power_changed" from="." to="." method="_on_power_changed"]

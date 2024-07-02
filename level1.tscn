@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://jiy6adpvuo7a"]
+[gd_scene load_steps=10 format=3 uid="uid://jiy6adpvuo7a"]
 
 [ext_resource type="PackedScene" uid="uid://cv44a3f4f6rhh" path="res://door.tscn" id="2_sg41p"]
 [ext_resource type="Texture2D" uid="uid://cgyqd22ud4c45" path="res://tips/level1tip.png" id="4_ht3aw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cmct88gqd7jrf" path="res://portal.tscn" id="7_crrpv"]
 [ext_resource type="PackedScene" uid="uid://bbu3y235bx3ju" path="res://nuke.tscn" id="8_5uryx"]
 [ext_resource type="Texture2D" uid="uid://dgsp4d6em5uku" path="res://tips/level1tip4.png" id="8_d4jst"]
+[ext_resource type="PackedScene" uid="uid://cgw2t5tkiewp1" path="res://fan.tscn" id="9_wtrui"]
 
 [node name="Level1" type="Node2D"]
 
@@ -57,7 +58,7 @@ position = Vector2(-264, 200)
 polygon = PackedVector2Array(264, 292, 712, 292, 1352, 228, 1800, 228, 1800, 804, 264, 804)
 
 [node name="Portal" parent="." node_paths=PackedStringArray("portal") instance=ExtResource("7_crrpv")]
-position = Vector2(333, 479)
+position = Vector2(333, 428)
 bluetrue = true
 portal = NodePath("../Portal2")
 
@@ -67,5 +68,10 @@ portal = NodePath("../Portal")
 
 [node name="Nuke" parent="." instance=ExtResource("8_5uryx")]
 position = Vector2(61, 426)
+
+[node name="Fan" parent="." instance=ExtResource("9_wtrui")]
+position = Vector2(744, 400)
+power = 400
+powered = true
 
 [connection signal="timeout" from="TipTimer" to="." method="_on_tip_timer_timeout"]
